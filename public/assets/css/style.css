@@ -16993,3 +16993,69 @@ fieldset[disabled] .full-calendar .fc-button:hover {
         margin-bottom: 0!important
     }
 }
+
+#amvm-carousel {
+  padding: 0 10px 30px 10px;
+  margin-top: 30px;
+}
+
+#amvm-carousel .carousel-control {
+  background: none;
+  color: #222;
+  font-size: 2.3em;
+  text-shadow: none;
+  margin-top: 30px;
+}
+
+#amvm-carousel .carousel-control.left {
+  left: -12px;
+}
+
+#amvm-carousel .carousel-control.right {
+  right: -12px !important;
+}
+
+#amvm-carousel .carousel-indicators {
+  right: 50%;
+  top: auto;
+  bottom: 0px;
+  margin-right: -19px;
+}
+
+#amvm-carousel .carousel-indicators li {
+  background: #c0c0c0;
+}
+#amvm-carousel .carousel-indicators .active {
+  background: #333333;
+}
+#amvm-carousel img {
+  width: 100%;
+}
+
+#amvm-carousel h3 {
+	margin-top: 0px !important;
+} 
+
+@media (min-width: 768px) { 
+  #amvm-carousel {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  #amvm-carousel .carousel-indicators {
+    bottom: -20px !important;  
+  }
+  #amvm-carousel .carousel-indicators li {
+    display: inline-block;
+    margin: 0px 5px;
+    width: 15px;
+    height: 15px;
+  }
+  #amvm-carousel .carousel-indicators li.active {
+    margin: 0px 5px;
+    width: 20px;
+    height: 20px;
+  }
+}
