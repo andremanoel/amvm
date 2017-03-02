@@ -9,10 +9,12 @@ class GestorController extends AbstractActionController
 {
     public function indexAction()
     {
+        return new ViewModel();
     }
 
     public function loginAction()
     {
+
     }
 
     public function logoutAction()

@@ -10,6 +10,7 @@ namespace Application;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
 return [
     'router' => [
@@ -57,4 +58,19 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    // ...
+    'doctrine' => [
+        'driver' => [
+            __NAMESPACE__ . '_driver' => [
+                'class' => AnnotationDriver::class,
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../src/Model']
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    __NAMESPACE__ . '\Model' => __NAMESPACE__ . '_driver'
+                ]
+            ]
+        ]
+    ]
 ];

@@ -3,6 +3,11 @@
 use Zend\Mvc\Application;
 use Zend\Stdlib\ArrayUtils;
 
+function a($var) {
+    var_dump($var); exit;
+}
+
+
 /**
  * This makes our life easier when dealing with paths. Everything is relative
  * to the application root now.
