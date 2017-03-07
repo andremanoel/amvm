@@ -35,11 +35,22 @@ return [
                     ],
                 ],
             ],
+            'indicadores' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/indicadores[/:action]',
+                    'defaults' => [
+                        'controller' => Controller\IndicadoresController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            Controller\IndicadoresController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

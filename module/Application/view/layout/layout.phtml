@@ -20,6 +20,7 @@
     <?= $this->headScript()
         ->prependFile($this->basePath('assets/lib/bootstrap/dist/js/bootstrap.min.js'))
         ->prependFile($this->basePath('assets/lib/jquery/jquery.min.js'))
+        ->appendFile($this->basePath('assets/js/Highcharts-5.0.7/'))
     ?>
 
     <!--[if lt IE 9]>
@@ -36,8 +37,7 @@
             <div class="navbar-header">
                 <a href="index.html" class="navbar-brand" style="width: 100%;">
                     <p>
-                        Avaliação e Monitoramento
-                        da violência contra mulheres
+                        Projeto Francisca das Chagas
                     </p>
                 </a>
             </div>
@@ -46,7 +46,7 @@
             <div id="be-navbar-collapse" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="float: right;">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Indicadores</a></li>
+                    <li><a href="/indicadores">Indicadores</a></li>
                     <li><a href="#">Notícias</a></li>
                     <li><a href="#">Equipe</a></li>
                     <li><a href="#">Contato</a></li>

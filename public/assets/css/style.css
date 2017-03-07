@@ -5637,9 +5637,9 @@ canvas {
     margin: 0
 }
 .be-top-header .navbar-header .navbar-brand p {
-    margin-top: 18px;
+    margin-top: 23px;
     margin-left: 60px;
-    font-size: 12px;
+    font-size: 14px;
     text-transform: uppercase;
     line-height: 14px;
     color: #7A405E;
@@ -7675,7 +7675,6 @@ canvas {
     margin: 0px 0px 40px 0px;
 }
 .main-content .icones-hero h1 {
-    font-size: 22px;
     color: #7A405E;
 }
 .main-content .icones-hero h2 {
@@ -17058,4 +17057,13 @@ fieldset[disabled] .full-calendar .fc-button:hover {
     width: 20px;
     height: 20px;
   }
+}
+
+.painel-parceiros img {
+	display: inline-block;
+	margin: 10px 30px;
+}
+
+h2.titulo-parceiro {
+    color: #7A405E;
 }
