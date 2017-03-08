@@ -45,12 +45,45 @@ return [
                     ],
                 ],
             ],
+            'noticias' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/noticias[/:action]',
+                    'defaults' => [
+                        'controller' => Controller\NoticiasController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'equipe' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/equipe[/:action]',
+                    'defaults' => [
+                        'controller' => Controller\EquipeController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'contato' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/contato[/:action]',
+                    'defaults' => [
+                        'controller' => Controller\ContatoController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
             Controller\IndicadoresController::class => InvokableFactory::class,
+            Controller\NoticiasController::class => InvokableFactory::class,
+            Controller\EquipeController::class => InvokableFactory::class,
+            Controller\ContatoController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

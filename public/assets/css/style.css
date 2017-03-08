@@ -17067,3 +17067,9 @@ fieldset[disabled] .full-calendar .fc-button:hover {
 h2.titulo-parceiro {
     color: #7A405E;
 }
+
+
+.botoes-controle-graficos {
+	text-align: center;
+	padding-top: 20px;
+}
