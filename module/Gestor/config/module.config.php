@@ -9,12 +9,12 @@ return [
     'controllers' => [
         'factories' => [
             Controller\GestorController::class => InvokableFactory::class,
+            Controller\ImportacaoController::class => InvokableFactory::class,
         ],
     ],
-    // The following section is new and should be added to your file:
     'router' => [
         'routes' => [
-            'album' => [
+            'gestor' => [
                 'type'    => Segment::class,
                 'options' => [
                     'route' => '/gestor[/:action[/:id]]',
@@ -24,6 +24,20 @@ return [
                     ],
                     'defaults' => [
                         'controller' => Controller\GestorController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'importacao' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route' => '/importacao[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => Controller\ImportacaoController::class,
                         'action'     => 'index',
                     ],
                 ],
