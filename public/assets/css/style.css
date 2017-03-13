@@ -17062,8 +17062,29 @@ fieldset[disabled] .full-calendar .fc-button:hover {
 .painel-parceiros img {
 	display: inline-block;
 	margin: 10px 30px;
+    max-width: 200px;
 }
 
 h2.titulo-parceiro {
     color: #7A405E;
+}
+
+.carrosel-bg {
+    background-color: #E5E8F2;
+    border-radius: 4px;
+}
+
+#amvm-carousel .carousel-control {
+    background: #E5E8F2;
+    color: #222;
+    font-size: 2.3em;
+    text-shadow: none;
+    margin-top: -30px;
+    border-radius: 0px 0px 4px 4px;
+}
+#amvm-carousel .carousel-control i {
+    position: absolute;
+    top: 50%;
+    margin-top: -14px;
+    color: #7B405F;
 }
