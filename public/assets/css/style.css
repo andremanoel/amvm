@@ -17069,6 +17069,7 @@ h2.titulo-parceiro {
     color: #7A405E;
 }
 
+/* carousel */
 .carrosel-bg {
     background-color: #E5E8F2;
     border-radius: 4px;
@@ -17087,4 +17088,9 @@ h2.titulo-parceiro {
     top: 50%;
     margin-top: -14px;
     color: #7B405F;
+}
+
+.botoes-controle-graficos {
+	text-align: center;
+	padding-top: 20px;
 }

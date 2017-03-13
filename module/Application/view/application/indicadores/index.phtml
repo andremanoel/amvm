@@ -2,9 +2,22 @@
 
 	<div class="row">
         <div class="col-md-12 text-center">
-    		<h1>Indicadores</h1>
+    		<h1>Painel de indicadores</h1>
+    		<br />
     		
     		<div id="grafico-geral" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    		
+    		<br />
+    		<div id="grafico-semana" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    		
+    		<div class="botoes-controle-graficos">
+    			Modificar gráfico: 
+        		<button id="plain" class="btn btn-primary btn-lg">Padrão</button>
+                <button id="inverted" class="btn btn-primary btn-lg">Invertido</button>
+                <button id="polar" class="btn btn-primary btn-lg">Polar</button>
+            </div>
+    		
+    		
         </div>
     </div>
 
@@ -16,7 +29,7 @@ Highcharts.chart('grafico-geral', {
         type: 'line'
     },
     title: {
-        text: 'Índice de Violência'
+        text: 'Índice de Violência no Maranhão'
     },
     subtitle: {
         text: 'Mensal'
@@ -39,13 +52,80 @@ Highcharts.chart('grafico-geral', {
     },
     series: [{
         name: 'Espancamento',
-        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+        data: [7, 6, 9, 14, 18, 21, 25, 26, 23, 18, 13, 9]
     }, {
         name: 'Estrangulamento',
-        data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        data: [3, 4, 5, 8, 11, 15, 17, 16, 14, 10, 6, 4]
     }, {
         name: 'Lesão Corporal',
-        data: [8.0, 3.9, 4.5, 15.5, 18.4, 20.5, 21.2, 25.5, 21.3, 15.3, 18, 30]
+        data: [8, 3, 4, 15, 18, 20, 21, 25, 21, 15, 18, 30]
     } ]
 });
+
+var chartSemana = Highcharts.chart('grafico-semana', {
+
+    title: {
+        text: 'Gráfico Semanal'
+    },
+
+    subtitle: {
+        text: 'Padrão'
+    },
+
+    xAxis: {
+        categories: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
+    },
+
+    series: [{
+        type: 'column',
+        name: 'Total Mortes',
+        colorByPoint: true,
+        data: [29, 71, 106, 33, 55, 60, 120],
+        showInLegend: true
+    }, {
+        type: 'column',
+        name: 'teste',
+        colorByPoint: false,
+        data: [29, 71, 106, 33, 55, 60, 120],
+        showInLegend: true
+    }]
+
+});
+
+$('#plain').click(function () {
+	chartSemana.update({
+        chart: {
+            inverted: false,
+            polar: false
+        },
+        subtitle: {
+            text: 'Padrão'
+        }
+    });
+});
+
+$('#inverted').click(function () {
+	chartSemana.update({
+        chart: {
+            inverted: true,
+            polar: false
+        },
+        subtitle: {
+            text: 'Invertido'
+        }
+    });
+});
+
+$('#polar').click(function () {
+	chartSemana.update({
+        chart: {
+            inverted: false,
+            polar: true
+        },
+        subtitle: {
+            text: 'Polar'
+        }
+    });
+});
+
 </script>
