@@ -25,14 +25,14 @@ class Module
     public function onBootstrap($mvcEvent)
     {
         $sm = $mvcEvent->getApplication()->getServiceManager();
-        $entityManager = $sm->get('doctrine.entitymanager.orm_default');
-        $usuario = new Usuario();
-        $usuario->setNome('Teste Andre');
-        $usuario->setEmail('teste@gmai.com');
-        $usuario->setSenha('iuasuahsuiahisuis');
-        $usuario->setDataCadastro(date('Y-m-d H:i:s'));
-        $entityManager->persist($usuario);
-        $entityManager->flush();
+        // $entityManager = $sm->get('doctrine.entitymanager.orm_default');
+        // $usuario = new Usuario();
+        // $usuario->setNome('Teste Andre');
+        // $usuario->setEmail('teste@gmai.com');
+        // $usuario->setSenha('iuasuahsuiahisuis');
+        // $usuario->setDataCadastro(date('Y-m-d H:i:s'));
+        // $entityManager->persist($usuario);
+        // $entityManager->flush();
     }
 
 }
