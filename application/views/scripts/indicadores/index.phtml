@@ -5,7 +5,13 @@
     		<h1>Painel de indicadores</h1>
     		<br />
     		
+    		<div id="grafico-mais-ocorrencias" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    		<br />
+    		
     		<div id="grafico-geral" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    		<br />
+    		
+    		<div id="grafico-horario-dia" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     		
     		<br />
     		<div id="grafico-semana" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
@@ -24,6 +30,121 @@
 </div>
 
 <script type="text/javascript">
+//Create the chart - http://www.highcharts.com/demo/column-drilldown
+Highcharts.chart('grafico-mais-ocorrencias', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Bairros com maior incidência de crimes'
+    },
+    subtitle: {
+        text: 'Clique para ver o detalhamento dos crimes'
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+            text: 'Total de crimes'
+        }
+
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:.0f}'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}</b><br/>'
+    },
+    
+    series: [{
+        name: 'Total de Crimes',
+        colorByPoint: true,
+        data: [{
+            name: 'Vila Embratel',
+            y: 58,
+            drilldown: 'Vila Embratel'
+        }, {
+            name: 'Cidade Olímpica',
+            y: 50,
+            drilldown: null
+        }, {
+            name: 'Coroadinho',
+            y: 47,
+            drilldown: null
+        }, {
+            name: 'Cidade Operária',
+            y: 45,
+            drilldown: null
+        }, {
+            name: 'Olho dagua',
+            y: 42,
+            drilldown: null
+        }, {
+            name: 'Turú',
+            y: 32,
+            drilldown: null
+        }, {
+            name: 'Bairro de Fátima',
+            y: 31,
+            drilldown: null
+        }, {
+            name: 'Centro',
+            y: 30,
+            drilldown: null
+        }, {
+            name: 'Maracanã',
+            y: 28,
+            drilldown: null
+        }]
+
+    }],
+    drilldown: {
+        series: [{
+            name: 'Vila Embratel',
+            id: 'Vila Embratel',
+            data: [
+                [
+                    'Arma de Fogo',
+                    22
+                ],
+                [
+                    'Arma Branca',
+                    2
+                ],
+                [
+                    'Espancamento',
+                    0
+                ],
+                [
+                    'Estrangulamento',
+                    0
+                ],
+                [
+                    'Lesão Corporal',
+                    25
+                ],
+                [
+                    'CVLI',
+                    9
+                ]
+            ]
+        }]
+    }
+});
+
+
 Highcharts.chart('grafico-geral', {
     chart: {
         type: 'line'
@@ -51,16 +172,57 @@ Highcharts.chart('grafico-geral', {
         }
     },
     series: [{
-        name: 'Espancamento',
+        name: 'Arma de Fogo',
         data: [7, 6, 9, 14, 18, 21, 25, 26, 23, 18, 13, 9]
     }, {
-        name: 'Estrangulamento',
+        name: 'Arma Branca',
         data: [3, 4, 5, 8, 11, 15, 17, 16, 14, 10, 6, 4]
     }, {
-        name: 'Lesão Corporal',
+        name: 'Espancamento',
         data: [8, 3, 4, 15, 18, 20, 21, 25, 21, 15, 18, 30]
+    }, {
+        name: 'Estrangulamento',
+        data: [20, 10, 6, 10, 12, 13, 30, 19, 15, 10, 12, 3]
+    }, {
+        name: 'CVLI',
+        data: [18, 13, 14, 25, 18, 33, 2, 3, 5, 10, 12, 20]
     } ]
 });
+
+Highcharts.chart('grafico-horario-dia', {
+    chart: {
+        type: 'area'
+    },
+    title: {
+        text: 'Indíce por Horário'
+    },
+    subtitle: {
+        text: 'Hora'
+    },
+    xAxis: {
+        categories: ['0h às 6h', '6h às 12h', '12h às 18h', '18h às 24h'],
+        tickmarkPlacement: 'on',
+
+    },
+    yAxis: {
+        title: {
+            text: 'Total de Crimes'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Total de Crimes',
+        data: [10, 12, 8, 25]
+    }]
+});
+
 
 var chartSemana = Highcharts.chart('grafico-semana', {
 
@@ -78,13 +240,13 @@ var chartSemana = Highcharts.chart('grafico-semana', {
 
     series: [{
         type: 'column',
-        name: 'Total Mortes',
+        name: 'Estrangulamento',
         colorByPoint: true,
         data: [29, 71, 106, 33, 55, 60, 120],
         showInLegend: true
     }, {
         type: 'column',
-        name: 'teste',
+        name: 'Espancamento',
         colorByPoint: false,
         data: [29, 71, 106, 33, 55, 60, 120],
         showInLegend: true
