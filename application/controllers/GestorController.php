@@ -1,21 +1,9 @@
 <?php
 
-use Core\Util\UsuarioUtil;
-
-class GestorController extends Zend_Controller_Action
+class GestorController extends Core_Controller_Seguro
 {
-    public function init()
-    {
-        $usuarioUtil = new UsuarioUtil();
-        a($usuarioUtil->temUsuarioLogado());
-    }
 
     public function indexAction()
     {
     }
-
-    public function loginAction()
-    {
-    }
-
 }

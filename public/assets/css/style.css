@@ -4516,8 +4516,8 @@ button.close {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 15%;
-    opacity: .5;
+    width: 60px;
+    opacity: .3;
     filter: alpha(opacity=50);
     font-size: 20px;
     background-color: transparent
@@ -4592,20 +4592,20 @@ button.close {
 }
 .carousel-indicators li {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 13px;
+    height: 13px;
     margin: 1px;
     text-indent: -999px;
     border: 1px solid #fff;
     border-radius: 10px;
     cursor: pointer;
     background-color: #000\9;
-    background-color: transparent
+    background-color: transparent;
 }
 .carousel-indicators .active {
     margin: 0;
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
     background-color: #fff
 }
 .carousel-caption {
@@ -5635,11 +5635,10 @@ canvas {
 .be-top-header .navbar-header .navbar-brand p {
     margin-top: 25px;
     margin-left: 60px;
-    font-size: 13px;
+    font-size: 14px;
     text-transform: uppercase;
     line-height: 14px;
     color: #7A405E;
-    /*position: absolute;*/
 }
 @media (-webkit-min-device-pixel-ratio: 2),
 (-o-min-device-pixel-ratio: 2/1),
@@ -7691,9 +7690,9 @@ canvas {
 .be-top-header .navbar-nav>li>a {
     line-height: 60px;
     color: #8A85BD;
-    font-size: 14px;
     padding: 0 18px;
     outline: 0;
+	text-transform: uppercase;
 }
 @media (min-width: 768px) and (max-width: 991px) {
     .main-content {
@@ -17015,6 +17014,7 @@ fieldset[disabled] .full-calendar .fc-button:hover {
   top: auto;
   bottom: 0px;
   margin-right: -19px;
+  margin-top: 20px;	
 }
 
 #amvm-carousel .carousel-indicators li {
@@ -17069,6 +17069,7 @@ h2.titulo-parceiro {
 .carrosel-bg {
     background-color: #E5E8F2;
     border-radius: 4px;
+	margin-bottom: 20px;
 }
 
 #amvm-carousel .carousel-control {
@@ -17084,6 +17085,7 @@ h2.titulo-parceiro {
     top: 50%;
     margin-top: -14px;
     color: #7B405F;
+	font-size: 60px;
 }
 
 .botoes-controle-graficos {
