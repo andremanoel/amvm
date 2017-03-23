@@ -3298,15 +3298,16 @@ var App = function() {
             }), $(".tags").select2({
                 tags: !0,
                 width: "100%"
-            }), $(".bslider").bootstrapSlider(), $(".inputfile").each(function() {
-                var a = $(this),
-                    b = a.next("label"),
-                    c = b.html();
-                a.on("change", function(a) {
-                    var d = "";
-                    this.files && this.files.length > 1 ? d = (this.getAttribute("data-multiple-caption") || "").replace("{count}", this.files.length) : a.target.value && (d = a.target.value.split("\\").pop()), d ? b.find("span").html(d) : b.html(c)
-                })
             })
+//            $(".bslider").bootstrapSlider(), $(".inputfile").each(function() {
+//                var a = $(this),
+//                    b = a.next("label"),
+//                    c = b.html();
+//                a.on("change", function(a) {
+//                    var d = "";
+//                    this.files && this.files.length > 1 ? d = (this.getAttribute("data-multiple-caption") || "").replace("{count}", this.files.length) : a.target.value && (d = a.target.value.split("\\").pop()), d ? b.find("span").html(d) : b.html(c)
+//                })
+//            })
         }, App
     }(App || {}),
     App = function() {
