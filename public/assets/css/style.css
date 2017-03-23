@@ -17067,13 +17067,25 @@ h2.titulo-parceiro {
 
 /* carousel */
 .carrosel-bg {
-    background-color: #E5E8F2;
+    color: #E5E8F2;
+    background-color: #8A85BD;
+    /*background-color: #E5E8F2;*/
     border-radius: 4px;
 	margin-bottom: 20px;
 }
 
+#amvm-carousel .carousel-control.right {
+    right: -16px !important;
+    text-align: left;
+}
+
+#amvm-carousel .carousel-control.left {
+    left: -16px !important;
+}
+
 #amvm-carousel .carousel-control {
-    background: #E5E8F2;
+    width: 44px;
+    /*background: #E5E8F2;*/
     color: #222;
     font-size: 2.3em;
     text-shadow: none;
@@ -17083,8 +17095,8 @@ h2.titulo-parceiro {
 #amvm-carousel .carousel-control i {
     position: absolute;
     top: 50%;
-    margin-top: -14px;
-    color: #7B405F;
+    margin-top: -32px;
+    color: white;
 	font-size: 60px;
 }
 
