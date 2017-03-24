@@ -17067,9 +17067,9 @@ h2.titulo-parceiro {
 
 /* carousel */
 .carrosel-bg {
-    color: #E5E8F2;
-    background-color: #8A85BD;
-    /*background-color: #E5E8F2;*/
+    /*color: #E5E8F2;*/
+    /*background-color: #8A85BD;*/
+    background-color: #E5E8F2;
     border-radius: 4px;
 	margin-bottom: 20px;
 }
@@ -17096,7 +17096,7 @@ h2.titulo-parceiro {
     position: absolute;
     top: 50%;
     margin-top: -32px;
-    color: white;
+    color: #8A85BD;
 	font-size: 60px;
 }
 
@@ -17183,6 +17183,20 @@ ul.menu-gestor li{
 
 .acoes-filtro button {
     width: 100%;
+}
+
+.painel-home {
+    min-height: 340px;
+    background-color: #E5E8F2;
+}
+
+.painel-home a {
+    color: #8A85BD;
+    text-decoration: underline;
+}
+
+.painel-home ul li {
+    padding: 6px 0px;
 }
 
 
