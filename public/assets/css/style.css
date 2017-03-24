@@ -17164,7 +17164,26 @@ ul.menu-gestor li{
     filter: hue-rotate(90deg);
 }
 
+.indicadores-data-inicial-final {
+    height: 38px;
+}
 
+.filtros {
+    color: #8A85BD;
+    height: 100px;
+    margin: 0px 14px 20px 14px;
+    padding: 20px 0px;
+    background-color: #7A405E;
+    display: block;
+}
+
+.filtros-indicadores .control-label {
+    color: #E5E8F2;
+}
+
+.acoes-filtro button {
+    width: 100%;
+}
 
 
 
