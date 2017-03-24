@@ -17190,6 +17190,10 @@ ul.menu-gestor li{
     background-color: #E5E8F2;
 }
 
+.painel-home .hero-title span {
+    color: #7A405E;
+}
+
 .painel-home a {
     color: #8A85BD;
     text-decoration: underline;
