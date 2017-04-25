@@ -17058,7 +17058,7 @@ fieldset[disabled] .full-calendar .fc-button:hover {
 .painel-parceiros img {
 	display: inline-block;
 	margin: 10px 30px;
-    max-width: 200px;
+    max-width: 92px;
 }
 
 h2.titulo-parceiro {
@@ -17067,9 +17067,9 @@ h2.titulo-parceiro {
 
 /* carousel */
 .carrosel-bg {
-    color: #E5E8F2;
-    background-color: #8A85BD;
-    /*background-color: #E5E8F2;*/
+    /*color: #E5E8F2;*/
+    /*background-color: #8A85BD;*/
+    background-color: #E5E8F2;
     border-radius: 4px;
 	margin-bottom: 20px;
 }
@@ -17096,7 +17096,7 @@ h2.titulo-parceiro {
     position: absolute;
     top: 50%;
     margin-top: -32px;
-    color: white;
+    color: #8A85BD;
 	font-size: 60px;
 }
 
@@ -17164,7 +17164,44 @@ ul.menu-gestor li{
     filter: hue-rotate(90deg);
 }
 
+.indicadores-data-inicial-final {
+    height: 38px;
+}
 
+.filtros {
+    color: #8A85BD;
+    height: 100px;
+    margin: 0px 14px 20px 14px;
+    padding: 20px 0px;
+    background-color: #7A405E;
+    display: block;
+}
+
+.filtros-indicadores .control-label {
+    color: #E5E8F2;
+}
+
+.acoes-filtro button {
+    width: 100%;
+}
+
+.painel-home {
+    min-height: 340px;
+    background-color: #E5E8F2;
+}
+
+.painel-home .hero-title span {
+    color: #7A405E;
+}
+
+.painel-home a {
+    color: #8A85BD;
+    text-decoration: underline;
+}
+
+.painel-home ul li {
+    padding: 6px 0px;
+}
 
 
 
