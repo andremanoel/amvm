@@ -21,37 +21,39 @@ class Core_Auth_Adapter implements Zend_Auth_Adapter_Interface
      *
      * @return void
      */
-    public function __construct($username, $password, $cryptPassword = true)
+    public function __construct($username, $password)
     {
         $this->setUsername($username);
         $this->setPassword($password);
-        
-        // limpando a sessão anterior
         $auth = Zend_Auth::getInstance();
         $auth->clearIdentity();
         
-        return $this->authenticate($cryptPassword);
+        return $this->authenticate();
     }
 
     /**
      * Performs an authentication attempt
-     *
-     * @throws Zend_Auth_Adapter_Exception If authentication cannot
-     *         be performed
      * @return Zend_Auth_Result
      */
-    public function authenticate($cryptPassword = true)
+    public function authenticate()
     {
         // create adapter db
-        $authenticationAdapter = new Zend_Auth_Adapter_DbTable(Zend_Db_Table::getDefaultAdapter());
+        $authenticationAdapter = new Zend_Auth_Adapter_DbTable(
+            Zend_Db_Table::getDefaultAdapter(),
+            'tb_usuario',
+            'login',
+            'senha'
+        );
+        
+        Zend_Session::rememberMe(14400);
         
         // configure the instance with setter methods
-        $authenticationAdapter->setTableName('tb_usuario')
-            ->setIdentityColumn('email_usuario')
-            ->setCredentialColumn('senha_usuario');
+//         $authenticationAdapter->setTableName()
+//             ->setIdentityColumn('login')
+//             ->setCredentialColumn('senha');
                                                     
-        $credentialNew = hash('whirlpool', $this->_password);
-        $authenticationAdapter->setIdentity($this->_username)->setCredential($credentialNew);
+        $authenticationAdapter->setIdentity($this->getUsername())
+                              ->setCredential($this->getPassword());
         
         try {
             $result = $authenticationAdapter->authenticate();
@@ -64,7 +66,7 @@ class Core_Auth_Adapter implements Zend_Auth_Adapter_Interface
                 case Zend_Auth_Result::SUCCESS:
                     // modificando a sessão do usuário
                     $auth = Zend_Auth::getInstance();
-                    $auth->setStorage(self::getStorage());
+                    $auth->setStorage(Zend_Auth::getInstance()->getStorage());
                     
                     // recuperando os dados do usuário
                     $registroUsuario = $authenticationAdapter->getResultRowObject();
@@ -79,14 +81,6 @@ class Core_Auth_Adapter implements Zend_Auth_Adapter_Interface
         
         // escreve na sessão
         if ($sucessoAutenticacao) {
-            $modelUsuario = new Administrador_Model_Usuario();
-                    
-            // dados da sessão
-            Zend_Session::rememberMe(14400); 
-            $idSessao = Zend_Session::getId();
-            $objUsuarioBanco->session_id = $idSessao;
-            $objUsuarioBanco->save();
-            
             $storage = Zend_Auth::getInstance()->getStorage();
             $storage->write($registroUsuario);
             
@@ -151,7 +145,7 @@ class Core_Auth_Adapter implements Zend_Auth_Adapter_Interface
 
     static function getUsuarioLogado()
     {
-        $storage = self::getStorage();
+        $storage = Zend_Auth::getInstance()->getStorage();
         Zend_Auth::getInstance()->setStorage($storage);
         return Zend_Auth::getInstance()->getIdentity();
     }
