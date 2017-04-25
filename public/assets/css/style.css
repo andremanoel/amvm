@@ -17067,11 +17067,10 @@ h2.titulo-parceiro {
 
 /* carousel */
 .carrosel-bg {
-    /*color: #E5E8F2;*/
-    /*background-color: #8A85BD;*/
     background-color: #E5E8F2;
     border-radius: 4px;
 	margin-bottom: 20px;
+	margin-top: 40px;
 }
 
 #amvm-carousel .carousel-control.right {
