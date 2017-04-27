@@ -25,4 +25,12 @@ class LoginController extends Core_Controller_Base
             
         }
     }
+    
+    public function logoutAction()
+    {
+        $this->_helper->viewRenderer->setNoRender();
+        Zend_Auth::getInstance()->clearIdentity();
+        $this->addMensagem('Até a próxima');
+        $this->redirect('/');
+    }
 }

@@ -65,5 +65,15 @@ class Core_Controller_Base extends Zend_Controller_Action
         $sessaoMensagem->mensagens = null;
     }
     
+    /**
+     * Verifica se tem usuário logado
+     */
+    public function verificarLogin()
+    {
+        if(!Zend_Auth::getInstance()->hasIdentity()) {
+            $this->redirect('/login');
+        }
+    }
+    
     
 }

@@ -17,6 +17,7 @@
         ->appendStylesheet($this->baseUrl('assets/lib/daterangepicker/css/daterangepicker.css'))
         ->appendStylesheet($this->baseUrl('assets/lib/select2/css/select2.min.css'))
         ->appendStylesheet($this->baseUrl('assets/lib/bootstrap-slider/css/bootstrap-slider.css'))
+        ->prependStylesheet($this->baseUrl('assets/css/amvm.css'))
         ->prependStylesheet($this->baseUrl('assets/css/style.css'))
         
         
@@ -26,8 +27,6 @@
     <?= $this->headScript()
         ->prependFile($this->baseUrl('assets/lib/bootstrap/dist/js/bootstrap.min.js'))
         ->prependFile($this->baseUrl('assets/lib/jquery/jquery.min.js'))
-        ->appendFile($this->baseUrl('assets/js/Highcharts-5.0.7/code/highcharts.js'))
-        ->appendFile($this->baseUrl('assets/js/Highcharts-5.0.7/code/highcharts-more.js'))
         ->appendFile($this->baseUrl('assets/lib/bootstrap-slider/js/bootstrap-slider.js'))
         ->appendFile($this->baseUrl('assets/lib/moment.js/min/moment.min.js'))
         ->appendFile($this->baseUrl('assets/lib/datetimepicker/js/bootstrap-datetimepicker.min.js'))
@@ -35,9 +34,7 @@
         ->appendFile($this->baseUrl('assets/lib/select2/js/select2.min.js'))
         ->appendFile($this->baseUrl('assets/lib/select2/js/select2.full.min.js'))
         ->appendFile($this->baseUrl('assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js'))
-        ->appendFile($this->baseUrl('assets/js/main.js'))
-        ->appendFile($this->baseUrl('assets/js/geral.js'))
-        
+        ->appendFile($this->baseUrl('assets/js/main.min.js'));
     ?>
     
     <!--[if lt IE 9]>
@@ -51,11 +48,9 @@
     <nav class="navbar navbar-default navbar-fixed-top be-top-header">
         <div class="container">
             <div class="navbar-header">
-                <a href="<?php echo $this->baseUrl();?>" class="navbar-brand" style="width: 100%;">
-                    <img src="<?php echo $this->baseUrl("/assets/img/logo.png")?>" alt="Logo">
-                    <p>
-                        Projeto Francisca das Chagas
-                    </p>
+                <a href="<?php echo $this->baseUrl();?>" class="navbar-brand topo-main-amvm">
+                    <img src="<?php echo $this->baseUrl("/assets/img/logo.png")?>" alt="Logo" style="width: 60px;">
+                    <p>Projeto Francisca das Chagas</p>
                 </a>
             </div>
 
@@ -63,7 +58,20 @@
             <div id="be-navbar-collapse" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="float: right;">
                     <li><a href="/">Home</a></li>
-                    <li><a href="/indicadores">Indicadores</a></li>
+                    <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Indicadores <span class="mdi mdi-caret-down"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/bairros-mais-perigosos');?>">Bairros mais perigosos</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/tipos-crime');?>">Tipos de crime</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/dias-semana');?>">Dias da semana</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/horarios-dia');?>">Específico por horário do dia</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-por-mes');?>">Ocorrências específicas por mês</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-mulher-idade');?>">Ocorrências da mulher por idade</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-mulher-12-18');?>">Ocorrências da mulher de 12 a 18 anos</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-mulher-19-29');?>">Ocorrências da mulher de 19 a 29 anos</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-mulher-30-40');?>">Ocorrências da mulher de 30 a 40 anos</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-mulher-41-50');?>">Ocorrências da mulher de 41 a 50 anos</a></li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+                        </ul>
+                    </li>
                     <li><a href="/noticias">Notícias</a></li>
                     <li><a href="/equipe">Equipe</a></li>
                     <li><a href="/contato">Contato</a></li>
@@ -73,26 +81,27 @@
         </div>
     </nav>
     <div class="be-content">
+        <div class="main-content container">
+            <?php if(!empty($this->messages)):?>
+                <div class="panel panel-default panel-mensagens">
+                    <div class="panel-heading panel-heading-divider"></div>
+                    <div class="panel-body" style="padding: 0px !important; width: 40%; margin: 0 auto; margin-top: 30px;">
+                        <?php foreach ($this->messages as $mensagem):?>
+                              <div role="alert" class="alert alert-<?php echo $mensagem->tipo;?> alert-dismissible">
+                                <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                                    <span aria-hidden="true" class="mdi mdi-close"></span>
+                                </button>
+                                <span class="icon mdi <?php echo $mensagem->icone;?>"></span>
+                                <?php echo $mensagem->texto;?>
+                              </div>
+                        <?php endforeach;?>
+                    </div>
+                  </div>
+                  <?php Core_Controller_Base::apagarMensagens();?>  
+            <?php endif;?>
         
-        <?php if(!empty($this->messages)):?>
-            <div class="panel panel-default panel-mensagens">
-                <div class="panel-heading panel-heading-divider"></div>
-                <div class="panel-body" style="padding: 0px !important; width: 40%; margin: 0 auto; margin-top: 30px;">
-                    <?php foreach ($this->messages as $mensagem):?>
-                          <div role="alert" class="alert alert-<?php echo $mensagem->tipo;?> alert-dismissible">
-                            <button type="button" data-dismiss="alert" aria-label="Close" class="close">
-                                <span aria-hidden="true" class="mdi mdi-close"></span>
-                            </button>
-                            <span class="icon mdi <?php echo $mensagem->icone;?>"></span>
-                            <?php echo $mensagem->texto;?>
-                          </div>
-                    <?php endforeach;?>
-                </div>
-              </div>
-              <?php Core_Controller_Base::apagarMensagens();?>  
-        <?php endif;?>
-    
-        <?php echo $this->layout()->content ?>
+            <?php echo $this->layout()->content ?>
+        </div>
     </div>
 </div>
 

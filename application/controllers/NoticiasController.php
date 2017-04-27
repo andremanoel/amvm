@@ -1,21 +1,25 @@
 <?php
 
-class NoticiasController extends Zend_Controller_Action
+class NoticiasController extends Core_Controller_Base
 {
+
     public function init()
     {
-        /* Initialize action controller here */
+        parent::init();
     }
 
     public function indexAction()
-    {
-    }
-    
+    {}
+
     public function visualizarAction()
     {
         $idNoticia = $this->getParam('id');
     }
 
+    public function listarAction()
+    {
+        $this->verificarLogin();
+    }
 }
 
 

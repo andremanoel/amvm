@@ -1,0 +1,11 @@
+{
+  "name" : "amvm",
+  "version" : "1.0.0",
+  "require" : {
+	"phpoffice/phpexcel": "1.8.1"    
+  },
+  "repositories" : [ {
+    "type" : "composer",
+    "url" : "https://packagist.org/"
+  } ]
+}
