@@ -51,6 +51,13 @@
     border-top-color: #7b405e;
 }
 
+.icones-links h2 {
+	text-align: center;
+}
+
+.icones-links .img-link-icone {
+	margin: 0 auto;
+}
 
 
 .topo-main-amvm p {
@@ -137,7 +144,7 @@
     max-width: 92px;
 }
 
-h2.titulo-parceiro {
+h3.titulo-parceiro h2.titulo-parceiro {
     color: #7A405E;
 }
 
