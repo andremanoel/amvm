@@ -17,7 +17,17 @@ body{
 
 /* menus */
 .be-top-header .navbar-nav>li.open>a, .be-top-header .navbar-nav>li.open>a:active, .be-top-header .navbar-nav>li.open>a:focus, .be-top-header .navbar-nav>li.open>a:hover {
-    color: #7b405e;
+    /*color: #7b405e;*/
+    color: #fff;
+}
+
+.be-top-header .navbar-nav>li.dropdown .dropdown-menu>li>a {
+  color: #333;
+}
+
+.be-top-header .navbar-nav>li.dropdown .dropdown-menu li {
+    border-bottom: 1px solid #7b405f;
+    background: white;
 }
 
 .be-top-header .navbar-nav li:nth-child(1) {
