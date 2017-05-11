@@ -1,3 +1,16 @@
+body{
+	background: #E5E8F2;
+}
+
+.main-content {
+	padding: 0px;
+}
+
+.be-top-header {
+	background: #7b405f;
+	border-bottom: 3px solid #ced4e6;
+}
+
 .be-top-header .navbar-header .navbar-brand.topo-main-amvm {
     background-image: none !important;
 }
@@ -66,9 +79,9 @@
     position: absolute;
     top: 20px;
     margin-left: 60px;
-    /*left: 160px;*/
-    color: #7b405e;
+    color: #fff;
     font-size: 20px;
+	font-weight: normal;
 }
 
 #amvm-carousel {
@@ -150,7 +163,7 @@ h3.titulo-parceiro h2.titulo-parceiro {
 
 /* carousel */
 .carrosel-bg {
-    background-color: #E5E8F2;
+    background-color: #fff;
     border-radius: 4px;
 	margin-bottom: 20px;
 	margin-top: 20px;
@@ -189,7 +202,7 @@ h3.titulo-parceiro h2.titulo-parceiro {
 
 .titulo-view {
     width: 25%;
-    color: #8A85BD;
+    color: #7A405E;
     padding: 0px 0px 10px 0px;
     border-bottom: 2px solid #7A405E;
     display: block;
