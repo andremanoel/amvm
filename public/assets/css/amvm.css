@@ -229,3 +229,15 @@ footer p{
 	color: #7b405e;
 	text-align: center; 
 }
+
+.thumbnail {
+	background: #fff;
+}
+
+.thumbnail .link-lattes{
+	border: none;
+}
+
+.thumbnail .link-lattes img {
+	width: 180px;
+}
