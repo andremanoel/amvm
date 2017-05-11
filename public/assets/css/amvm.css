@@ -30,6 +30,10 @@ body{
     background: white;
 }
 
+.be-top-header .navbar-nav>li.dropdown .dropdown-menu {
+    padding: 7px 0 0 0;
+}
+
 .be-top-header .navbar-nav li:nth-child(1) {
     background-color: #642a47;
     color: #fff;
