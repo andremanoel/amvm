@@ -41,27 +41,27 @@ class IndicadoresController extends Zend_Controller_Action
         //TODO: Buscar dados
     }
     
-    public function ocorrenciasMulher1218Action()
+    public function ocorrencias1218Action()
     {
         //TODO: Buscar dados
     }
     
-    public function ocorrenciasMulher1929Action()
+    public function ocorrencias1929Action()
     {
         //TODO: Buscar dados
     }
     
-    public function ocorrenciasMulher3040Action()
+    public function ocorrencias3040Action()
     {
         //TODO: Buscar dados
     }
     
-    public function ocorrenciasMulher4150Action()
+    public function ocorrencias4150Action()
     {
         //TODO: Buscar dados
     }
     
-    public function ocorrenciasMulherIdadeAction()
+    public function ocorrenciasIdadeAction()
     {
         //TODO: Buscar dados
     }
