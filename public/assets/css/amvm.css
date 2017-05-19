@@ -231,6 +231,7 @@ footer p{
 }
 
 .thumbnail {
+	padding-top: 30px;
 	background: #fff;
 }
 
@@ -238,6 +239,27 @@ footer p{
 	border: none;
 }
 
+.thumbnail img {
+	width: 250px;
+	border-radius: 20px;
+}
+
 .thumbnail .link-lattes img {
-	width: 180px;
+	width: 130px;
+}
+
+/* Botões */
+.btn-primary {
+	background: #642a47;
+	border: 2px solid #7A405E;
+}
+
+.btn-primary:hover, .btn-primary:active {
+	box-shadow: inset 0 -1px 0 #642a47;
+	background-color: #7b405e;
+	border-color: #7A405E #7A405E #642a47	
+}
+
+.painel-indicador{
+	margin-top: 30px;
 }

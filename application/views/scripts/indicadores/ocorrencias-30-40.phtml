@@ -5,6 +5,7 @@
     </div>
     
     <div class="panel-body">
+        <?php echo $this->partial('indicadores/filtros.phtml', array('filtros'=>$this->arrFiltros));?>
         <div id="grafico-idade-30-40" class="grafico-amvm shadow"></div>
     </div>
 </div>

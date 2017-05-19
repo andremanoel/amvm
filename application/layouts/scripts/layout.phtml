@@ -81,25 +81,19 @@
         </div>
     </nav>
     <div class="be-content">
-        <div class="main-content container">
+        <div class="container">
             <?php if(!empty($this->messages)):?>
-                <div class="panel panel-default panel-mensagens">
-                    <div class="panel-heading panel-heading-divider"></div>
-                    <div class="panel-body" style="padding: 0px !important; width: 40%; margin: 0 auto; margin-top: 30px;">
-                        <?php foreach ($this->messages as $mensagem):?>
-                              <div role="alert" class="alert alert-<?php echo $mensagem->tipo;?> alert-dismissible">
-                                <button type="button" data-dismiss="alert" aria-label="Close" class="close">
-                                    <span aria-hidden="true" class="mdi mdi-close"></span>
-                                </button>
-                                <span class="icon mdi <?php echo $mensagem->icone;?>"></span>
-                                <?php echo $mensagem->texto;?>
-                              </div>
-                        <?php endforeach;?>
-                    </div>
-                  </div>
-                  <?php Core_Controller_Base::apagarMensagens();?>  
+                <?php foreach ($this->messages as $mensagem):?>
+                      <div role="alert" class="alert alert-<?php echo $mensagem->tipo;?> alert-dismissible">
+                        <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                            <span aria-hidden="true" class="mdi mdi-close"></span>
+                        </button>
+                        <span class="icon mdi <?php echo $mensagem->icone;?>"></span>
+                        <?php echo $mensagem->texto;?>
+                      </div>
+                <?php endforeach;?>
+                <?php Core_Controller_Base::apagarMensagens();?>  
             <?php endif;?>
-        
             <?php echo $this->layout()->content ?>
         </div>
     </div>
