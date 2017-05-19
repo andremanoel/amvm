@@ -1,6 +1,6 @@
 <?php
 
-class ColetaDadosController extends Zend_Controller_Action
+class ProjetoController extends Zend_Controller_Action
 {
     public function init()
     {

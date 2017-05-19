@@ -79,10 +79,10 @@ $(document).ready(function(){
 	if( $('#grafico-tipos-crime').length ) {
 		Highcharts.chart('grafico-tipos-crime', {
 		    chart: {
-		        type: 'line'
+		        type: 'column'
 		    },
 		    title: {
-		        text: 'Índice de Violência no Maranhão'
+		        text: 'Índice de Violência no Maranhão - CVLI'
 		    },
 		    subtitle: {
 		        text: 'Mensal'
@@ -92,7 +92,7 @@ $(document).ready(function(){
 		    },
 		    yAxis: {
 		        title: {
-		            text: 'Quantidade Crimes'
+		            text: 'Quantidade'
 		        }
 		    },
 		    plotOptions: {
@@ -104,24 +104,12 @@ $(document).ready(function(){
 		        }
 		    },
 		    series: [{
-		        name: 'Arma de Fogo',
+		        name: 'Feminino',
 		        data: [7, 6, 9, 14, 18, 21, 25, 26, 23, 18, 13, 9]
 		    }, {
-		        name: 'Arma Branca',
-		        data: [3, 4, 5, 8, 11, 15, 17, 16, 14, 10, 6, 4]
-		    }, {
-		        name: 'Espancamento',
-		        data: [8, 3, 4, 15, 18, 20, 21, 25, 21, 15, 18, 30]
-		    }, {
-		        name: 'Estrangulamento',
+		        name: 'Masculino',
 		        data: [20, 10, 6, 10, 12, 13, 30, 19, 15, 10, 12, 3]
-		    },  {
-		        name: 'Lesão Corporal',
-		        data: [10, 14, 30, 50, 33, 12, 4, 5, 23, 14, 20, 32]
-		    }, {
-		        name: 'CVLI',
-		        data: [18, 13, 14, 25, 18, 33, 2, 3, 5, 10, 12, 20]
-		    } ]
+		    }]
 		});
 	}
 	
