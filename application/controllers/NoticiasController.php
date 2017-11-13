@@ -16,7 +16,9 @@ class NoticiasController extends Core_Controller_Base
 
     public function visualizarAction()
     {
+        $modelNoticia = new Application_Model_Noticia();
         $idNoticia = $this->getParam('id');
+        $this->view->noticia = $modelNoticia->find($idNoticia)->current();
     }
 
     public function listarAction()

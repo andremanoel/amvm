@@ -7,55 +7,18 @@
 
 
   <div class="row">
-    <div class="col-sm-6">
-
-      <div class="panel panel-default">
-        <div class="panel-heading panel-heading-divider">Titulo notícia</div>
-        <div class="panel-body">
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at risus porttitor dolor dignissim finibus luctus vitae diam. Cras condimentum urna a pretium commodo. Etiam quis magna ac orci laoreet semper a nec urna. Ut suscipit ligula in tempor vehicula...
-          </p>
-          <a href="<?php echo $this->baseUrl('/noticias/visualizar/id/1');?>">Leia mais</a>
-        </div>
+  	<?php foreach($this->arrNoticias as $key => $noticia):?>
+    	<div class="col-sm-12">  	
+      		<div class="panel panel-default">
+            <div class="panel-heading panel-heading-divider"><?php echo $noticia->titulo?></div>
+            <div class="panel-body">
+              <p>
+              <?php echo $noticia->texto_noticia?>
+              </p>
+              <a href="<?php echo $this->baseUrl('/noticias/visualizar/id/' . $noticia->id_noticia);?>">Leia mais</a>
+            </div>
+  		</div>	
       </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading panel-heading-divider">Titulo notícia</div>
-        <div class="panel-body">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at risus porttitor dolor dignissim finibus luctus vitae diam. Cras condimentum urna a pretium commodo. Etiam quis magna ac orci laoreet semper a nec urna. Ut suscipit ligula in tempor vehicula...
-          </p>
-          <a href="<?php echo $this->baseUrl('/noticias/visualizar/id/1');?>">Leia mais</a>
-        </div>
-      </div>
-
-
-
-    </div>
-    <div class="col-sm-6">
-
-      <div class="panel panel-default">
-        <div class="panel-heading panel-heading-divider">Titulo notícia</div>
-        <div class="panel-body">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at risus porttitor dolor dignissim finibus luctus vitae diam. Cras condimentum urna a pretium commodo. Etiam quis magna ac orci laoreet semper a nec urna. Ut suscipit ligula in tempor vehicula...
-          </p>
-          <a href="<?php echo $this->baseUrl('/noticias/visualizar/id/1');?>">Leia mais</a>
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading panel-heading-divider">Titulo notícia</div>
-        <div class="panel-body">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at risus porttitor dolor dignissim finibus luctus vitae diam. Cras condimentum urna a pretium commodo. Etiam quis magna ac orci laoreet semper a nec urna. Ut suscipit ligula in tempor vehicula...
-          </p>
-          <a href="<?php echo $this->baseUrl('/noticias/visualizar/id/1');?>">Leia mais</a>
-        </div>
-      </div>
-
-    </div>
+  	<?php endforeach;?>
   </div>
-
-
 </div>

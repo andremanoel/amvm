@@ -9,7 +9,7 @@ class Application_Model_Noticia extends Zend_Db_Table_Abstract
     public function buscarNoticias()
     {
         $sql = $this->select();
-        return $this->getAdapter()->fetchAll($sql);
+        return $this->getAdapter()->fetchAll($sql, null, Zend_Db::FETCH_OBJ);
     }
+    
 }
-

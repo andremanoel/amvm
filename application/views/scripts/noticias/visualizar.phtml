@@ -1,32 +1,14 @@
 <div class="main-content container">
-	<!-- <div class="row">
-        <div class="col-md-12 text-center">
-    		<h1>Título da Notícia</h1>
-        </div>
-    </div> -->
-    
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
-              <div class="panel-heading panel-heading-divider">Titulo notícia</div>
+              <div class="panel-heading panel-heading-divider"><?php echo $this->noticia->titulo?></div>
               <div class="panel-body">
                 <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at risus porttitor dolor dignissim finibus luctus vitae diam. Cras condimentum urna a pretium commodo. Etiam quis magna ac orci laoreet semper a nec urna. Ut suscipit ligula in tempor vehicula. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ipsa unde recusandae repudiandae, possimus nobis tenetur. Voluptatum commodi ut, nemo, voluptas laborum, pariatur quos optio laboriosam at laudantium molestiae vero!
-                </p>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at risus porttitor dolor dignissim finibus luctus vitae diam. Cras condimentum urna a pretium commodo. Etiam quis magna ac orci laoreet semper a nec urna. Ut suscipit ligula in tempor vehicula. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ipsa unde recusandae repudiandae, possimus nobis tenetur. Voluptatum commodi ut, nemo, voluptas laborum, pariatur quos optio laboriosam at laudantium molestiae vero!
-                </p>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at risus porttitor dolor dignissim finibus luctus vitae diam. Cras condimentum urna a pretium commodo. Etiam quis magna ac orci laoreet semper a nec urna. Ut suscipit ligula in tempor vehicula. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ipsa unde recusandae repudiandae, possimus nobis tenetur. Voluptatum commodi ut, nemo, voluptas laborum, pariatur quos optio laboriosam at laudantium molestiae vero!
-                </p>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at risus porttitor dolor dignissim finibus luctus vitae diam. Cras condimentum urna a pretium commodo. Etiam quis magna ac orci laoreet semper a nec urna. Ut suscipit ligula in tempor vehicula. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ipsa unde recusandae repudiandae, possimus nobis tenetur. Voluptatum commodi ut, nemo, voluptas laborum, pariatur quos optio laboriosam at laudantium molestiae vero!
-                </p>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at risus porttitor dolor dignissim finibus luctus vitae diam. Cras condimentum urna a pretium commodo. Etiam quis magna ac orci laoreet semper a nec urna. Ut suscipit ligula in tempor vehicula. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat ipsa unde recusandae repudiandae, possimus nobis tenetur. Voluptatum commodi ut, nemo, voluptas laborum, pariatur quos optio laboriosam at laudantium molestiae vero!
+                	<?php echo $this->noticia->texto_noticia?>
                 </p>
                 <p class="xs-mt-30 xs-mb-20">
-                    <a href="<?php echo $this->baseUrl('/noticias/');?>">voltar para todas as notícias</a>
+                    <a href="<?php echo $this->baseUrl('/noticias/');?>">Voltar para notícias</a>
                 </p>
               </div>
             </div>
