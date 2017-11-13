@@ -98,7 +98,7 @@ class IndicadoresController extends Zend_Controller_Action
         // TODO: Buscar dados
     }
 
-    public function tiposCrimeAction()
+    public function cvliAction()
     {
         // TODO: Buscar dados
     }

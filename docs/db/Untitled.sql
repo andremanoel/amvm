@@ -1,0 +1,1 @@
+SELECT * FROM amvm.tb_usuario;

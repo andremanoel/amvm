@@ -9,7 +9,10 @@ class NoticiasController extends Core_Controller_Base
     }
 
     public function indexAction()
-    {}
+    {
+        $modelNoticia = new Application_Model_Noticia();
+        $this->view->arrNoticias = $modelNoticia->buscarNoticias();
+    }
 
     public function visualizarAction()
     {
