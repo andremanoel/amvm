@@ -1,0 +1,26 @@
+<div class="container">
+	<h1 class="titulo-view">Usuários</h1>
+
+	<div class="row">
+		<div class="col-sm-10">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Login</th>
+						<th>E-mail</th>
+						<th>Nome</th>
+					</tr>
+				</thead>
+				<tbody>
+          		<?php foreach($this->arrUsuarios as $key => $usuario): ?>
+        			<tr>
+        				<td><?php echo $usuario->login?></td>
+        				<td><?php echo $usuario->email?></td>
+        				<td><?php echo $usuario->nome?></td>
+        			</tr>
+          		<?php endforeach;?>
+          		</tbody>
+			</table>
+		</div>
+  	</div>
+</div>

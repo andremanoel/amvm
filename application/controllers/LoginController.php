@@ -14,12 +14,10 @@ class LoginController extends Core_Controller_Base
             } else {
                 $senha = hash('whirlpool', $password);
                 $resultado = new Core_Auth_Adapter($username, $senha);
-                
                 if ($resultado->getCodeResult() > 0) {
-                    
                     $this->redirect('/gestor');
                 } else {
-                    // ENVIAR MENSAGEM DE ERRO
+                    $this->addMensagem('Dados incorretos', 'warning');
                 }
             }
             

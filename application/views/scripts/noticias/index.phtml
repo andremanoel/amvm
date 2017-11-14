@@ -1,24 +1,26 @@
 <div class="main-content container">
 	<div class="row">
-    <div class="col-md-12">
-      <h1 class="titulo-view">Notícias</h1>
-    </div>
-  </div>
+		<div class="col-md-12">
+			<h1 class="titulo-view">Notícias</h1>
+		</div>
+	</div>
 
 
-  <div class="row">
+	<div class="row">
   	<?php foreach($this->arrNoticias as $key => $noticia):?>
-    	<div class="col-sm-12">  	
-      		<div class="panel panel-default">
-            <div class="panel-heading panel-heading-divider"><?php echo $noticia->titulo?></div>
-            <div class="panel-body">
-              <p>
+    	<div class="col-sm-12">
+			<div class="panel panel-default">
+				<div class="panel-heading panel-heading-divider"><?php echo $noticia->titulo?></div>
+				<div class="panel-body">
+					<p>
               <?php echo $noticia->texto_noticia?>
               </p>
-              <a href="<?php echo $this->baseUrl('/noticias/visualizar/id/' . $noticia->id_noticia);?>">Leia mais</a>
-            </div>
-  		</div>	
-      </div>
+					<a
+						href="<?php echo $this->baseUrl('/noticias/visualizar/id/' . $noticia->id_noticia);?>">Leia
+						mais</a>
+				</div>
+			</div>
+		</div>
   	<?php endforeach;?>
   </div>
 </div>

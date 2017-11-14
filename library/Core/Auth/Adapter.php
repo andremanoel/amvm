@@ -46,12 +46,6 @@ class Core_Auth_Adapter implements Zend_Auth_Adapter_Interface
         );
         
         Zend_Session::rememberMe(14400);
-        
-        // configure the instance with setter methods
-//         $authenticationAdapter->setTableName()
-//             ->setIdentityColumn('login')
-//             ->setCredentialColumn('senha');
-                                                    
         $authenticationAdapter->setIdentity($this->getUsername())
                               ->setCredential($this->getPassword());
         
