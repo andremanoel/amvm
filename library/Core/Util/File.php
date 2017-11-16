@@ -18,7 +18,6 @@ class Core_Util_File
     static function upload($nome)
     {
         $arrRetorno = array('sucesso'=>false, 'mensagens'=> null, 'arquivo'=> null);
-        
         $file = new Zend_File_Transfer_Adapter_Http();
         $file->setDestination(UPLOAD_PATH);
         
@@ -35,7 +34,6 @@ class Core_Util_File
                 return $arrRetorno;
             }
         }
-
         return false;
     }
     

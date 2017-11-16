@@ -2,6 +2,7 @@
 
 //function debug
 function a($var) {
+    echo "<pre>";
     var_dump($var); exit;
 }
 
