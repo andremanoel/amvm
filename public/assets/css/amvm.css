@@ -6,6 +6,12 @@ body{
 	padding: 0px;
 }
 
+a {
+	color: #7b405f;
+}
+a:hover {
+	color: #7b5e76;
+}
 .be-top-header {
 	background: #7b405f;
 	border-bottom: 3px solid #ced4e6;

@@ -150,6 +150,8 @@ class ImportacaoController extends Core_Controller_Seguro
         $cellIterator->setIterateOnlyExistingCells(false);
         
         $objDadosPlanilha = $modelDados->createRow();
+        $ano = $this->getParam('ano');
+        $objDadosPlanilha->ano = $ano;
         
         $cont = 0;
         foreach ($cellIterator as $cell) {
@@ -165,16 +167,20 @@ class ImportacaoController extends Core_Controller_Seguro
                 $coordinate = $cell->getCoordinate();
                 echo '<br />';
                 var_dump($coordinate);
+                $valorCelula = $cell->getValue();
                 
                 // verifica o valor da celula, coloca 0 como default
-                if($cell->getCalculatedValue() == 0 || empty($cell->getCalculatedValue())) {
+                if($valorCelula == 0 || empty($valorCelula) ||  $valorCelula == '0') {
                     echo "VAZIO -- ";
-                    var_dump($cell->getCalculatedValue());
                     $valorCelula = 0;
+                    var_dump($valorCelula);
                 } else {
                     echo "TEM DADOS -- ";
-                    var_dump($cell->getCalculatedValue());
-                    $valorCelula = round($cell->getCalculatedValue());
+                    echo "Reconheceu como um numero? = "; var_dump(is_numeric($valorCelula));
+                    if(is_numeric($valorCelula)) {
+                        $valorCelula = round($valorCelula, 1);
+                    }
+                    var_dump($valorCelula);
                 }
         
                 // Populacao

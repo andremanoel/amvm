@@ -7,10 +7,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="">
-    <?= $this->headTitle('Projeto Francisca das Chagas')->setSeparator(' - ')->setAutoEscape(false) ?>
+    <?php echo $this->headTitle('Projeto Francisca das Chagas')->setSeparator(' - ')->setAutoEscape(false) ?>
+    
+    <script type="text/javascript">
+    	var dataGrafico = <?php echo $this->jsonData;?>;
+    </script>
 
     <!-- Le styles -->
-    <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->baseUrl() . '/img/favicon.ico'])
+    <?php echo $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->baseUrl() . '/img/favicon.ico'])
         ->prependStylesheet($this->baseUrl('assets/lib/perfect-scrollbar/css/perfect-scrollbar.min.css'))
         ->prependStylesheet($this->baseUrl('assets/lib/material-design-icons/css/material-design-iconic-font.min.css'))
         ->appendStylesheet($this->baseUrl('assets/lib/datetimepicker/css/bootstrap-datetimepicker.min.css'))
@@ -19,12 +23,9 @@
         ->appendStylesheet($this->baseUrl('assets/lib/bootstrap-slider/css/bootstrap-slider.css'))
         ->prependStylesheet($this->baseUrl('assets/css/amvm.css'))
         ->prependStylesheet($this->baseUrl('assets/css/style.css'))
-        
-        
     ?>
     
-    <!-- Scripts -->
-    <?= $this->headScript()
+    <?php echo $this->headScript()
         ->prependFile($this->baseUrl('assets/lib/bootstrap/dist/js/bootstrap.min.js'))
         ->prependFile($this->baseUrl('assets/lib/jquery/jquery.min.js'))
         ->appendFile($this->baseUrl('assets/lib/bootstrap-slider/js/bootstrap-slider.js'))
@@ -60,18 +61,12 @@
                     <li><a href="/">Home</a></li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Indicadores <span class="mdi mdi-caret-down"></span></a>
                         <ul role="menu" class="dropdown-menu">
-                          <li><a href="<?php echo $this->baseUrl('/indicadores/bairros-mais-perigosos');?>">Bairros</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/indicadores/bairros');?>">Bairros</a></li>
                           <li><a href="<?php echo $this->baseUrl('/indicadores/cvli');?>">CVLI</a></li>
                           <li><a href="<?php echo $this->baseUrl('/indicadores/dias-semana');?>">Dias da Semana</a></li>
                           <li><a href="<?php echo $this->baseUrl('/indicadores/horarios-dia');?>">Por Horário</a></li>
                           <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-por-mes');?>">Por Mês</a></li>
                           <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-idade');?>">Ocorrências por Idade</a></li>
-                          <!-- 
-                          <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-12-18');?>">Específico por idade - 12 a 18 anos</a></li>
-                          <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-19-29');?>">Específico por idade - 19 a 29 anos</a></li>
-                          <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-30-40');?>">Específico por idade - 30 a 40 anos</a></li>
-                          <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-41-50');?>">Específico por idade - 41 a 50 anos</a></li>
-                           -->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
                         </ul>
                     </li>
                     <li><a href="/noticias">Notícias</a></li>
@@ -101,7 +96,10 @@
     </div>
 </div>
 
-<?= $this->inlineScript() ?>
+<?php
+echo $this->layout()->scriptTags;
+// echo $this->inlineScript(); 
+?> 
 
 </body>
 </html>

@@ -1,0 +1,52 @@
+<div class="panel panel-default panel-border-color panel-border-color-primary painel-indicador">
+    <div class="panel-heading panel-heading-divider">
+        Bairros
+        <span class="panel-subtitle">Total de ocorrências por bairro</span>
+    </div>
+    
+    <div class="panel-body">
+    
+    	<form class="form-inline text-center form-filtros" action="<?php echo $this->url()?>" method="post">
+            <div class="form-group">
+        		<label for="anos"> Ano:</label>
+                <?php echo $this->formSelect('ano', $this->anoSelecionado, array('class'=>'form-control'), $this->filtros['anos']);?>
+            </div>
+            
+            <div class="form-group">
+        		<label for="crimes"> Crimes:</label>
+                <?php echo $this->formSelect('crime', $this->crimeSelecionado, array('class'=>'form-control'), $this->filtros['crimes']);?>
+            </div>
+            
+            <div class="form-group">
+        		<label for="crimes"> Dias da semana:</label>
+                <?php echo $this->formSelect('diaSemana', $this->diaSemanaSelecionado, array('class'=>'form-control'), $this->filtros['diasSemana']);?>
+            </div>
+            
+            <div class="form-group">
+        		<label for="horarios"> Horários:</label>
+                <?php echo $this->formSelect('horario', $this->horarioSelecionado, array('class'=>'form-control'), $this->filtros['horarios']);?>
+            </div>
+            
+            <div class="form-group">
+        		<label for="meses"> Meses:</label>
+                <?php echo $this->formSelect('mes', $this->mesSelecionado, array('class'=>'form-control'), $this->filtros['meses']);?>
+            </div>
+            
+            <div class="form-group">
+        		<label for="idade"> Idade:</label>
+                <?php echo $this->formSelect('idade', $this->idadeSelecionado, array('class'=>'form-control'), $this->filtros['idade']);?>
+            </div>
+            
+            <br />
+            
+            <p class="text-center">
+            	<button type="button" id="limparFiltros" class="btn btn-default btn-lg">
+                  Limpar filtros
+                </button>
+                <?php echo $this->formSubmit('filtrar', 'Filtrar dados', array('class'=>'btn btn-primary btn-lg'));?>
+            </p>
+        </form>
+                
+        <div id="grafico-mais-ocorrencias" class="grafico-amvm shadow"></div>
+    </div>
+</div>   

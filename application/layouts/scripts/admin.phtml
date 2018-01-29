@@ -61,7 +61,11 @@
               <div class="left-sidebar-content">
                 <ul class="sidebar-elements">
                   <li class="divider">Menu</li>
-                  <li><a href="index.html"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
+                  <li>
+                  	<a href="<?php echo $this->baseUrl('/gestor');?>">
+                  		<i class="icon mdi mdi-home"></i>
+                  		<span>Dashboard</span>
+          			</a>
                   </li>
                   <li class="parent"><a href="#"><i class="icon mdi mdi-face"></i><span>Publicações</span></a>
                     <ul class="sub-menu">
@@ -83,7 +87,7 @@
                     <ul class="sub-menu">
                       <li><a href="<?php echo $this->baseUrl('/usuarios');?>">Lista de Usuários</a>
                       </li>
-                      <li><a href="<?php echo $this->baseUrl('/usuarios/cadastrar');?>">Cadastrar</a>
+                      <li><a href="<?php echo $this->baseUrl('/usuarios/form');?>">Cadastrar</a>
                       </li>
                     </ul>
                   </li>
