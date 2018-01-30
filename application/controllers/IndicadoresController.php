@@ -40,7 +40,6 @@ class IndicadoresController extends Zend_Controller_Action
         
         // Dia de Semana
         $arrDiasSemana = array(
-            '' => 'Selecione',
             Application_Model_DadosPlanilha::DOMINGO => 'Domingo',
             Application_Model_DadosPlanilha::SEGUNDA => 'Segunda',
             Application_Model_DadosPlanilha::TERCA   => 'Terça',
@@ -53,7 +52,6 @@ class IndicadoresController extends Zend_Controller_Action
         
         // Horários
         $arrHorarios = array(
-            '' => 'Selecione',
             Application_Model_DadosPlanilha::HORA_0_6    => '0h às 6h',
             Application_Model_DadosPlanilha::HORA_6_12   => '6h às 12h',
             Application_Model_DadosPlanilha::HORA_12_18  => '12h às 18h',
@@ -96,6 +94,10 @@ class IndicadoresController extends Zend_Controller_Action
         );
         $filtros['idade'] = $arrIdade;
         
+        // Bairros
+        $modelBairro = new Application_Model_Bairro();
+        $filtros['bairros'] = $modelBairro->getBairros(); 
+        
         // Itens Selecionados
         $this->view->filtros = $filtros;
     }
@@ -105,22 +107,22 @@ class IndicadoresController extends Zend_Controller_Action
 
     public function bairrosAction()
     {
-        
-        if($this->_request->isPost()) {
-            a($this->getAllParams());    
-        }
+        $filtros = $this->getAllParams();
         
         $modelDadosPlanilha = new Application_Model_DadosPlanilha();
-        $result = $modelDadosPlanilha->getTotalCrimesPorBairro();
+        $result = $modelDadosPlanilha->getTotalCrimesPorBairro($filtros);
         $arrJson = [];
-        foreach($result as $item) {
-            $obj = new stdClass();
-            $obj->name = $item['nome'];
-            $obj->y = (float)$item['cvnli'];
-            array_push($arrJson, $obj);
+        if (!empty($result)) {
+            foreach($result as $item) {
+                $obj = new stdClass();
+                $obj->name = $item['nome'];
+                $obj->y = (float)$item[$filtros['crime']];
+                array_push($arrJson, $obj);
+            }
+            $this->view->jsonData = json_encode($arrJson);
+        } else {
+            $this->view->jsonData = null;
         }
-        
-        $this->view->jsonData = json_encode($arrJson);
         
         // Filtros Selecionados
         $this->view->anoSelecionado = $this->getParam('ano', $this->anoInicialFiltros);
@@ -138,35 +140,73 @@ class IndicadoresController extends Zend_Controller_Action
 
     public function diasSemanaAction()
     {
-        // TODO: Buscar dados
+        $filtros = $this->getAllParams();
+        
+        $modelDadosPlanilha = new Application_Model_DadosPlanilha();
+        $result = $modelDadosPlanilha->getTotalDiaSemana($filtros);
+        $arrJson = [];
+        
+        if (!empty($result)) {
+            foreach($result as $item) {
+                $obj = new stdClass();
+                // Nome do bairro
+                $obj->name = $item['nome'];
+                // Valores por dia da semana 
+                $domingo   = (float) $item[Application_Model_DadosPlanilha::DOMINGO];
+                $segunda   = (float) $item[Application_Model_DadosPlanilha::SEGUNDA];
+                $terca     = (float) $item[Application_Model_DadosPlanilha::TERCA];
+                $quarta    = (float) $item[Application_Model_DadosPlanilha::QUARTA];
+                $quinta    = (float) $item[Application_Model_DadosPlanilha::QUINTA];
+                $sexta     = (float) $item[Application_Model_DadosPlanilha::SEXTA];
+                $sabado    = (float) $item[Application_Model_DadosPlanilha::SABADO];
+                $obj->data = [$domingo, $segunda, $terca, $quarta, $quinta, $sexta, $sabado];
+                array_push($arrJson, $obj);
+            }
+            $this->view->jsonData = json_encode($arrJson);
+        } else {
+            $this->view->jsonData = null;
+        }
+        
+        //dados view
+        $this->view->anoSelecionado = $this->getParam('ano', $this->anoInicialFiltros);
+        $this->view->bairrosSelecionados = $this->getParam('bairro');
+        $this->view->diasSelecionados = $this->getParam('diaSemana');
+        
     }
 
     public function horariosDiaAction()
     {
-        // TODO: Buscar dados
+        $filtros = $this->getAllParams();
+        
+        $modelDadosPlanilha = new Application_Model_DadosPlanilha();
+        $result = $modelDadosPlanilha->getTotalPorHorario($filtros);
+        $arrJson = [];
+        
+        if (!empty($result)) {
+            foreach($result as $item) {
+                $obj = new stdClass();
+                // Nome do bairro
+                $obj->name = $item['nome'];
+                // Valores por dia da semana 
+                $hora06    = (float) $item[Application_Model_DadosPlanilha::HORA_0_6];
+                $hora612   = (float) $item[Application_Model_DadosPlanilha::HORA_6_12];
+                $hora1218  = (float) $item[Application_Model_DadosPlanilha::HORA_12_18];
+                $hora1824  = (float) $item[Application_Model_DadosPlanilha::HORA_18_24];
+                $obj->data = [$hora06, $hora612, $hora1218, $hora1824];
+                array_push($arrJson, $obj);
+            }
+            $this->view->jsonData = json_encode($arrJson);
+        } else {
+            $this->view->jsonData = null;
+        }
+        
+        //dados view
+        $this->view->anoSelecionado      = $this->getParam('ano', $this->anoInicialFiltros);
+        $this->view->bairrosSelecionados = $this->getParam('bairro');
+        $this->view->horarioSelecionado  = $this->getParam('horario');
     }
 
     public function ocorrenciasPorMesAction()
-    {
-        // TODO: Buscar dados
-    }
-
-    public function ocorrencias1218Action()
-    {
-        // TODO: Buscar dados
-    }
-
-    public function ocorrencias1929Action()
-    {
-        // TODO: Buscar dados
-    }
-
-    public function ocorrencias3040Action()
-    {
-        // TODO: Buscar dados
-    }
-
-    public function ocorrencias4150Action()
     {
         // TODO: Buscar dados
     }

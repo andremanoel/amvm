@@ -13,40 +13,21 @@
             </div>
             
             <div class="form-group">
-        		<label for="crimes"> Crimes:</label>
+        		<label for="crimes"> Tipo de Ocorrência:</label>
                 <?php echo $this->formSelect('crime', $this->crimeSelecionado, array('class'=>'form-control'), $this->filtros['crimes']);?>
             </div>
             
-            <div class="form-group">
-        		<label for="crimes"> Dias da semana:</label>
-                <?php echo $this->formSelect('diaSemana', $this->diaSemanaSelecionado, array('class'=>'form-control'), $this->filtros['diasSemana']);?>
-            </div>
-            
-            <div class="form-group">
-        		<label for="horarios"> Horários:</label>
-                <?php echo $this->formSelect('horario', $this->horarioSelecionado, array('class'=>'form-control'), $this->filtros['horarios']);?>
-            </div>
-            
-            <div class="form-group">
-        		<label for="meses"> Meses:</label>
-                <?php echo $this->formSelect('mes', $this->mesSelecionado, array('class'=>'form-control'), $this->filtros['meses']);?>
-            </div>
-            
-            <div class="form-group">
-        		<label for="idade"> Idade:</label>
-                <?php echo $this->formSelect('idade', $this->idadeSelecionado, array('class'=>'form-control'), $this->filtros['idade']);?>
-            </div>
-            
-            <br />
+            <br /><br />
             
             <p class="text-center">
-            	<button type="button" id="limparFiltros" class="btn btn-default btn-lg">
-                  Limpar filtros
-                </button>
+                <?php echo $this->formReset('limpar', 'Limpar filtros', array('class'=>'btn btn-default btn-lg'))?>
                 <?php echo $this->formSubmit('filtrar', 'Filtrar dados', array('class'=>'btn btn-primary btn-lg'));?>
             </p>
         </form>
-                
-        <div id="grafico-mais-ocorrencias" class="grafico-amvm shadow"></div>
+        <?php if (!empty($this->jsonData)):?>
+        	<div id="grafico-mais-ocorrencias" class="grafico-amvm shadow"></div>
+        <?php else:?>
+        	<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>
+        <?php endif;?>
     </div>
 </div>   

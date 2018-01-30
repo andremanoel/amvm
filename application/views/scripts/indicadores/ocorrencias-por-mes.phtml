@@ -7,16 +7,12 @@
     <div class="panel-body">
         <?php echo $this->partial('indicadores/filtros.phtml', array('filtros'=>$this->filtros));?>
         
-        <div id="grafico-tipos-crime" class="grafico-amvm shadow"></div>
-        <br /> <br />
-    
-        <div id="grafico-ocorrencia-mes-total" class="grafico-amvm shadow"></div>   
-        <br /> <br />
-        
-        <div id="grafico-ocorrencia-mes" class="grafico-amvm shadow"></div>
+        <?php if (!empty($this->jsonData)):?>
+        	<div id="grafico-ocorrencia-mes" class="grafico-amvm shadow"></div>
+        <?php else:?>
+        	<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>
+        <?php endif;?>
     </div>
-    
-    
     
 </div>
    

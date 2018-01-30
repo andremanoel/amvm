@@ -1,13 +1,38 @@
 <div class="panel panel-default panel-border-color panel-border-color-primary">
     <div class="panel-heading panel-heading-divider">
-        Específicos por Horários do dia
+        Ocorrências por Horários do dia
         <span class="panel-subtitle">Total de ocorrências por hora do dia</span>
     </div>
     
     <div class="panel-body">
-        <?php echo $this->partial('indicadores/filtros.phtml', array('filtros'=>$this->filtros));?>
+        <form class="form-inline text-center" action="<?php echo $this->url()?>" method="post">
+            <div class="form-group">
+        		<label for="anos">Ano</label>
+                <?php echo $this->formSelect('ano', $this->anoSelecionado, array('class'=>'form-control'), $this->filtros['anos']);?>
+            </div>
+            
+            <div class="form-group">
+        		<label for="crimes">Horário:</label> <br />
+                <?php echo $this->formSelect('horario', $this->horarioSelecionado, array('class'=>'form-control', 'multiple'=>'multiple'), $this->filtros['horarios']);?>
+            </div>
+            
+            <div class="form-group">
+        		<label for="crimes">Bairro:</label> <br />
+                <?php echo $this->formSelect('bairro', $this->bairrosSelecionados, array('class'=>'form-control', 'multiple'=>'multiple'), $this->filtros['bairros']);?>
+            </div>
+            
+            <br /><br />
+            <p class="text-center">
+                <?php echo $this->formReset('limpar', 'Limpar filtros', array('class'=>'btn btn-default btn-lg'))?>
+                <?php echo $this->formSubmit('filtrar', 'Filtrar dados', array('class'=>'btn btn-primary btn-lg'));?>
+            </p>
+        </form>
         
-        <div id="grafico-horarios-dia" class="grafico-amvm shadow"></div>
+        <?php if (!empty($this->jsonData)):?>
+            <div id="grafico-horarios-dia" class="grafico-amvm shadow"></div>
+        <?php else:?>
+        	<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>
+        <?php endif;?>
     </div>
 </div>
    

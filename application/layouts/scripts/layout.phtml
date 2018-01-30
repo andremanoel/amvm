@@ -10,7 +10,11 @@
     <?php echo $this->headTitle('Projeto Francisca das Chagas')->setSeparator(' - ')->setAutoEscape(false) ?>
     
     <script type="text/javascript">
+	<?php if(!empty($this->jsonData)):?>
     	var dataGrafico = <?php echo $this->jsonData;?>;
+	<?php else:?>
+		var dataGrafico = '';
+	<?php endif;?>
     </script>
 
     <!-- Le styles -->
@@ -62,7 +66,7 @@
                     <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Indicadores <span class="mdi mdi-caret-down"></span></a>
                         <ul role="menu" class="dropdown-menu">
                           <li><a href="<?php echo $this->baseUrl('/indicadores/bairros');?>">Bairros</a></li>
-                          <li><a href="<?php echo $this->baseUrl('/indicadores/cvli');?>">CVLI</a></li>
+                          <!-- <li><a href="<?php echo $this->baseUrl('/indicadores/cvli');?>">CVLI</a></li> -->
                           <li><a href="<?php echo $this->baseUrl('/indicadores/dias-semana');?>">Dias da Semana</a></li>
                           <li><a href="<?php echo $this->baseUrl('/indicadores/horarios-dia');?>">Por Horário</a></li>
                           <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-por-mes');?>">Por Mês</a></li>

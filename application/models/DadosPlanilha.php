@@ -52,18 +52,170 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
         return $this->getAdapter()->fetchAll($sql);
     }
     
+    /**
+     * Consulta Total de Crimes por Bairro
+     * @param string $filtros
+     */
     public function getTotalCrimesPorBairro($filtros = null)
     {
         $sql = $this->getAdapter()->select();
+        $campos = array();
+        //Por padrão busca CVNLI
+        if (!empty($filtros['crime'])) {
+            $sql->order("p.{$filtros['crime']} DESC");
+            $campos = array("p.{$filtros['crime']}");
+        }
+        
+        //Por padrão busca Ano atual
+        if (empty($filtros['ano'])) {
+            $filtros['ano'] = date('Y');
+        } 
+        $sql->where('p.ano = ?', $filtros['ano']);
+        
         $sql->from(
                 array('p' => $this->_name),
-                array('p.cvnli')
+                $campos
             )
             ->join(array('b'=>'tb_bairro'), 'p.id_bairro = b.id_bairro', array('b.nome'))
-            ->order('p.cvnli DESC')
             ->limit(10);
         
         return $this->getAdapter()->fetchAll($sql);
+    }
+    
+    /**
+     * 
+     * @param unknown $filtros
+     */
+    public function getTotalDiaSemana($filtros = null) 
+    {
+        $sql = $this->getAdapter()->select();
+            
+        //Por padrão busca Ano atual
+        if (empty($filtros['ano'])) {
+            $filtros['ano'] = date('Y');
+        }
+        
+        $arrColunas = array(
+            'p.' . static::DOMINGO, 
+            'p.' . static::SEGUNDA,
+            'p.' . static::TERCA,
+            'p.' . static::QUARTA,
+            'p.' . static::QUINTA,
+            'p.' . static::SEXTA,
+            'p.' . static::SABADO,
+        );
+        if (!empty($filtros['diaSemana'])) {
+            $arrColunas = $filtros['diaSemana'];
+        }
+            
+        $sql->from(
+                array('p' => $this->_name),
+                $arrColunas
+            )
+            ->where('p.ano = ?', $filtros['ano'])
+            ->join(array('b'=>'tb_bairro'), 'p.id_bairro = b.id_bairro', array('b.nome'));
+        
+        // Se não selecionou os bairros, pesquisa somente 10 bairros
+        if (empty($filtros['bairro'])) {
+            $sql->limit(5);
+            // Ordena pelo maior CVNLI
+            $sql->order('p.cvnli DESC');
+        } else {
+            //Bairros específicos
+            $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
+        }
+        return $this->getAdapter()->fetchAll($sql);
+    }
+    
+    /**
+     * Busca a quantidade total por horário
+     * @param unknown $filtros
+     */
+    public function getTotalPorHorario($filtros = null)
+    {
+        $sql = $this->getAdapter()->select();
+        
+        //Por padrão busca Ano atual
+        if (empty($filtros['ano'])) {
+            $filtros['ano'] = date('Y');
+        }
+        
+        $arrColunas = array(
+            'p.' . static::HORA_0_6,
+            'p.' . static::HORA_6_12,
+            'p.' . static::HORA_12_18,
+            'p.' . static::HORA_18_24
+        );
+        if (!empty($filtros['horario'])) {
+            $arrColunas = $filtros['horario'];
+        }
+        
+        $sql->from(
+                array('p' => $this->_name),
+                $arrColunas
+            )
+            ->where('p.ano = ?', $filtros['ano'])
+            ->join(array('b'=>'tb_bairro'), 'p.id_bairro = b.id_bairro', array('b.nome'));
+        
+        // Se não selecionou os bairros, pesquisa somente 5 bairros
+        if (empty($filtros['bairro'])) {
+            $sql->limit(5);
+            // Ordena pelo maior CVNLI
+            $sql->order('p.cvnli DESC');
+        } else {
+            //Bairros específicos
+            $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
+        }
+        
+        return $this->getAdapter()->fetchAll($sql);
+    }
+    
+    public function getTotalPorMes($filtros = null) 
+    {
+        $sql = $this->getAdapter()->select();
+        
+        //Por padrão busca Ano atual
+        if (empty($filtros['ano'])) {
+            $filtros['ano'] = date('Y');
+        }
+        
+        $arrColunas = array(
+            'p.' . static::JAN,
+            'p.' . static::FEV,
+            'p.' . static::ABR,
+            'p.' . static::MAR,
+            'p.' . static::MAI,
+            'p.' . static::JUN,
+            'p.' . static::JUL,
+            'p.' . static::AGO,
+            'p.' . static::SET,
+            'p.' . static::OUT,
+            'p.' . static::NOV,
+            'p.' . static::DEZ
+            
+        );
+        if (!empty($filtros['horario'])) {
+            $arrColunas = $filtros['horario'];
+        }
+        
+        $sql->from(
+            array('p' => $this->_name),
+            $arrColunas
+            )
+            ->where('p.ano = ?', $filtros['ano'])
+            ->join(array('b'=>'tb_bairro'), 'p.id_bairro = b.id_bairro', array('b.nome'));
+        
+            // Se não selecionou os bairros, pesquisa somente 5 bairros
+            if (empty($filtros['bairro'])) {
+                $sql->limit(5);
+                // Ordena pelo maior CVNLI
+                $sql->order('p.cvnli DESC');
+            } else {
+                //Bairros específicos
+                $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
+            }
+        
+            return $this->getAdapter()->fetchAll($sql);
     }
     
 }

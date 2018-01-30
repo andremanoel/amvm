@@ -1,26 +1,35 @@
-<div class="container">
-	<h1 class="titulo-view">Usuários</h1>
+<div class="row">
+	<div class="col-md-12">
+		<div class="widget widget-fullwidth be-loading">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="tools">
+						<a href="<?php echo $this->baseUrl('/usuarios/form');?>" class="btn btn-default">Cadastrar um novo usuário</a>
+					</div>
+					<div class="title">Usuários</div>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>Login</th>
+								<th>E-mail</th>
+								<th>Nome</th>
+							</tr>
+						</thead>
+						<tbody>
+                  		<?php foreach($this->arrUsuarios as $key => $usuario): ?>
+            			<tr>
+							<td><?php echo $usuario->login?></td>
+							<td><?php echo $usuario->email?></td>
+							<td><?php echo $usuario->nome?></td>
+						</tr>
+                  		<?php endforeach;?>
+                  		</tbody>
+					</table>
+				</div>
+			</div>
 
-	<div class="row">
-		<div class="col-sm-10">
-			<table class="table table-bordered table-hover">
-				<thead>
-					<tr>
-						<th>Login</th>
-						<th>E-mail</th>
-						<th>Nome</th>
-					</tr>
-				</thead>
-				<tbody>
-          		<?php foreach($this->arrUsuarios as $key => $usuario): ?>
-        			<tr>
-        				<td><?php echo $usuario->login?></td>
-        				<td><?php echo $usuario->email?></td>
-        				<td><?php echo $usuario->nome?></td>
-        			</tr>
-          		<?php endforeach;?>
-          		</tbody>
-			</table>
 		</div>
-  	</div>
+	</div>
 </div>
