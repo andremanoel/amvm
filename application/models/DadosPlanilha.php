@@ -194,8 +194,52 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
             'p.' . static::DEZ
             
         );
-        if (!empty($filtros['horario'])) {
-            $arrColunas = $filtros['horario'];
+        if (!empty($filtros['mes'])) {
+            $arrColunas = $filtros['mes'];
+        }
+        
+        $sql->from(
+            array('p' => $this->_name),
+            $arrColunas
+            )
+            ->where('p.ano = ?', $filtros['ano'])
+            ->join(array('b'=>'tb_bairro'), 'p.id_bairro = b.id_bairro', array('b.nome'));
+    
+        // Se não selecionou os bairros, pesquisa somente 5 bairros
+        if (empty($filtros['bairro'])) {
+            $sql->limit(5);
+            // Ordena pelo maior CVNLI
+            $sql->order('p.cvnli DESC');
+        } else {
+            //Bairros específicos
+            $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
+        }
+        
+        return $this->getAdapter()->fetchAll($sql);
+    }
+    
+    /**
+     * Busca os dados por Idade
+     * @param unknown $filtros
+     */
+    public function getTotalPorIdade($filtros = null) 
+    {
+        $sql = $this->getAdapter()->select();
+        
+        //Por padrão busca Ano atual
+        if (empty($filtros['ano'])) {
+            $filtros['ano'] = date('Y');
+        }
+        
+        $arrColunas = array(
+            'p.' . static::ID_12_18,
+            'p.' . static::ID_19_29,
+            'p.' . static::ID_30_40,
+            'p.' . static::ID_41_50,
+            'p.' . static::ID_51_80
+        );
+        if (!empty($filtros['idade'])) {
+            $arrColunas = $filtros['idade'];
         }
         
         $sql->from(

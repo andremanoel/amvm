@@ -14,6 +14,11 @@ class NoticiasAdminController extends Core_Controller_Seguro
         $modelNoticia = new Application_Model_Noticia();
         $this->view->arrNoticias = $modelNoticia->buscarAdmin();
     }
+    
+    public function formAction()
+    {
+        
+    }
 
 }
 

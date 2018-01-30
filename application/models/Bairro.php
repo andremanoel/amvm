@@ -16,7 +16,7 @@ class Application_Model_Bairro extends Zend_Db_Table_Abstract
     {
         $sql = $this->getAdapter()->select();
         $sql->from($this->_name, array('id_bairro', 'nome'))
-            ->order('id_bairro ASC');
+            ->order('nome ASC');
         return $this->getAdapter()->fetchPairs($sql);
     }
 

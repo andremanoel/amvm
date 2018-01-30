@@ -8,13 +8,18 @@
     
     	<form class="form-inline text-center form-filtros" action="<?php echo $this->url()?>" method="post">
             <div class="form-group">
-        		<label for="anos"> Ano:</label>
+        		<label for="anos"> Ano:</label> <br />
                 <?php echo $this->formSelect('ano', $this->anoSelecionado, array('class'=>'form-control'), $this->filtros['anos']);?>
             </div>
             
             <div class="form-group">
-        		<label for="crimes"> Tipo de Ocorrência:</label>
+        		<label for="crimes"> Tipo de Ocorrência:</label> <br />
                 <?php echo $this->formSelect('crime', $this->crimeSelecionado, array('class'=>'form-control'), $this->filtros['crimes']);?>
+            </div>
+            
+            <div class="form-group">
+        		<label for="crimes">Bairro:</label> <br />
+                <?php echo $this->formSelect('bairro', $this->bairrosSelecionados, array('class'=>'form-control', 'multiple'=>'multiple'), $this->filtros['bairros']);?>
             </div>
             
             <br /><br />

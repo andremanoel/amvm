@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="widget widget-fullwidth be-loading">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="title">Cadastro de Notícias</div>
+				</div>
+				<div class="panel-body">
+					<form action="<?php echo $this->url();?>" method="post">
+						<?php echo $this->formHidden('id_noticia', $this->objNoticia->id_noticia)?>
+    					<div class="form-group">
+							<label for="titulo">Título</label>
+							<?php echo $this->formText('titulo', $this->objNoticia->titulo, array('class' => 'form-control', 'placeholder' => 'Informe o Título'));?>
+						</div>
+						<div class="form-group">
+							<label for="login">Texto da Notícia</label>
+							<?php echo $this->formTextarea(
+							    'texto_noticia', 
+							    $this->objNoticia->texto_noticia, 
+							    array('class' => 'form-control', 'rows' => '6', 'placeholder'=>'Informe o texto da notícia'));?>
+						</div>
+						
+						<div class="text-right">
+							<?php echo $this->formReset('reset', 'Cancelar', array('class' => 'btn btn-default'));?>
+							<?php echo $this->formSubmit('salvar', 'Salvar', array('class' => 'btn btn-primary'));?>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

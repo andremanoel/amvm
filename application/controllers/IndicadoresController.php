@@ -19,7 +19,7 @@ class IndicadoresController extends Zend_Controller_Action
         
         // anos
         $anoAtual = date('Y');
-        $this->anoInicialFiltros = $anoAtual - 1; // Sempre buscando de um ano pra trás do atual
+        $this->anoInicialFiltros = $anoInicial; // Sempre buscando de um ano pra trás do atual
         $anoInicial = 2015;
         $arrInicialAnos = range($anoInicial, $anoAtual);
         $arrAnos = [];
@@ -68,7 +68,6 @@ class IndicadoresController extends Zend_Controller_Action
         
         // Mês
         $arrMeses = array(
-            '' => 'Selecione',
             Application_Model_DadosPlanilha::JAN => 'Janeiro',
             Application_Model_DadosPlanilha::FEV => 'Fevereiro',
             Application_Model_DadosPlanilha::MAR => 'Março',
@@ -86,7 +85,6 @@ class IndicadoresController extends Zend_Controller_Action
         
         //Idade
         $arrIdade = array(
-            '' => 'Selecione',
             Application_Model_DadosPlanilha::ID_12_18 => '12 a 18 anos', 
             Application_Model_DadosPlanilha::ID_19_29 => '19 a 29 anos', 
             Application_Model_DadosPlanilha::ID_30_40 => '30 a 40 anos', 
@@ -127,15 +125,7 @@ class IndicadoresController extends Zend_Controller_Action
         // Filtros Selecionados
         $this->view->anoSelecionado = $this->getParam('ano', $this->anoInicialFiltros);
         $this->view->crimeSelecionado = $this->getParam('crime', Application_Model_DadosPlanilha::CVNLI);
-        $this->view->diaSemanaSelecionado = $this->getParam('diaSemana');
-        $this->view->horarioSelecionado = $this->getParam('horario');
-        $this->view->mesSelecionado = $this->getParam('mes');
-        $this->view->idadeSelecionado = $this->getParam('idade');
-    }
-
-    public function cvliAction()
-    {
-        // TODO: Buscar dados
+        $this->view->bairrosSelecionados = $this->getParam('bairro');
     }
 
     public function diasSemanaAction()
@@ -192,7 +182,12 @@ class IndicadoresController extends Zend_Controller_Action
                 $hora612   = (float) $item[Application_Model_DadosPlanilha::HORA_6_12];
                 $hora1218  = (float) $item[Application_Model_DadosPlanilha::HORA_12_18];
                 $hora1824  = (float) $item[Application_Model_DadosPlanilha::HORA_18_24];
-                $obj->data = [$hora06, $hora612, $hora1218, $hora1824];
+                $obj->data = [
+                    $hora06, 
+                    $hora612, 
+                    $hora1218, 
+                    $hora1824
+                ];
                 array_push($arrJson, $obj);
             }
             $this->view->jsonData = json_encode($arrJson);
@@ -208,11 +203,93 @@ class IndicadoresController extends Zend_Controller_Action
 
     public function ocorrenciasPorMesAction()
     {
-        // TODO: Buscar dados
+        $filtros = $this->getAllParams();
+        
+        $modelDadosPlanilha = new Application_Model_DadosPlanilha();
+        $result = $modelDadosPlanilha->getTotalPorMes($filtros);
+        $arrJson = [];
+        
+        if (!empty($result)) {
+            foreach($result as $item) {
+                $obj = new stdClass();
+                // Nome do bairro
+                $obj->name = $item['nome'];
+                // Valores por dia da semana 
+                $janeiro   = (float) $item[Application_Model_DadosPlanilha::JAN];
+                $fev       = (float) $item[Application_Model_DadosPlanilha::FEV];
+                $marco     = (float) $item[Application_Model_DadosPlanilha::MAR];
+                $abril     = (float) $item[Application_Model_DadosPlanilha::ABR];
+                $maio      = (float) $item[Application_Model_DadosPlanilha::MAI];
+                $junho     = (float) $item[Application_Model_DadosPlanilha::JUN];
+                $julho     = (float) $item[Application_Model_DadosPlanilha::JUL];
+                $agosto    = (float) $item[Application_Model_DadosPlanilha::AGO];
+                $setembro  = (float) $item[Application_Model_DadosPlanilha::SET];
+                $outubro   = (float) $item[Application_Model_DadosPlanilha::OUT];
+                $novembro  = (float) $item[Application_Model_DadosPlanilha::NOV];
+                $dezembro  = (float) $item[Application_Model_DadosPlanilha::DEZ];
+                $obj->data = [
+                    $janeiro,
+                    $fev,
+                    $marco,
+                    $abril,
+                    $maio,
+                    $junho,
+                    $julho,
+                    $agosto,
+                    $setembro,
+                    $outubro,
+                    $novembro,
+                    $dezembro
+                ];
+                array_push($arrJson, $obj);
+            }
+            $this->view->jsonData = json_encode($arrJson);
+        } else {
+            $this->view->jsonData = null;
+        }
+        
+        //dados view
+        $this->view->anoSelecionado      = $this->getParam('ano', $this->anoInicialFiltros);
+        $this->view->bairrosSelecionados = $this->getParam('bairro');
+        $this->view->mesSelecionado  = $this->getParam('mes');
     }
 
     public function ocorrenciasIdadeAction()
     {
-        // TODO: Buscar dados
+        $filtros = $this->getAllParams();
+        
+        $modelDadosPlanilha = new Application_Model_DadosPlanilha();
+        $result = $modelDadosPlanilha->getTotalPorIdade($filtros);
+        $arrJson = [];
+        
+        if (!empty($result)) {
+            foreach($result as $item) {
+                $obj = new stdClass();
+                // Nome do bairro
+                $obj->name = $item['nome'];
+                // Valores por dia da semana
+                $idade12_18  = (float) $item[Application_Model_DadosPlanilha::ID_12_18];
+                $idade19_29  = (float) $item[Application_Model_DadosPlanilha::ID_19_29];
+                $idade30_40  = (float) $item[Application_Model_DadosPlanilha::ID_30_40];
+                $idade41_50  = (float) $item[Application_Model_DadosPlanilha::ID_41_50];
+                $idade51_80  = (float) $item[Application_Model_DadosPlanilha::ID_51_80];
+                $obj->data = [
+                    $idade12_18,
+                    $idade19_29,
+                    $idade30_40,
+                    $idade41_50,
+                    $idade51_80
+                ];
+                array_push($arrJson, $obj);
+            }
+            $this->view->jsonData = json_encode($arrJson);
+        } else {
+            $this->view->jsonData = null;
+        }
+        
+        //dados view
+        $this->view->anoSelecionado      = $this->getParam('ano', $this->anoInicialFiltros);
+        $this->view->bairrosSelecionados = $this->getParam('bairro');
+        $this->view->idadeSelecionada    = $this->getParam('idade');
     }
 }

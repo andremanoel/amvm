@@ -5,7 +5,8 @@
   <title>Erro</title>
 </head>
 <body>
-  <h1>Ocorreu um erro</h1>
+<div style="text-align: center; padding-top: 40px;">
+  <h1>Esta página não está disponível</h1>
   <h2><?php echo $this->message ?></h2>
 
   <?php if (isset($this->exception)): ?>
@@ -20,9 +21,11 @@
   </pre>
 
   <h3>Parametros:</h3>
-  <pre><?php echo var_export($this->request->getParams(), true) ?>
+  <pre>
+  	<?php echo var_export($this->request->getParams(), true) ?>
   </pre>
   <?php endif ?>
+</div>
 
 </body>
 </html>

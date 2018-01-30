@@ -1,28 +1,43 @@
-<div class="container">
-	<h1 class="titulo-view">Notícias</h1>
+<div class="row">
+	<div class="col-md-12">
+		<div class="widget widget-fullwidth be-loading">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="tools">
+						<a href="<?php echo $this->baseUrl('/noticias-admin/form');?>"
+							class="btn btn-default">Cadastrar uma nova notícia</a>
+					</div>
+					<div class="title">Notícias</div>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>Titulo</th>
+								<th width="350px">Texto</th>
+								<th>Data de Cadastro</th>
+								<th>Usuário</th>
+								<th>Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+                  		<?php foreach($this->arrNoticias as $key => $noticia):?>
+        					<tr>
+								<td><?php echo $noticia->titulo?></td>
+								<td><?php echo strip_tags(substr($noticia->texto_noticia, 0, 300));?></td>
+								<td><?php echo $noticia->dt_cadastro?></td>
+								<td><?php echo $noticia->nome?></td>
+								<td>
+									<a href="" class="btn btn-primary">Editar</a>
+									<a href="" class="btn btn-danger">Excluir</a>
+								</td>
+							</tr>
+          				<?php endforeach;?>
+                  		</tbody>
+					</table>
+				</div>
+			</div>
 
-	<div class="row">
-		<div class="col-md-10">
-			<table class="table table-bordered table-hover">
-				<thead>
-					<tr>
-						<th>Titulo</th>
-						<th>Texto</th>
-						<th>Data de Cadastro</th>
-						<th>Usuário que Cadastrou</th>
-					</tr>
-				</thead>
-				<tbody>
-          		<?php foreach($this->arrNoticias as $key => $noticia):?>
-        			<tr>
-        				<td><?php echo $noticia->titulo?></td>
-        				<td><?php echo $noticia->texto_noticia?></td>
-        				<td><?php echo $noticia->dt_cadastro?></td>
-        				<td><?php echo $noticia->nome?></td>
-        			</tr>
-          		<?php endforeach;?>
-          		</tbody>
-			</table>
 		</div>
-  	</div>
+	</div>
 </div>

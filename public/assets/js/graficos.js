@@ -177,6 +177,7 @@ $(document).ready(function(){
 		    	categories: [
                   	'JAN',
  		            'FEV',
+ 		            'MAR',
  		            'ABR',
  		            'MAI',
  		            'JUN',
@@ -212,188 +213,47 @@ $(document).ready(function(){
 		});
 	}
 	
-	//grafico-idade-12-18
-//	if( $('#grafico-idade-12-18').length ) {
-//		Highcharts.chart('grafico-idade-12-18', {
-//		    chart: {
-//		        type: 'line'
-//		    },
-//		    title: {
-//		        text: 'Índice de Violência no Maranhão por idade'
-//		    },
-//		    subtitle: {
-//		        text: 'Tipos de ocorrências'
-//		    },
-//		    xAxis: {
-//		        categories: ['Arma de Fogo', 'Arma Branca', 'Espancamento', 'Estrangulamento', 'Lesão Corporal', 'CVLI']
-//		    },
-//		    yAxis: {
-//		        title: {
-//		            text: 'Quantidade'
-//		        }
-//		    },
-//		    plotOptions: {
-//		        line: {
-//		            dataLabels: {
-//		                enabled: true
-//		            },
-//		            enableMouseTracking: false
-//		        }
-//		    },
-//		    series: [{
-//		        name: 'Idade - 12 a 18 anos',
-//		        data: [7, 6, 9, 14, 18, 12]
-//		    }]
-//		});
-//	}
-	
-	//grafico-idade-19-29
-//	if( $('#grafico-idade-19-29').length ) {
-//		Highcharts.chart('grafico-idade-19-29', {
-//		    chart: {
-//		        type: 'line'
-//		    },
-//		    title: {
-//		        text: 'Índice de Violência no Maranhão por idade'
-//		    },
-//		    subtitle: {
-//		        text: 'Tipos de crimes'
-//		    },
-//		    xAxis: {
-//		        categories: ['Arma de Fogo', 'Arma Branca', 'Espancamento', 'Estrangulamento', 'Lesão Corporal', 'CVLI']
-//		    },
-//		    yAxis: {
-//		        title: {
-//		            text: 'Quantidade Crimes'
-//		        }
-//		    },
-//		    plotOptions: {
-//		        line: {
-//		            dataLabels: {
-//		                enabled: true
-//		            },
-//		            enableMouseTracking: false
-//		        }
-//		    },
-//		    series: [{
-//		        name: 'Idade - 19 a 29 anos',
-//		        data: [12, 14, 10, 9, 30, 25]
-//		    }]
-//		});
-//	}
-	
-	//grafico-idade-30-40
-//	if( $('#grafico-idade-30-40').length ) {
-//		Highcharts.chart('grafico-idade-30-40', {
-//		    chart: {
-//		        type: 'line'
-//		    },
-//		    title: {
-//		        text: 'Índice de Violência no Maranhão por idade'
-//		    },
-//		    subtitle: {
-//		        text: 'Tipos de crimes'
-//		    },
-//		    xAxis: {
-//		        categories: ['Arma de Fogo', 'Arma Branca', 'Espancamento', 'Estrangulamento', 'Lesão Corporal', 'CVLI']
-//		    },
-//		    yAxis: {
-//		        title: {
-//		            text: 'Quantidade Crimes'
-//		        }
-//		    },
-//		    plotOptions: {
-//		        line: {
-//		            dataLabels: {
-//		                enabled: true
-//		            },
-//		            enableMouseTracking: false
-//		        }
-//		    },
-//		    series: [{
-//		        name: 'Idade - 30 a 40 anos',
-//		        data: [8, 5, 13, 17, 20, 18]
-//		    }]
-//		});
-//	}
-	
-	//grafico-idade-41-50
-//	if( $('#grafico-idade-41-50').length ) {
-//		Highcharts.chart('grafico-idade-41-50', {
-//		    chart: {
-//		        type: 'line'
-//		    },
-//		    title: {
-//		        text: 'Índice de Violência no Maranhão por idade'
-//		    },
-//		    subtitle: {
-//		        text: 'Tipos de crimes'
-//		    },
-//		    xAxis: {
-//		        categories: ['Arma de Fogo', 'Arma Branca', 'Espancamento', 'Estrangulamento', 'Lesão Corporal', 'CVLI']
-//		    },
-//		    yAxis: {
-//		        title: {
-//		            text: 'Quantidade Crimes'
-//		        }
-//		    },
-//		    plotOptions: {
-//		        line: {
-//		            dataLabels: {
-//		                enabled: true
-//		            },
-//		            enableMouseTracking: false
-//		        }
-//		    },
-//		    series: [{
-//		        name: 'Idade - 41 a 50 anos',
-//		        data: [21, 12, 18, 17, 13, 25]
-//		    }]
-//		});
-//	}
 	
 	//grafico-mulher-idade
-//	if( $('#grafico-mulher-idade').length ) {
-//		Highcharts.chart('grafico-mulher-idade', {
-//		    chart: {
-//		        type: 'line'
-//		    },
-//		    title: {
-//		        text: 'Índice de Violência no Maranhão por idade da mulher'
-//		    },
-//		    subtitle: {
-//		        text: 'Tipos de crimes'
-//		    },
-//		    xAxis: {
-//		        categories: ['Arma de Fogo', 'Arma Branca', 'Espancamento', 'Estrangulamento', 'Lesão Corporal', 'CVLI']
-//		    },
-//		    yAxis: {
-//		        title: {
-//		            text: 'Quantidade Crimes'
-//		        }
-//		    },
-//		    plotOptions: {
-//		        line: {
-//		            dataLabels: {
-//		                enabled: true
-//		            },
-//		            enableMouseTracking: false
-//		        }
-//		    },
-//		    series: [{
-//		        name: 'Idade - 12 a 18 anos',
-//		        data: [7, 6, 9, 14, 18, 12]
-//		    }, {
-//		        name: 'Idade - 19 a 29 anos',
-//		        data: [12, 14, 10, 9, 30, 25]
-//		    }, {
-//		        name: 'Idade - 30 a 40 anos',
-//		        data: [8, 5, 13, 17, 20, 18]
-//		    }, {
-//		        name: 'Idade - 41 a 50 anos',
-//		        data: [21, 12, 18, 17, 13, 25]
-//		    }]
-//		});
-//	}
+	if( $('#grafico-mulher-idade').length ) {
+		Highcharts.chart('grafico-mulher-idade', {
+		    chart: {
+		        type: 'column'
+		    },
+		    title: {
+		        text: 'Ocorrências por Idade'
+		    },
+		    xAxis: {
+		        categories: [
+                     '12 a 18', 
+                     '19 a 29', 
+                     '30 a 40', 
+                     '41 a 50', 
+                     '51 a 80' 
+                 ]
+		    },
+		    yAxis: {
+		        min: 0,
+		        title: {
+		            text: 'Quantidade'
+		        }
+		    },
+		    tooltip: {
+		        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+		        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		            '<td style="padding:0"><b>{point.y}</b></td></tr>',
+		        footerFormat: '</table>',
+		        shared: true,
+		        useHTML: true
+		    },
+		    plotOptions: {
+		        column: {
+		            pointPadding: 0.2,
+		            borderWidth: 0
+		        }
+		    },
+		    series: dataGrafico
+		});
+	}
 	
 });
