@@ -1,13 +1,88 @@
+<style>
+.embed-container {
+	position: relative;
+	padding-bottom: 80%;
+	height: 0;
+	max-width: 100%;
+}
+
+.embed-container iframe, .embed-container object, .embed-container iframe
+	{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+small {
+	position: absolute;
+	z-index: 40;
+	bottom: 0;
+	margin-bottom: -15px;
+}
+</style>
 <div class="main-content container">
 	<div class="row">
 		<div class="col-md-12">
 			<h1 class="titulo-view">Agrupamentos por Bairros e Conselhos</h1>
 		</div>
 	</div>
-	
+
 	<div class="row">
-	   <div class="col-md-12">
-	       <h3>Finalizar construção</h3>
-       </div>
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					
+					<!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Agrupamento por Bairros</a>
+                	</li>
+                    <li role="presentation">
+                    	<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                    		Agrupamento por Conselhos
+                		</a>
+            		</li>
+                  </ul>
+                
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                    	<p>
+    						Atualmente a divisão dos bairros é realizada pelo governo do estado do Maranhão.
+    					</p>
+						<div class="embed-container">
+    						
+    						<small><a href="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=f2f1c631e56b4c88bf5e52e6762b568b&amp;extent=-44.5562,-2.847,-43.713,-2.3778&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"
+    							style="color: #0000FF; text-align: left" target="_blank">Visualizar
+    								mapa grande</a></small><br>
+    						
+    						<iframe width="400" height="300" frameborder="0" scrolling="no"
+    							marginheight="0" marginwidth="0" title="LOCALIZAÇÃO DOS BAIRROS"
+    							src="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=f2f1c631e56b4c88bf5e52e6762b568b&amp;extent=-44.5562,-2.847,-43.713,-2.3778&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+					
+						</div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                    	<p>
+    						Atualmente a divisão dos conselhos é realizada pelo governo do estado do Maranhão.
+    						Os conselhos agrupam diversos bairros.
+    					</p>
+						<div class="embed-container">
+    						
+    						<small><a href="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=f2f1c631e56b4c88bf5e52e6762b568b&amp;extent=-44.5562,-2.847,-43.713,-2.3778&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"
+    							style="color: #0000FF; text-align: left" target="_blank">Visualizar
+    								mapa grande</a></small><br>
+    						
+<!--     						<iframe width="400" height="300" frameborder="0" scrolling="no" -->
+<!--     							marginheight="0" marginwidth="0" title="LOCALIZAÇÃO DOS BAIRROS" -->
+<!--     							src="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=f2f1c631e56b4c88bf5e52e6762b568b&amp;extent=-44.5562,-2.847,-43.713,-2.3778&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe> -->
+						</div>
+                    </div>
+                  </div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
