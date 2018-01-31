@@ -1,8 +1,6 @@
 <?php
 
-namespace Core\Util;
-
-class UsuarioUtil
+class Core_Util_Usuario
 {
     protected $instanceAuth = null;
     
@@ -22,5 +20,10 @@ class UsuarioUtil
     public function getInstanceAuth()
     {
         return $this->instanceAuth;
+    }
+    
+    public static function getUsuarioLogado()
+    {
+        return Zend_Auth::getInstance()->getIdentity();
     }
 }

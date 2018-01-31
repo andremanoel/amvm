@@ -103,7 +103,22 @@
         </div>
       </div>
       <div class="be-content">
-        <div class="main-content container-fluid">    
+        <div class="main-content container-fluid"> 
+        	<?php
+        	   if (!empty($this->messages)) {
+        	       foreach($this->messages as $mensagem): 
+	       ?>
+	       		<div class="alert alert-<?php echo $mensagem->tipo?>" role="alert">
+	       			<?php echo $mensagem->texto;?>
+	       			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    	<span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+	       <?php 
+        	       endforeach;
+        	       Core_Controller_Base::apagarMensagens();
+        	   }
+    	   ?>   
             <?php echo $this->layout()->content; ?>
         </div>
       </div>

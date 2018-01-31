@@ -26,7 +26,6 @@ class Core_Controller_Base extends Zend_Controller_Action
         $stdMensagem = new stdClass();
         $stdMensagem->texto = $mensagem;
         $stdMensagem->tipo  = $tipo;
-        $stdMensagem->icone = $this->iconeMensagem($tipo);
         
         array_push($arrMensagens, $stdMensagem);
         $this->sessaoMensagem->mensagens = $arrMensagens;
@@ -36,27 +35,6 @@ class Core_Controller_Base extends Zend_Controller_Action
     public function postDispatch()
     {
         $this->view->messages = $this->sessaoMensagem->mensagens;
-    }
-    
-    public function iconeMensagem($tipo)
-    {
-        $icone = 'mdi-check';
-        switch ($tipo) {
-        	case 'primary':
-        	    $icone = 'mdi-info-outline';
-        	break;
-        	
-        	case 'warning':
-        	    $icone = 'mdi-alert-triangle';
-    	    break;
-    	    
-    	    case 'danger':
-    	        $icone = 'mdi-close-circle-o';
-	        break;
-        }
-        
-        return $icone;
-        
     }
     
     static function apagarMensagens()

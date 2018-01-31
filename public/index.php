@@ -18,6 +18,7 @@ defined('APPLICATION_ENV')
     || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 
 require_once realpath(APPLICATION_PATH . '/../vendor/autoload.php');
+require_once realpath(APPLICATION_PATH . '/../library/funcoes.php');
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
