@@ -32,17 +32,17 @@ small {
 
 	<div class="row">
 		<div class="col-md-12">
-			<form class="form-inline" action="<?php echo $this->url()?>" method="post">
-    			<div class="form-group">
-            		<label for="crimes">Selecione o dia da semana para visualizar: </label>
+			<form class="form-inline" action="<?php echo $this->url()?>"
+				method="post">
+				<div class="form-group">
+					<label for="crimes">Selecione o dia da semana para visualizar: </label>
                     <?php echo $this->formSelect('diaSemana', $this->diaSemanaSelecionado, array('class'=>'form-control'), $this->diasSemana);?>
                     <?php echo $this->formSubmit('enviar', 'Selecionar', array('class'=>'btn btn-primary btn-lg'));?>
                 </div>
-            </form>
+			</form>
             <?php if($this->diaSemanaSelecionado === Application_Model_DadosPlanilha::DOMINGO):?>
 			<div class="embed-container">
-				<small>
-					<a
+				<small> <a
 					href="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=cd452d94da5242f290fce3d7924010b1&amp;extent=-44.528,-2.807,-43.6848,-2.3378&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"
 					style="color: #0000FF; text-align: left" target="_blank">
 						Visualizar mapa grande</a></small><br>
@@ -54,21 +54,81 @@ small {
 			<?php endif;?>
 			
 			<?php if($this->diaSemanaSelecionado === Application_Model_DadosPlanilha::SEGUNDA):?>
+				<div class="embed-container">
+				<small><a
+					href="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=3998ebeea1a344ecb8bbc221358acab0&amp;extent=-44.4559,-2.7117,-44.0343,-2.4771&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"
+					style="color: #0000FF; text-align: left" target="_blank">Visualizar
+						mapa grande</a></small><br>
+				<iframe width="400" height="300" frameborder="0" scrolling="no"
+					marginheight="0" marginwidth="0"
+					title="OCORRÊNCIA DE CRIMES NÃO LETAIS POR DIA DA SEMANA (SEGUNDA) 2017"
+					src="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=3998ebeea1a344ecb8bbc221358acab0&amp;extent=-44.4559,-2.7117,-44.0343,-2.4771&home=true&zoom=true&previewImage=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+			</div>
 			<?php endif;?>
 			
 			<?php if($this->diaSemanaSelecionado === Application_Model_DadosPlanilha::TERCA):?>
+			<div class="embed-container">
+				<small><a
+					href="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=49ec8e2ac5f84bbf83172a53c40aaec3&amp;extent=-44.4817,-2.7255,-44.0601,-2.4909&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"
+					style="color: #0000FF; text-align: left" target="_blank">Visualizar
+						mapa grande</a></small><br>
+				<iframe width="500" height="400" frameborder="0" scrolling="no"
+					marginheight="0" marginwidth="0"
+					title="OCORRÊNCIA DE CRIMES NÃO LETAIS FEMININO POR DIA DA SEMANA (TERÇA-FEIRA)"
+					src="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=49ec8e2ac5f84bbf83172a53c40aaec3&amp;extent=-44.4817,-2.7255,-44.0601,-2.4909&home=true&zoom=true&previewImage=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+			</div>
 			<?php endif;?>
 			
 			<?php if($this->diaSemanaSelecionado === Application_Model_DadosPlanilha::QUARTA):?>
+			<div class="embed-container">
+				<small><a
+					href="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=22aa1600c039469b8945fab5c5812bee&amp;extent=-44.4592,-2.6868,-44.0376,-2.4522&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"
+					style="color: #0000FF; text-align: left" target="_blank">Visualizar
+						mapa grande</a></small><br>
+				<iframe width="400" height="300" frameborder="0" scrolling="no"
+					marginheight="0" marginwidth="0"
+					title="OCORRÊNCIA DE CRIMES NÃO LETAIS FEMININO POR DIA DA SEMANA (QUARTA-FEIRA)"
+					src="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=22aa1600c039469b8945fab5c5812bee&amp;extent=-44.4592,-2.6868,-44.0376,-2.4522&home=true&zoom=true&previewImage=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+			</div>
 			<?php endif;?>
 			
 			<?php if($this->diaSemanaSelecionado === Application_Model_DadosPlanilha::QUINTA):?>
+			<div class="embed-container">
+				<small><a
+					href="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=ff78dc359831499e8433146b6cce6334&amp;extent=-44.4697,-2.7011,-44.0481,-2.4665&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"
+					style="color: #0000FF; text-align: left" target="_blank">Visualizar
+						mapa grande</a></small><br>
+				<iframe width="400" height="300" frameborder="0" scrolling="no"
+					marginheight="0" marginwidth="0"
+					title="OCORRÊNCIA DE CRIMES NÃO LETAIS FEMININO POR DIA DA SEMANA (QUINTA-FEIRA)"
+					src="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=ff78dc359831499e8433146b6cce6334&amp;extent=-44.4697,-2.7011,-44.0481,-2.4665&home=true&zoom=true&previewImage=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+			</div>
 			<?php endif;?>
 			
 			<?php if($this->diaSemanaSelecionado === Application_Model_DadosPlanilha::SEXTA):?>
+			<div class="embed-container">
+				<small><a
+					href="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=baa9f493f74f4971abcc7d1a75d0d6b7&amp;extent=-44.6997,-2.8534,-43.8565,-2.3842&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"
+					style="color: #0000FF; text-align: left" target="_blank">Visualizar
+						mapa grande</a></small><br>
+				<iframe width="400" height="300" frameborder="0" scrolling="no"
+					marginheight="0" marginwidth="0"
+					title="OCORRÊNCIA DE CRIMES NÃO LETAIS FEMININO POR DIA DA SEMANA (SEXTA-FEIRA)"
+					src="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=baa9f493f74f4971abcc7d1a75d0d6b7&amp;extent=-44.6997,-2.8534,-43.8565,-2.3842&home=true&zoom=true&previewImage=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+			</div>
 			<?php endif;?>
 			
 			<?php if($this->diaSemanaSelecionado === Application_Model_DadosPlanilha::SABADO):?>
+			<div class="embed-container">
+				<small><a
+					href="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=8557e7d6b01c4d319c74767bb8fac043&amp;extent=-44.5607,-2.8341,-43.7175,-2.3649&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"
+					style="color: #0000FF; text-align: left" target="_blank">Visualizar
+						mapa grande</a></small><br>
+				<iframe width="400" height="300" frameborder="0" scrolling="no"
+					marginheight="0" marginwidth="0"
+					title="OCORRÊNCIA DE CRIMES NÃO LETAIS POR DIA DA SEMANA (SABADO) 2017"
+					src="//imesc.maps.arcgis.com/apps/Embed/index.html?webmap=8557e7d6b01c4d319c74767bb8fac043&amp;extent=-44.5607,-2.8341,-43.7175,-2.3649&home=true&zoom=true&previewImage=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+			</div>
 			<?php endif;?>
 			
 		</div>
