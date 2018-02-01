@@ -9,7 +9,7 @@
 		<div class="col-md-6">
         	<h3 class="subtitle-contato">Para sugestões, dúvidas ou outros assuntos nos envie uma mensagem preenchendo o formulário abaixo.</h3>
         
-			<form action="/contato" method="post">
+			<form action="<?php echo $this->url(); ?>" method="post">
 				<div class="form-group">
 					<input type="text" class="form-control" id="nome" placeholder="Seu nome" name="nome" />
 				</div>
@@ -23,7 +23,7 @@
 				</div>
 				
 				<div class="form-group">
-					<textarea class="form-control" id="mensagem" placeholder="Digite a mensagem" name="mensagem" ></textarea>
+					<textarea class="form-control" id="mensagem" placeholder="Digite a mensagem" name="mensagem" row="10" ></textarea>
 				</div>
 				
 				<button type="submit" class="btn btn-primary btn-lg btn-block">ENVIAR</button>

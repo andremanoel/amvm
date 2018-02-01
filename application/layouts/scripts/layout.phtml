@@ -80,6 +80,10 @@
                 		</a>
                         <ul role="menu" class="dropdown-menu">
                           <li><a href="<?php echo $this->baseUrl('/mapa/cvnli');?>">Total de Ocorrências</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/mapa/dia-semana');?>">Ocorrências por Dia da Semana</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/mapa/horario');?>">Ocorrências por Horário</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/mapa/horario');?>">Ocorrências por Mês</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/mapa/horario');?>">Ocorrências por Idade</a></li>
                         </ul>
                     </li>
                     <li><a href="/noticias">Notícias</a></li>
@@ -108,6 +112,22 @@
         </div>
     </div>
 </div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p>
+            		Todos os direitos Reservados &copy; - <?php echo date('Y');?>
+            	</p>
+			</div>
+			<div class="col-md-6">
+				<a href="<?php echo $this->baseUrl('/gestor');?>">
+            		Acessar a área administrativa
+            	</a>
+			</div>
+		</div>
+	</div>
+</footer>
 
 <?php
 echo $this->layout()->scriptTags;
