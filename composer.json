@@ -2,8 +2,8 @@
   "name" : "amvm",
   "version" : "1.0.0",
   "require" : {
-    "phpoffice/phpexcel" : "1.8.1",
-    "zendframework/zendframework1" : "1.12.20"
+    "zendframework/zendframework1" : "1.12.20",
+    "phpoffice/phpspreadsheet" : "1.2.1"
   },
   "repositories" : [ {
     "type" : "composer",

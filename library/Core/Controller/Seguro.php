@@ -24,6 +24,9 @@ class Core_Controller_Seguro extends Core_Controller_Base
     {
         parent::postDispatch();
         $usuarioLogado = Zend_Auth::getInstance()->getIdentity();
+        if (empty($usuarioLogado)) {
+            $this->redirect('/login');
+        }
         $this->view->usuarioLogado = $usuarioLogado;
     }
 

@@ -6,6 +6,11 @@ body{
 	padding: 0px;
 }
 
+p {
+	font-size: 15px;
+	line-height: 24px;
+}
+
 a {
 	color: #7b405f;
 }
@@ -24,6 +29,11 @@ a:hover {
 /* menus */
 .be-top-header .navbar-nav>li.open>a, .be-top-header .navbar-nav>li.open>a:active, .be-top-header .navbar-nav>li.open>a:focus, .be-top-header .navbar-nav>li.open>a:hover {
     /*color: #7b405e;*/
+    color: #fff;
+}
+
+.be-top-header .navbar-nav>li.dropdown .dropdown-menu>li>a:hover {
+    background-color: #a54985;
     color: #fff;
 }
 

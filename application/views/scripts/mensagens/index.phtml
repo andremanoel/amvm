@@ -1,0 +1,43 @@
+<div class="row">
+	<div class="col-md-12">
+		<div
+			class="panel panel-default panel-border-color panel-border-color-primary">
+			<div class="panel-heading panel-heading-divider">
+				Mensagens <span class="panel-subtitle">Enviadas através da página de
+					contatos do painel</span>
+			</div>
+			<div class="panel-body">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>E-mail</th>
+							<th>Assunto</th>
+							<th>Envio</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+                  		<?php foreach($this->arrMensagens as $key => $mensagem): ?>
+            			<tr>
+							<td><?php echo $mensagem->nome?></td>
+							<td><?php echo $mensagem->email?></td>
+							<td><?php echo $mensagem->assunto?></td>
+							<td><?php echo $mensagem->data_cadastro?></td>
+							<td>
+								<a href="<?php echo $this->baseUrl('/mensagens/form/id_contato/' . $mensagem->id_contato)?>" class="btn btn-primary">
+									Editar
+								</a>
+								
+								<a href="<?php echo $this->baseUrl('/mensagens/excluir/id_contato/' . $mensagem->id_contato)?>" class="btn btn-danger">
+									Excluir
+								</a>
+							</td>
+						</tr>
+                  		<?php endforeach;?>
+                  		</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -24,6 +24,7 @@
         ->appendStylesheet($this->baseUrl('assets/lib/datetimepicker/css/bootstrap-datetimepicker.min.css'))
         ->appendStylesheet($this->baseUrl('assets/lib/daterangepicker/css/daterangepicker.css'))
         ->appendStylesheet($this->baseUrl('assets/lib/select2/css/select2.min.css'))
+        ->appendStylesheet($this->baseUrl('assets/js/chosen_v1.8.3/chosen.min.css'))
         ->appendStylesheet($this->baseUrl('assets/lib/bootstrap-slider/css/bootstrap-slider.css'))
         ->prependStylesheet($this->baseUrl('assets/css/amvm.css'))
         ->prependStylesheet($this->baseUrl('assets/css/style.css'))
@@ -38,8 +39,11 @@
         ->appendFile($this->baseUrl('assets/lib/daterangepicker/js/daterangepicker.js'))
         ->appendFile($this->baseUrl('assets/lib/select2/js/select2.min.js'))
         ->appendFile($this->baseUrl('assets/lib/select2/js/select2.full.min.js'))
+        ->appendFile($this->baseUrl('assets/js/chosen_v1.8.3/chosen.jquery.min.js'))
+        ->appendFile($this->baseUrl('assets/js/chosen_v1.8.3/chosen.proto.min.js'))
         ->appendFile($this->baseUrl('assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js'))
-        ->appendFile($this->baseUrl('assets/js/main.min.js'));
+        ->appendFile($this->baseUrl('assets/js/main.min.js'))
+        ->appendFile($this->baseUrl('assets/js/funcoes.js'));
     ?>
     
     <!--[if lt IE 9]>
@@ -64,6 +68,39 @@
                 <ul class="nav navbar-nav" style="float: right;">
                     <li><a href="/">Home</a></li>
                     <li class="dropdown">
+                    	<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Sobre <span class="mdi mdi-caret-down"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                          <li><a href="<?php echo $this->baseUrl('/projeto');?>">O Projeto</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/equipe');?>">Equipe</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                    	<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">
+                    		Mapas <span class="mdi mdi-caret-down"></span>
+                		</a>
+                        <ul role="menu" class="dropdown-menu">
+                        	<!-- Mapas por horário e bairro -->
+                        	<li><a href="<?php echo $this->baseUrl('/mapas/cvli-hora-1');?>">CVLI Por Bairros - 00:00 às 06:00</a></li>
+                        	<li><a href="<?php echo $this->baseUrl('/mapas/cvli-hora-2');?>">CVLI Por Bairros - 06:00 as 12:00</a></li>
+                        	<li><a href="<?php echo $this->baseUrl('/mapas/cvli-hora-3');?>">CVLI Por Bairros - 12:00 as 18:00</a></li>
+                        	<li><a href="<?php echo $this->baseUrl('/mapas/cvli-hora-4');?>">CVLI Por Bairros - 18:00 as 24:00</a></li>
+                        	
+                        	<!-- Mapas por pontos e densidade -->
+                        	<li><a href="<?php echo $this->baseUrl('/mapas/densidade-ocorrencias-2014');?>">Densidade de Ocorrência de Crimes Letais no Ano de 2014</a></li>
+                        	<li><a href="<?php echo $this->baseUrl('/mapas/densidade-ocorrencias-2015');?>">Densidade de Ocorrência de Crimes Letais no Ano de 2015</a></li>
+                        	<li><a href="<?php echo $this->baseUrl('/mapas/densidade-ocorrencias-2016');?>">Densidade de Ocorrência de Crimes Letais no Ano de 2016</a></li>
+                        	<li><a href="<?php echo $this->baseUrl('/mapas/densidade-ocorrencias-2017');?>">Densidade de Ocorrência de Crimes Letais no Ano de 2017</a></li>
+                        	
+                        	
+                        	
+                          <!-- 
+                          <li><a href="<?php echo $this->baseUrl('/mapa/cvnli');?>">Total de Ocorrências</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/mapa/dia-semana');?>">Ocorrências por Dia da Semana</a></li>
+                          <li><a href="<?php echo $this->baseUrl('/mapa/horario');?>">Ocorrências por Horário</a></li>
+                           -->
+                        </ul>
+                    </li>
+                    <li class="dropdown">
                     	<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Indicadores <span class="mdi mdi-caret-down"></span></a>
                         <ul role="menu" class="dropdown-menu">
                           <li><a href="<?php echo $this->baseUrl('/indicadores/bairros');?>">Bairros</a></li>
@@ -74,22 +111,9 @@
                           <li><a href="<?php echo $this->baseUrl('/indicadores/ocorrencias-idade');?>">Ocorrências por Idade</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                    	<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">
-                    		Mapas <span class="mdi mdi-caret-down"></span>
-                		</a>
-                        <ul role="menu" class="dropdown-menu">
-                          <li><a href="<?php echo $this->baseUrl('/mapa/cvnli');?>">Total de Ocorrências</a></li>
-                          <li><a href="<?php echo $this->baseUrl('/mapa/dia-semana');?>">Ocorrências por Dia da Semana</a></li>
-                          <li><a href="<?php echo $this->baseUrl('/mapa/horario');?>">Ocorrências por Horário</a></li>
-                          <!-- <li><a href="<?php echo $this->baseUrl('/mapa/horario');?>">Ocorrências por Mês</a></li> 
-                          <li><a href="<?php echo $this->baseUrl('/mapa/horario');?>">Ocorrências por Idade</a></li>-->
-                        </ul>
-                    </li>
+                    
                     <li><a href="/noticias">Notícias</a></li>
-                    <li><a href="/equipe">Equipe</a></li>
                     <li><a href="/contato">Contato</a></li>
-<!--                     <li><a href="/gestor">Gestão</a></li> -->
                 </ul>
             </div>
         </div>

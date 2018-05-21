@@ -31,7 +31,9 @@
         <?php if (!empty($this->jsonData)):?>
         	<div id="grafico-quantidade-dias-semana" class="grafico-amvm shadow"></div>
         <?php else:?>
-        	<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>
+        	<?php if($this->isPost):?>
+        		<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>
+    		<?php endif;?>
         <?php endif;?>
     </div>
 </div>

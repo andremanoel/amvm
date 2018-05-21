@@ -1,9 +1,13 @@
 <?php
 
 //function debug
-function a($var) {
+function a($var, $exit = true) {
     echo "<pre>";
-    var_dump($var); exit;
+    var_dump($var); 
+    if ($exit) {
+        exit;
+    }
+    echo "</pre>";
 }
 
 // Define path to application directory

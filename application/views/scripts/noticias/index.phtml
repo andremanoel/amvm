@@ -10,7 +10,11 @@
       	<?php foreach($this->arrNoticias as $key => $noticia):?>
         	<div class="col-sm-12">
     			<div class="panel panel-default">
-    				<div class="panel-heading panel-heading-divider"><?php echo $noticia->titulo?></div>
+    				<div class="panel-heading panel-heading-divider">
+    					<a href="<?php echo $this->baseUrl('/noticias/visualizar/id/' . $noticia->id_noticia);?>">
+    						<?php echo $noticia->titulo?>
+    					</a>
+					</div>
     				<div class="panel-body">
     					<p>
                           <?php echo limitarTexto($noticia->texto_noticia, 300)?>

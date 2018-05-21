@@ -4,6 +4,8 @@ class IndicadoresController extends Zend_Controller_Action
 {
 
     public $anoInicialFiltros;
+    public $anoSelecionado;
+    public $isPost = false;    
     
     public function init()
     {
@@ -18,7 +20,8 @@ class IndicadoresController extends Zend_Controller_Action
         $filtros = array();
         
         // anos
-        $anoAtual = date('Y');
+        $anoInicial = 2015;
+        $anoAtual = date('Y') - 1;
         $this->anoInicialFiltros = $anoInicial; // Sempre buscando de um ano pra trás do atual
         $anoInicial = 2015;
         $arrInicialAnos = range($anoInicial, $anoAtual);
@@ -98,6 +101,11 @@ class IndicadoresController extends Zend_Controller_Action
         
         // Itens Selecionados
         $this->view->filtros = $filtros;
+        
+        if ($this->_request->isPost()) {
+            $this->isPost = true;
+        }
+        $this->view->isPost = $this->isPost;
     }
 
     public function indexAction()
@@ -178,10 +186,19 @@ class IndicadoresController extends Zend_Controller_Action
                 // Nome do bairro
                 $obj->name = $item['nome'];
                 // Valores por dia da semana 
-                $hora06    = (float) $item[Application_Model_DadosPlanilha::HORA_0_6];
-                $hora612   = (float) $item[Application_Model_DadosPlanilha::HORA_6_12];
-                $hora1218  = (float) $item[Application_Model_DadosPlanilha::HORA_12_18];
-                $hora1824  = (float) $item[Application_Model_DadosPlanilha::HORA_18_24];
+                $hora06 = $hora612 = $hora1218 = $hora1824 = 0;
+                if(isset($item[Application_Model_DadosPlanilha::HORA_0_6]))
+                    $hora06    = (float) $item[Application_Model_DadosPlanilha::HORA_0_6];
+                
+                if(isset($item[Application_Model_DadosPlanilha::HORA_6_12]))
+                    $hora612   = (float) $item[Application_Model_DadosPlanilha::HORA_6_12];
+                
+                if(isset($item[Application_Model_DadosPlanilha::HORA_12_18]))
+                    $hora1218  = (float) $item[Application_Model_DadosPlanilha::HORA_12_18];
+                
+                if(isset($item[Application_Model_DadosPlanilha::HORA_18_24]))
+                    $hora1824  = (float) $item[Application_Model_DadosPlanilha::HORA_18_24];
+                
                 $obj->data = [
                     $hora06, 
                     $hora612, 
@@ -291,5 +308,10 @@ class IndicadoresController extends Zend_Controller_Action
         $this->view->anoSelecionado      = $this->getParam('ano', $this->anoInicialFiltros);
         $this->view->bairrosSelecionados = $this->getParam('bairro');
         $this->view->idadeSelecionada    = $this->getParam('idade');
+    }
+    
+    public function testeAction() 
+    {
+        
     }
 }

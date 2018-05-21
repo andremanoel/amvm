@@ -2,3 +2,7 @@
 	margin-top: 7px;
 	margin-left: 50px;
 }
+
+.panel-border-color-primary {
+	border-top-color: #7b405f; 
+}

@@ -19,7 +19,7 @@
             
             <div class="form-group">
         		<label for="crimes">Bairro:</label> <br />
-                <?php echo $this->formSelect('bairro', $this->bairrosSelecionados, array('class'=>'form-control', 'multiple'=>'multiple'), $this->filtros['bairros']);?>
+                <?php echo $this->formSelect('bairro', $this->bairrosSelecionados, array('class'=>'form-control chosen-select', 'multiple'=>'multiple'), $this->filtros['bairros']);?>
             </div>
             
             <br /><br />
@@ -29,10 +29,19 @@
                 <?php echo $this->formSubmit('filtrar', 'Filtrar dados', array('class'=>'btn btn-primary btn-lg'));?>
             </p>
         </form>
+        
+<!--         <div id="grafico1linha" class="grafico-amvm shadow"></div> -->
+<!--         <div id="graficoareasimples" class="grafico-amvm shadow"></div> -->
+<!--         <div id="graficopizzasimples" class="grafico-amvm shadow"></div> -->
+        
+        
+        
         <?php if (!empty($this->jsonData)):?>
         	<div id="grafico-mais-ocorrencias" class="grafico-amvm shadow"></div>
         <?php else:?>
-        	<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>
+        	<?php if($this->isPost):?>
+        		<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>
+        	<?php endif;?>
         <?php endif;?>
     </div>
 </div>   
