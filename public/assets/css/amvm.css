@@ -285,3 +285,15 @@ footer {
 	padding: 20px;
 	text-align: center;
 }
+
+.panel-heading {
+	position: relative;
+}
+
+.form-filtros-mapa {
+	float: right;
+	text-align: right;
+	top: 30px;
+	right: 0px;
+	position: absolute;
+}
