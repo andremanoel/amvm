@@ -5,24 +5,24 @@
     </div>
     
     <div class="panel-body">
-        <form class="form-inline text-center" action="<?php echo $this->url()?>" method="post">
-            <div class="form-group">
-        		<label for="anos">Ano</label>
-                <?php echo $this->formSelect('ano', $this->anoSelecionado, array('class'=>'form-control'), $this->filtros['anos']);?>
+        <form class="form-inline text-center form-filtros" action="<?php echo $this->url()?>" method="post">
+        	<div class="row">
+                <div class="col-md-4">
+            		<label for="anos">Ano</label>
+                    <?php echo $this->formSelect('ano', $this->anoSelecionado, array(), $this->filtros['anos']);?>
+                </div>
+                
+                <div class="col-md-4">
+            		<label for="crimes">Horário:</label> <br />
+                    <?php echo $this->formSelect('horario', $this->horarioSelecionado, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os horários'), $this->filtros['horarios']);?>
+                </div>
+                
+                <div class="col-md-4">
+            		<label for="crimes">Bairro:</label> <br />
+                    <?php echo $this->formSelect('bairro', $this->bairrosSelecionados, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os bairros'), $this->filtros['bairros']);?>
+                </div>
             </div>
-            
-            <div class="form-group">
-        		<label for="crimes">Horário:</label> <br />
-                <?php echo $this->formSelect('horario', $this->horarioSelecionado, array('class'=>'form-control', 'multiple'=>'multiple'), $this->filtros['horarios']);?>
-            </div>
-            
-            <div class="form-group">
-        		<label for="crimes">Bairro:</label> <br />
-                <?php echo $this->formSelect('bairro', $this->bairrosSelecionados, array('class'=>'form-control', 'multiple'=>'multiple'), $this->filtros['bairros']);?>
-            </div>
-            
-            <br /><br />
-            <p class="text-center">
+            <p class="text-center botoes-form-filtros">
                 <?php echo $this->formReset('limpar', 'Limpar filtros', array('class'=>'btn btn-default btn-lg'))?>
                 <?php echo $this->formSubmit('filtrar', 'Filtrar dados', array('class'=>'btn btn-primary btn-lg'));?>
             </p>
@@ -30,6 +30,7 @@
         
         <?php if (!empty($this->jsonData)):?>
             <div id="grafico-horarios-dia" class="grafico-amvm shadow"></div>
+<!--             <div id="graficopizzasimples" class="grafico-amvm shadow"></div> -->
         <?php else:?>
         	<?php if($this->isPost):?>
         		<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>

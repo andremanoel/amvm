@@ -299,15 +299,21 @@ footer {
 }
 
 .form-filtros label {
-	display: inline-block;
+	display: block;
 	margin-left: 10px;
 }
 
 .form-filtros select{
 	padding: 10px;
-	min-width: 100px;
+	width: 100%;
 	height: 30px;
-	
+	clear: both;
+}
+
+.botoes-form-filtros {
+	display: block;
+	width: 100%;
+	margin-top: 20px;
 }
 
 .observacao-graficos {

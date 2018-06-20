@@ -26,7 +26,7 @@ class IndicadoresController extends Zend_Controller_Action
         // anos
         $anoInicial = 2015;
         $anoAtual = date('Y') - 1;
-        $this->anoInicialFiltros = $anoInicial; // Sempre buscando de um ano pra trás do atual
+        $this->anoInicialFiltros = $anoAtual; // Sempre buscando de um ano pra trás do atual
         $anoInicial = 2015;
         $arrInicialAnos = range($anoInicial, $anoAtual);
         $arrAnos = [];
@@ -127,7 +127,6 @@ class IndicadoresController extends Zend_Controller_Action
             $filtros['crime'] = Application_Model_DadosPlanilha::CVNLI;
         }
         
-        
         $modelDadosPlanilha = new Application_Model_DadosPlanilha();
         $result = $modelDadosPlanilha->getTotalCrimesPorBairro($filtros);
         $arrJson =  [];
@@ -169,7 +168,6 @@ class IndicadoresController extends Zend_Controller_Action
     public function diasSemanaAction()
     {
         $filtros = $this->getAllParams();
-        
         $modelDadosPlanilha = new Application_Model_DadosPlanilha();
         $result = $modelDadosPlanilha->getTotalDiaSemana($filtros);
         $arrJson = [];
@@ -180,13 +178,34 @@ class IndicadoresController extends Zend_Controller_Action
                 // Nome do bairro
                 $obj->name = $item['nome'];
                 // Valores por dia da semana 
-                $domingo   = (float) $item[Application_Model_DadosPlanilha::DOMINGO];
-                $segunda   = (float) $item[Application_Model_DadosPlanilha::SEGUNDA];
-                $terca     = (float) $item[Application_Model_DadosPlanilha::TERCA];
-                $quarta    = (float) $item[Application_Model_DadosPlanilha::QUARTA];
-                $quinta    = (float) $item[Application_Model_DadosPlanilha::QUINTA];
-                $sexta     = (float) $item[Application_Model_DadosPlanilha::SEXTA];
-                $sabado    = (float) $item[Application_Model_DadosPlanilha::SABADO];
+                $domingo = 0;
+                if (isset($item[Application_Model_DadosPlanilha::DOMINGO]))
+                    $domingo   = (float) $item[Application_Model_DadosPlanilha::DOMINGO];
+                
+                $segunda = 0;
+                if (isset($item[Application_Model_DadosPlanilha::SEGUNDA])) 
+                    $segunda   = (float) $item[Application_Model_DadosPlanilha::SEGUNDA];
+                
+                $terca = 0;
+                if (isset($item[Application_Model_DadosPlanilha::TERCA]))
+                    $terca     = (float) $item[Application_Model_DadosPlanilha::TERCA];
+                
+                $quarta = 0;
+                if (isset($item[Application_Model_DadosPlanilha::QUARTA]))
+                    $quarta    = (float) $item[Application_Model_DadosPlanilha::QUARTA];
+                
+                $quinta = 0;
+                if (isset($item[Application_Model_DadosPlanilha::QUINTA]))
+                    $quinta    = (float) $item[Application_Model_DadosPlanilha::QUINTA];
+                
+                $sexta = 0;
+                if (isset($item[Application_Model_DadosPlanilha::SEXTA]))
+                    $sexta     = (float) $item[Application_Model_DadosPlanilha::SEXTA];
+                
+                $sabado = 0;
+                if (isset($item[Application_Model_DadosPlanilha::SABADO]))
+                    $sabado    = (float) $item[Application_Model_DadosPlanilha::SABADO];
+                
                 $obj->data = [$domingo, $segunda, $terca, $quarta, $quinta, $sexta, $sabado];
                 array_push($arrJson, $obj);
             }
@@ -200,17 +219,28 @@ class IndicadoresController extends Zend_Controller_Action
         $this->view->bairrosSelecionados = $this->getParam('bairro');
         $this->view->diasSelecionados = $this->getParam('diaSemana');
         
+        $this->view->tituloGrafico = 'Total por dia da semana';
+        $this->view->tituloY = 'Quantidade';
+        $this->view->tituloSeries = 'Total por dia da semana';
+        
     }
 
     public function horariosDiaAction()
     {
         $filtros = $this->getAllParams();
         
+        //Por padrão busca Ano atual
+        if (empty($filtros['ano'])) {
+            $filtros['ano'] = date('Y') - 1;
+            
+        }
+        
         $modelDadosPlanilha = new Application_Model_DadosPlanilha();
         $result = $modelDadosPlanilha->getTotalPorHorario($filtros);
         $arrJson = [];
         
         if (!empty($result)) {
+            $arrPizza = [];
             foreach($result as $item) {
                 $obj = new stdClass();
                 // Nome do bairro
@@ -229,6 +259,7 @@ class IndicadoresController extends Zend_Controller_Action
                 if(isset($item[Application_Model_DadosPlanilha::HORA_18_24]))
                     $hora1824  = (float) $item[Application_Model_DadosPlanilha::HORA_18_24];
                 
+                
                 $obj->data = [
                     $hora06, 
                     $hora612, 
@@ -237,20 +268,41 @@ class IndicadoresController extends Zend_Controller_Action
                 ];
                 array_push($arrJson, $obj);
             }
+            
+            // Json Linha
+//             foreach($result as $key => $item) {
+//                 a($item);
+//                 $obj = new stdClass();
+//                 $obj->name = $item['nome'];
+//                 $obj->y = (float)$item[$key];
+//                 array_push($arrPizza, $obj);
+//             }
+            
+            $this->view->jsonPizza = json_encode($arrPizza);
             $this->view->jsonData = json_encode($arrJson);
         } else {
             $this->view->jsonData = null;
+            $this->view->jsonPizza = null;
         }
         
         //dados view
         $this->view->anoSelecionado      = $this->getParam('ano', $this->anoInicialFiltros);
         $this->view->bairrosSelecionados = $this->getParam('bairro');
         $this->view->horarioSelecionado  = $this->getParam('horario');
+        
+        $this->view->tituloGrafico = 'Quantidade de ocorrências por horário do dia';
+        $this->view->tituloY = 'Total de crimes';
+        $this->view->tituloSeries = 'Quantidade';
     }
 
     public function ocorrenciasPorMesAction()
     {
         $filtros = $this->getAllParams();
+        
+        //Por padrão busca Ano atual
+        if (empty($filtros['ano'])) {
+            $filtros['ano'] = date('Y') - 1;
+        }
         
         $modelDadosPlanilha = new Application_Model_DadosPlanilha();
         $result = $modelDadosPlanilha->getTotalPorMes($filtros);
@@ -304,6 +356,11 @@ class IndicadoresController extends Zend_Controller_Action
     public function ocorrenciasIdadeAction()
     {
         $filtros = $this->getAllParams();
+        
+        //Por padrão busca Ano atual
+        if (empty($filtros['ano'])) {
+            $filtros['ano'] = date('Y') - 1;
+        }
         
         $modelDadosPlanilha = new Application_Model_DadosPlanilha();
         $result = $modelDadosPlanilha->getTotalPorIdade($filtros);

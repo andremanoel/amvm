@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	$(".chosen-select").chosen({no_results_text: "Nenhum registro encontrado!"});
+	$(".chosen-select").chosen({no_results_text: "Nenhum registro encontrado!", width: "95%"});
 	
 	if( $('#grafico-mais-ocorrencias').length && dataGrafico != '') {
 		
@@ -86,7 +86,7 @@ $(document).ready(function(){
 		        type: 'column'
 		    },
 		    title: {
-		        text: 'Total por dia da semana'
+		        text: tituloGrafico
 		    },
 		    xAxis: {
 		        categories: [
@@ -131,7 +131,7 @@ $(document).ready(function(){
 		        type: 'column'
 		    },
 		    title: {
-		        text: 'Quantidade de ocorrências por horário do dia'
+		        text: tituloGrafico
 		    },
 		    xAxis: {
 		        categories: [

@@ -6,24 +6,24 @@
     
     <div class="panel-body">
         <form class="form-inline text-center form-filtros" action="<?php echo $this->url()?>" method="post">
-            <div class="form-group">
-        		<label for="anos"> Ano:</label>
-                <?php echo $this->formSelect('ano', $this->anoSelecionado, array('class'=>'form-control'), $this->filtros['anos']);?>
+        	<div class="row">
+                <div class="col-md-4">
+            		<label for="anos"> Ano:</label>
+                    <?php echo $this->formSelect('ano', $this->anoSelecionado, array(), $this->filtros['anos']);?>
+                </div>
+                
+                <div class="col-md-4">
+            		<label for="crimes"> Meses:</label>
+                    <?php echo $this->formSelect('mes', $this->mesSelecionado, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os meses'), $this->filtros['meses']);?>
+                </div>
+                
+                <div class="col-md-4">
+            		<label for="crimes">Bairro:</label>
+                    <?php echo $this->formSelect('bairro', $this->bairrosSelecionados, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os bairros'), $this->filtros['bairros']);?>
+                </div>
             </div>
             
-            <div class="form-group">
-        		<label for="crimes"> Meses:</label> <br />
-                <?php echo $this->formSelect('mes', $this->mesSelecionado, array('class'=>'form-control', 'multiple'=>'multiple'), $this->filtros['meses']);?>
-            </div>
-            
-            <div class="form-group">
-        		<label for="crimes">Bairro:</label> <br />
-                <?php echo $this->formSelect('bairro', $this->bairrosSelecionados, array('class'=>'form-control', 'multiple'=>'multiple'), $this->filtros['bairros']);?>
-            </div>
-            
-            <br /><br />
-            
-            <p class="text-center">
+            <p class="text-center botoes-form-filtros">
                 <?php echo $this->formReset('limpar', 'Limpar filtros', array('class'=>'btn btn-default btn-lg'))?>
                 <?php echo $this->formSubmit('filtrar', 'Filtrar dados', array('class'=>'btn btn-primary btn-lg'));?>
             </p>

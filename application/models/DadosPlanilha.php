@@ -76,8 +76,6 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
             $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
         }
         
-        
-        
         $sql->from(
                 array('p' => $this->_name),
                 $campos
@@ -98,7 +96,7 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
             
         //Por padrão busca Ano atual
         if (empty($filtros['ano'])) {
-            $filtros['ano'] = date('Y');
+            $filtros['ano'] = date('Y') - 1;
         }
         
         $arrColunas = array(
@@ -141,11 +139,6 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
     {
         $sql = $this->getAdapter()->select();
         
-        //Por padrão busca Ano atual
-        if (empty($filtros['ano'])) {
-            $filtros['ano'] = date('Y');
-        }
-        
         $arrColunas = array(
             'p.' . static::HORA_0_6,
             'p.' . static::HORA_6_12,
@@ -179,11 +172,6 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
     public function getTotalPorMes($filtros = null) 
     {
         $sql = $this->getAdapter()->select();
-        
-        //Por padrão busca Ano atual
-        if (empty($filtros['ano'])) {
-            $filtros['ano'] = date('Y');
-        }
         
         $arrColunas = array(
             'p.' . static::JAN,
@@ -232,10 +220,6 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
     {
         $sql = $this->getAdapter()->select();
         
-        //Por padrão busca Ano atual
-        if (empty($filtros['ano'])) {
-            $filtros['ano'] = date('Y');
-        }
         
         $arrColunas = array(
             'p.' . static::ID_12_18,
