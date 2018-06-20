@@ -83,6 +83,9 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
             ->join(array('b'=>'tb_bairro'), 'p.id_bairro = b.id_bairro', array('b.nome'))
             ->limit(10);
         
+        // retirando parque Timbira
+        $sql->where('b.id_bairro NOT IN (?)',[136]);
+        
         return $this->getAdapter()->fetchAll($sql);
     }
     
@@ -128,6 +131,10 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
             //Bairros específicos
             $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
         }
+        
+        // retirando parque Timbira
+        $sql->where('b.id_bairro NOT IN (?)',[136]);
+        
         return $this->getAdapter()->fetchAll($sql);
     }
     
@@ -165,6 +172,9 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
             //Bairros específicos
             $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
         }
+        
+        // retirando parque Timbira
+        $sql->where('b.id_bairro NOT IN (?)',[136]);
         
         return $this->getAdapter()->fetchAll($sql);
     }
@@ -209,6 +219,9 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
             $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
         }
         
+        // retirando parque Timbira
+        $sql->where('b.id_bairro NOT IN (?)',[136]);
+        
         return $this->getAdapter()->fetchAll($sql);
     }
     
@@ -247,6 +260,9 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
                 //Bairros específicos
                 $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
             }
+            
+            // retirando parque Timbira
+            $sql->where('b.id_bairro NOT IN (?)',[136]);
         
             return $this->getAdapter()->fetchAll($sql);
     }
