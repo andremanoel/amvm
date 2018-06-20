@@ -13,8 +13,39 @@
 	<?php if(!empty($this->jsonData)):?>
     	var dataGrafico = <?php echo $this->jsonData;?>;
 	<?php else:?>
-		var dataGrafico = '';
+		var dataGrafico = "";
 	<?php endif;?>
+
+	<?php if(!empty($this->jsonPizza)):?>
+    	var dataGraficoPizza = <?php echo $this->jsonPizza;?>;
+    <?php else:?>
+    	var dataGraficoPizza = "";
+    <?php endif;?>
+
+	<?php if(!empty($this->tituloGrafico)):?>
+		var tituloGrafico = "<?php echo $this->tituloGrafico;?>";
+    <?php else:?>
+    	var tituloGrafico = "Gráfico";
+    <?php endif;?>
+
+    <?php if(!empty($this->tituloY)):?>
+    	var tituloY = "<?php echo $this->tituloY;?>";
+    <?php else:?>
+    	var tituloY = "Total";
+    <?php endif;?>
+
+    <?php if(!empty($this->tituloSeries)):?>
+    	var tituloSeries = "<?php echo $this->tituloSeries;?>";
+    <?php else:?>
+    	var tituloSeries = "Total";
+    <?php endif;?>
+
+    
+    <?php if(!empty($this->jsonLinha)):?>
+    	var dataGraficoLinha = <?php echo $this->jsonLinha;?>;
+    <?php else:?>
+    	var dataGraficoLinha = "";
+    <?php endif;?>
     </script>
 
     <!-- Le styles -->
@@ -23,8 +54,6 @@
         ->prependStylesheet($this->baseUrl('assets/lib/material-design-icons/css/material-design-iconic-font.min.css'))
         ->appendStylesheet($this->baseUrl('assets/lib/datetimepicker/css/bootstrap-datetimepicker.min.css'))
         ->appendStylesheet($this->baseUrl('assets/lib/daterangepicker/css/daterangepicker.css'))
-        ->appendStylesheet($this->baseUrl('assets/lib/select2/css/select2.min.css'))
-        ->appendStylesheet($this->baseUrl('assets/js/chosen_v1.8.3/chosen.min.css'))
         ->appendStylesheet($this->baseUrl('assets/lib/bootstrap-slider/css/bootstrap-slider.css'))
         ->prependStylesheet($this->baseUrl('assets/css/amvm.css'))
         ->prependStylesheet($this->baseUrl('assets/css/style.css'))
@@ -37,10 +66,6 @@
         ->appendFile($this->baseUrl('assets/lib/moment.js/min/moment.min.js'))
         ->appendFile($this->baseUrl('assets/lib/datetimepicker/js/bootstrap-datetimepicker.min.js'))
         ->appendFile($this->baseUrl('assets/lib/daterangepicker/js/daterangepicker.js'))
-        ->appendFile($this->baseUrl('assets/lib/select2/js/select2.min.js'))
-        ->appendFile($this->baseUrl('assets/lib/select2/js/select2.full.min.js'))
-        ->appendFile($this->baseUrl('assets/js/chosen_v1.8.3/chosen.jquery.min.js'))
-        ->appendFile($this->baseUrl('assets/js/chosen_v1.8.3/chosen.proto.min.js'))
         ->appendFile($this->baseUrl('assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js'))
         ->appendFile($this->baseUrl('assets/js/main.min.js'))
         ->appendFile($this->baseUrl('assets/js/funcoes.js'));

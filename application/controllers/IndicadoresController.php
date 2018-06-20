@@ -1,5 +1,7 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Calculation\Token\Stack;
+
 class IndicadoresController extends Zend_Controller_Action
 {
 
@@ -15,7 +17,9 @@ class IndicadoresController extends Zend_Controller_Action
         $this->view->headScript()->appendFile('/assets/js/Highcharts-5.0.7/code/highcharts.js');
         $this->view->headScript()->appendFile('/assets/js/Highcharts-5.0.7/code/highcharts-more.js');
         $this->view->headScript()->appendFile('/assets/js/Highcharts-5.0.7/code/modules/exporting.js');
+        $this->view->headScript()->appendFile('/assets/js/chosen_v1.8.7/chosen.jquery.min.js');
         $this->view->headScript()->appendFile('/assets/js/graficos.js');
+        $this->view->headLink()->appendStylesheet('/assets/js/chosen_v1.8.7/chosen.min.css');
         
         $filtros = array();
         
@@ -115,25 +119,51 @@ class IndicadoresController extends Zend_Controller_Action
     {
         $filtros = $this->getAllParams();
         
+        if (!isset($filtros['ano'])) {
+            $filtros['ano'] = date('Y') - 1;
+        }
+        
+        if (!isset($filtros['crime'])) {
+            $filtros['crime'] = Application_Model_DadosPlanilha::CVNLI;
+        }
+        
+        
         $modelDadosPlanilha = new Application_Model_DadosPlanilha();
         $result = $modelDadosPlanilha->getTotalCrimesPorBairro($filtros);
-        $arrJson = [];
+        $arrJson =  [];
+        $arrPizza = [];
         if (!empty($result)) {
+            // Json Barra
             foreach($result as $item) {
                 $obj = new stdClass();
                 $obj->name = $item['nome'];
                 $obj->y = (float)$item[$filtros['crime']];
                 array_push($arrJson, $obj);
             }
+            
+            // Json Linha
+            foreach($result as $item) {
+                $obj = new stdClass();
+                $obj->name = $item['nome'];
+                $obj->y = (float)$item[$filtros['crime']];
+                array_push($arrPizza, $obj);
+            }
+            
             $this->view->jsonData = json_encode($arrJson);
+            $this->view->jsonPizza = json_encode($arrPizza);
         } else {
             $this->view->jsonData = null;
+            $this->view->jsonPizza = null;
         }
         
         // Filtros Selecionados
         $this->view->anoSelecionado = $this->getParam('ano', $this->anoInicialFiltros);
         $this->view->crimeSelecionado = $this->getParam('crime', Application_Model_DadosPlanilha::CVNLI);
         $this->view->bairrosSelecionados = $this->getParam('bairro');
+        
+        $this->view->tituloGrafico = 'Total por Bairro';
+        $this->view->tituloY = 'Total de crimes';
+        $this->view->tituloSeries = 'Total de Crimes';
     }
 
     public function diasSemanaAction()

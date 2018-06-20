@@ -72,6 +72,12 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
         } 
         $sql->where('p.ano = ?', $filtros['ano']);
         
+        if (!empty($filtros['bairro'])) {
+            $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
+        }
+        
+        
+        
         $sql->from(
                 array('p' => $this->_name),
                 $campos
