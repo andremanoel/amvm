@@ -220,7 +220,6 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
     {
         $sql = $this->getAdapter()->select();
         
-        
         $arrColunas = array(
             'p.' . static::ID_12_18,
             'p.' . static::ID_19_29,
