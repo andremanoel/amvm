@@ -8,7 +8,9 @@
 		
 		<div class="form-filtros-mapa">
 			<form action="<?php $this->url();?>" method="post">
-				<label>Dia da Semana:</label>
+				<label for="ano">Ano:</label>
+				<?php echo $this->formSelect('ano', $this->anoSelecionado, array(), $this->arrAnos);?>
+				<label for="dia">Dia da Semana:</label>
 				<?php echo $this->formSelect('dia', $this->selecionado, array(), $this->arrFiltros);?>
 				<?php echo $this->formSubmit('filtrar', 'Visualizar')?>
 			</form>

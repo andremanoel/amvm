@@ -1,12 +1,30 @@
 <div
 	class="panel panel-default panel-border-color panel-border-color-primary painel-indicador">
 	<div class="panel-heading panel-heading-divider">
-		Download do arquivo ShapeFile do Projeto
+		Download dos arquivos ShapeFile do Projeto
 	</div>
 
-	<div class="panel-body text-center" style="height: 300px; padding-top: 100px">
-		<a class="btn-primary btn btn-lg" href="<?php echo $this->baseUrl('/download/shp_mulheres.rar')?>" target="_blank">DOWNLOAD DO ARQUIVO SHAPEFILE</a>
+	<div class="panel-body text-center links-download" style="padding-top: 20px; padding-bottom: 20px;">
+		<a class="btn-primary btn btn-lg" href="<?php echo $this->baseUrl('/download/shp_mulheres.rar')?>" target="_blank">
+			ShapeFile da Pesquisa (2014/2015/2016/2017)
+		</a>
+		
+		<a class="btn-primary btn btn-lg" href="<?php echo $this->baseUrl('/download/2014_MULHERES_TAXA_CVLI.zip')?>" target="_blank">
+			CVLI 2014
+		</a>
+		
+		<a class="btn-primary btn btn-lg" href="<?php echo $this->baseUrl('/download/2015_MULHERES.zip')?>" target="_blank">
+			CVLI 2015
+		</a>
+		
+		<a class="btn-primary btn btn-lg" href="<?php echo $this->baseUrl('/download/2016_MULHERES_CVLI_TAXA.zip')?>" target="_blank">
+			CVLI 2016
+		</a>
+		
+		<a class="btn-primary btn btn-lg" href="<?php echo $this->baseUrl('/download/2017_MULHERES_TAXA.zip')?>" target="_blank">
+			CVLI 2017
+		</a>
+    	<?php echo $this->partial('indicadores/observacao.phtml');?>
 	</div>
 	
-	<?php echo $this->partial('indicadores/observacao.phtml');?>
 </div>

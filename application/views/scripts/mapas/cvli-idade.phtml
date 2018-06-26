@@ -6,6 +6,8 @@
 		
 		<div class="form-filtros-mapa">
 			<form action="<?php $this->url();?>" method="post">
+				<label for="ano">Ano:</label>
+				<?php echo $this->formSelect('ano', $this->anoSelecionado, array(), $this->arrAnos);?>
 				<label>Idade:</label>
 				<?php echo $this->formSelect('idade', $this->selecionado, array(), $this->arrFiltros);?>
 				<?php echo $this->formSubmit('filtrar', 'Visualizar')?>

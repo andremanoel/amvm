@@ -325,4 +325,18 @@ footer {
 	line-height: 13px;
 }
 
+.links-download {
+	text-align: center;
+	position: relative;
+}
+
+.links-download a{
+	display: block;
+	width: 350px;
+	margin-bottom: 10px;
+	left: 50%;
+	position: relative;
+	margin-left: -175px;
+}
+
 

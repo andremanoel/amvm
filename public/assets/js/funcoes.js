@@ -1,6 +1,3 @@
- $(document).ready(function(){
- 
- 	$(".chosen-select").chosen({width: "95%"}); 
- 	
+$(document).ready(function() {
+
 });
- 
