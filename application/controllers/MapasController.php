@@ -150,6 +150,20 @@ class MapasController extends Zend_Controller_Action
             $chaveCvli => $mapaCvli2015
         );
         
+        //Mapas 2014
+        $mapaArmaFogo2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Arma de Fogo 2014- Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=f30be07bffb449c69b49156b0a23abe0&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaArmaBranca2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Arma Branca 2014 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=a81236fccfc941d2b5f90e278e9ff474&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaOutros2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Outros Meios 2014 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=c06caa26403246eba014c1ddb4931c27&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaCvli2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI 2014 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=0ca11942e5f4449b938dce57c0826f25&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        
+        $arrMapas2014 = array(
+            $chaveArmaFogo => $mapaArmaFogo2014,
+            $chaveArmaBranca => $mapaArmaBranca2014,
+            $chaveOutros => $mapaOutros2014,
+            $chaveCvli => $mapaCvli2014
+        );
+        
+        
         // Verifica o ano selecionado
         if ($anoSelecionado == 2017) {
             $this->view->mapaSelecionado = $arrMapas2017[$tipoSelecionado];
@@ -162,11 +176,16 @@ class MapasController extends Zend_Controller_Action
         if ($anoSelecionado == 2015) {
             $this->view->mapaSelecionado = $arrMapas2015[$tipoSelecionado];
         }
+        
+        if ($anoSelecionado == 2014) {
+            $this->view->mapaSelecionado = $arrMapas2014[$tipoSelecionado];
+        }
     
         $this->view->arrFiltros = $arrFiltros;
         $this->view->selecionado = $tipoSelecionado;
         $this->view->anoSelecionado = $anoSelecionado;
         $this->view->arrAnos = [
+            2014 => 2014,
             2015 => 2015,
             2016 => 2016,
             2017 => 2017
@@ -238,6 +257,21 @@ class MapasController extends Zend_Controller_Action
             $chave41 => $mapa41_2015,
             $chave51 => $mapa51_2015
         );
+        
+        // 2014
+        $mapa12_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI 2014 por Idade (12 aos 18 anos) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=37a6fdf7779d4aa0a7002a48e18b01a7&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa19_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI 2014 por Idade (19 aos 29 anos) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=614abf81743b47a9ace78061f34a63eb&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa30_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI 2014 por Idade (30 aos 40 anos) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=307dc309f11d4a2281cfaaea66683539&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa41_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI 2014 por Idade (41 aos 50 anos) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=ee74951b921a49e694ff88a1d8b2a798&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa51_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI 2014 por Idade (51 aos 80 anos) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=3995ac3fcce64c34922c3593b0cd123c&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        
+        $arrMapas2014 = array(
+            $chave12 => $mapa12_2014,
+            $chave19 => $mapa19_2014,
+            $chave30 => $mapa30_2014,
+            $chave41 => $mapa41_2014,
+            $chave51 => $mapa51_2014
+        );
 
         // Verifica o ano selecionado
         if ($anoSelecionado == 2017) {
@@ -252,10 +286,15 @@ class MapasController extends Zend_Controller_Action
             $this->view->mapaSelecionado = $arrMapas2015[$tipoSelecionado];
         }
         
+        if ($anoSelecionado == 2014) {
+            $this->view->mapaSelecionado = $arrMapas2014[$tipoSelecionado];
+        }
+        
         $this->view->arrFiltros = $arrFiltros;
         $this->view->selecionado = $tipoSelecionado;
         $this->view->anoSelecionado = $anoSelecionado;
         $this->view->arrAnos = [
+            2014 => 2014,
             2015 => 2015,
             2016 => 2016,
             2017 => 2017
@@ -325,19 +364,33 @@ class MapasController extends Zend_Controller_Action
         $mapaNovembro2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Novembro de 2016) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=4a87b965838d43f3bbb2931c9cfb4abc&extent=-44.5826,-2.8027,-43.8644,-2.4295&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
         $mapaDezembro2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Dezembro de 2016) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=94a10400b5e4410e81b2f7528eaa73ba&extent=-44.5826,-2.8027,-43.8644,-2.4295&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
         
-        // Mapas Enviados por Tipo - 2016
-        $mapaJaneiro2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Janeiro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=6bb3759291344ac09d5ac3a7b87ff259&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        // Mapas Enviados por Tipo - 2015
+        $mapaJaneiro2015   = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Janeiro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=6bb3759291344ac09d5ac3a7b87ff259&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
         $mapaFevereiro2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Fevereiro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=6404af734a1244a7a9f0a200cd4b7971&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaMarco2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Março de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=e542b657e53a4d6c85a84a0a197f7912&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaAbril2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Abril de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=d71999e59dff46459b8453fb37e2be45&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaMaio2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Maio de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=8efd93fd053440d084d4d1f2cbfd6338&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaJunho2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Junho de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=b71ba79d434f492591dce848d11e359f&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaJulho2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Julho de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=5dbcb6497b0e4f8e97031c9ebf0fcd5f&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaAgosto2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Agosto de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=d3b0165fcdd44fe796502f6035f4d700&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaSetembro2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Setembro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=ffa7decc08bf4cfb8686a40b8d0c6791&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaOutubro2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Outubro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=377076337e0a48bca29fe588aab3ae42&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaNovembro2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Novembro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=3f49886a4e8845908a6e1551ea492eee&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaDezembro2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Dezembro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=a0162f164e8149e5bbe0c6fda8060b64&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaMarco2015     = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Março de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=e542b657e53a4d6c85a84a0a197f7912&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaAbril2015     = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Abril de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=d71999e59dff46459b8453fb37e2be45&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaMaio2015      = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Maio de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=8efd93fd053440d084d4d1f2cbfd6338&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaJunho2015     = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Junho de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=b71ba79d434f492591dce848d11e359f&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaJulho2015     = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Julho de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=5dbcb6497b0e4f8e97031c9ebf0fcd5f&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaAgosto2015    = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Agosto de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=d3b0165fcdd44fe796502f6035f4d700&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaSetembro2015  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Setembro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=ffa7decc08bf4cfb8686a40b8d0c6791&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaOutubro2015   = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Outubro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=377076337e0a48bca29fe588aab3ae42&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaNovembro2015  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Novembro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=3f49886a4e8845908a6e1551ea492eee&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaDezembro2015  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Dezembro de 2015) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=a0162f164e8149e5bbe0c6fda8060b64&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        
+        // Mapas Enviados por Tipo - 2014
+        $mapaJaneiro2014   = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Janeiro de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=d081baf548984207a92c596287bc763a&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaFevereiro2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Fevereiro de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=0c43a1d7c687499c9f74a6ad6abaa346&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaMarco2014     = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Março de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=b67c29480b9347acadbc60432eda3e1b&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaAbril2014     = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Abril de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=4bbf1b8136db42b1b016e933e97db4cd&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaMaio2014      = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Maio de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=900f0645f679402dbe8ff67e64208baf&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaJunho2014     = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Junho de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=37b4d79e236541fb8755cc43923c4857&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaJulho2014     = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Julho de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=e9cca691e2554be5889d051bf3f3b3c8&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaAgosto2014    = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Agosto de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=7cf9434349fc4634b2c3a385e2f8c12f&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaSetembro2014  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Setembro de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=75f5ffd3382843c4861a7503242665fd&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaOutubro2014   = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Outubro de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=08f0001b7a2d464d959f54a9e84e1964&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaNovembro2014  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Novembro de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=ec591b1b00d4487382ab513b10095f5f&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaDezembro2014  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Mês (Dezembro de 2014) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=0d5017b803034472a165ae08020a2ca7&extent=-44.5785,-2.8071,-43.8603,-2.4361&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
         
         $arrMapas2017 = array(
             $chaveJaneiro => $mapaJaneiro,
@@ -383,6 +436,21 @@ class MapasController extends Zend_Controller_Action
             $chaveNovembro => $mapaNovembro2015,
             $chaveDezembro => $mapaDezembro2015
         );
+        
+        $arrMapas2014 = array(
+            $chaveJaneiro => $mapaJaneiro2014,
+            $chaveFevereiro => $mapaFevereiro2014,
+            $chaveMarco => $mapaMarco2014,
+            $chaveAbril => $mapaAbril2014,
+            $chaveMaio => $mapaMaio2014,
+            $chaveJunho => $mapaJunho2014,
+            $chaveJulho => $mapaJulho2014,
+            $chaveAgosto => $mapaAgosto2014,
+            $chaveSetembro => $mapaSetembro2014,
+            $chaveOutubro => $mapaOutubro2014,
+            $chaveNovembro => $mapaNovembro2014,
+            $chaveDezembro => $mapaDezembro2014
+        );
     
         // Verifica o ano selecionado
         if ($anoSelecionado == 2017) {
@@ -397,10 +465,15 @@ class MapasController extends Zend_Controller_Action
             $this->view->mapaSelecionado = $arrMapas2015[$tipoSelecionado];
         }
         
+        if ($anoSelecionado == 2014) {
+            $this->view->mapaSelecionado = $arrMapas2014[$tipoSelecionado];
+        }
+        
         $this->view->arrFiltros = $arrFiltros;
         $this->view->selecionado = $tipoSelecionado;
         $this->view->anoSelecionado = $anoSelecionado;
         $this->view->arrAnos = [
+            2014 => 2014,
             2015 => 2015,
             2016 => 2016,
             2017 => 2017
@@ -472,11 +545,12 @@ class MapasController extends Zend_Controller_Action
         // Mapas de 2015
         $mapaDomingo2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Dia da Semana 2015 (Domíngo) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=86f1be91543240e2a389f7af48f086a4&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
         $mapaSegunda2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Segunda - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=9436a5eb7a86433c843b457e920604f0&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaTerca2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Terça - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=c20973919fc94101ae9558ba1b8de928&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaQuarta2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Quarta - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=9ac9c9d8f3ce498199525fe1dbb7a62b&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaQuinta2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Quinta - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=c2865f9ac4e14f919c3c7ae5b8ee5d09&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaSexta2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Sexta - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=985b45310bf44d5d8bed1add0e871359&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaSabado2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Sabado) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=2232ab059b874423947ccfa702c98e4c&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaTerca2015   = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Terça - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=c20973919fc94101ae9558ba1b8de928&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaQuarta2015  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Quarta - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=9ac9c9d8f3ce498199525fe1dbb7a62b&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaQuinta2015  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Quinta - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=c2865f9ac4e14f919c3c7ae5b8ee5d09&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaSexta2015   = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Sexta - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=985b45310bf44d5d8bed1add0e871359&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaSabado2015  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2015 (Sabado) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=2232ab059b874423947ccfa702c98e4c&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        
         $arrMapas2015 = array(
             $chaveDomingo => $mapaDomingo2015,
             $chaveSegunda => $mapaSegunda2015,
@@ -487,7 +561,25 @@ class MapasController extends Zend_Controller_Action
             $chaveSabado => $mapaSabado2015
         );
         
-    
+        // Mapas de 2014
+        $mapaDomingo2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Dia da Semana 2014 (Domíngo) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=6fe079f998d44371996d5cb736a984d6&extent=-44.5771,-2.8058,-43.8589,-2.4347&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaSegunda2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2014 (Segunda - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=d332e7e145b849c59c89fef5192e803d&extent=-44.5771,-2.8058,-43.8589,-2.4347&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaTerca2014   = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2014 (Terça - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=d8776df691964423a8eb5ac2d464af56&extent=-44.5771,-2.8058,-43.8589,-2.4347&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaQuarta2014  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2014 (Quarta - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=677452691d9b458b8b233e7ccd43f4cb&extent=-44.5771,-2.8058,-43.8589,-2.4347&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaQuinta2014  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2014 (Quinta - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=bd44950672024701968ec01ed593eb57&extent=-44.5771,-2.8058,-43.8589,-2.4347&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaSexta2014   = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2014 (Sexta - Feira) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=1a5ea7b4227c4813b2245e1e519c0956&extent=-44.5771,-2.8058,-43.8589,-2.4347&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapaSabado2014  = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Dia da Semana 2014 (Sabado) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=9a100e2aef8747bb8e3c34e6fb0526b8&extent=-44.5771,-2.8058,-43.8589,-2.4347&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        
+        $arrMapas2014 = array(
+            $chaveDomingo => $mapaDomingo2014,
+            $chaveSegunda => $mapaSegunda2014,
+            $chaveTerca => $mapaTerca2014,
+            $chaveQuarta => $mapaQuarta2014,
+            $chaveQuinta => $mapaQuinta2014,
+            $chaveSexta => $mapaSexta2014,
+            $chaveSabado => $mapaSabado2014
+        );
+        
         // Verifica o ano selecionado
         if ($anoSelecionado == 2017) {
             $this->view->mapaSelecionado = $arrMapas2017[$tipoSelecionado];
@@ -501,10 +593,15 @@ class MapasController extends Zend_Controller_Action
             $this->view->mapaSelecionado = $arrMapas2015[$tipoSelecionado];
         }
         
+        if ($anoSelecionado == 2014) {
+            $this->view->mapaSelecionado = $arrMapas2014[$tipoSelecionado];
+        }
+        
         $this->view->arrFiltros = $arrFiltros;
         $this->view->selecionado = $tipoSelecionado;
         $this->view->anoSelecionado = $anoSelecionado;
         $this->view->arrAnos = [
+            2014 => 2014,
             2015 => 2015,
             2016 => 2016,
             2017 => 2017
