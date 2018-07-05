@@ -1,11 +1,16 @@
 <div
 	class="panel panel-default panel-border-color panel-border-color-primary painel-indicador">
 	<div class="panel-heading panel-heading-divider">
-		CVLI Por Bairro <span class="panel-subtitle">
-		Total de Ocorrência de CVLI por Hora - Feminino</span>
+		CVLI Por Bairro Total de Ocorrência de CVLI por Hora
+		<span class="panel-subtitle">
+    		<?php echo $this->arrFiltros[$this->selecionado]?> - 
+    		<?php echo $this->anoSelecionado?> - Feminino
+		</span>
 		
 		<div class="form-filtros-mapa">
 			<form action="<?php $this->url();?>" method="post">
+				<label for="ano">Ano:</label>
+				<?php echo $this->formSelect('ano', $this->anoSelecionado, array(), $this->arrAnos);?>
 				<label>Horário:</label>
 				<?php echo $this->formSelect('horario', $this->selecionado, array(), $this->arrFiltros);?>
 				<?php echo $this->formSubmit('filtrar', 'Visualizar')?>

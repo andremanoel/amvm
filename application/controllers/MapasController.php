@@ -21,41 +21,88 @@ class MapasController extends Zend_Controller_Action
             $chave12 => '12:00 as 18:00',
             $chave18 => '18:00 as 24:00'
         );
-        $horarioSelecionado = $this->getParam('horario', $chave00);
+        $tipoSelecionado = $this->getParam('horario', $chave00);
+        $anoSelecionado  = $this->getParam('ano', 2017);
         
-        //Mapas Enviados por Hora
-        $mapa00 = '<small><a
-				href="//www.arcgis.com/apps/Embed/index.html?webmap=3f478b2122c843879ef6e5eb3e6e2101&extent=-44.6997,-2.853,-43.8565,-2.3839&zoom=true&scale=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light"
-				style="color: #0000FF; text-align: left" target="_blank">Visualizar
-					mapa grande</a></small><br>
-			<iframe width="500" height="400" frameborder="0" scrolling="no"
-				marginheight="0" marginwidth="0"
-				title="Total de Ocorrência de CVLI por Hora ( 00: 00 as 06:00) - Feminino"
-				src="//www.arcgis.com/apps/Embed/index.html?webmap=3f478b2122c843879ef6e5eb3e6e2101&extent=-44.6997,-2.853,-43.8565,-2.3839&zoom=true&previewImage=false&scale=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        //Mapas Enviados por Hora - 2017
+        $mapa00_2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Hora ( 00: 00 as 06:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=3f478b2122c843879ef6e5eb3e6e2101&extent=-44.6997,-2.853,-43.8565,-2.3839&zoom=true&previewImage=false&scale=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa06_2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Hora ( 06: 00 as 12:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=4d1957876585474f90c2f0973e05bccd&extent=-44.6386,-2.8342,-43.7954,-2.365&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa12_2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Hora ( 12: 00 as 18:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=5c7ad1fda3f44b4b8d5937ec4e8a6adf&extent=-44.5631,-2.8342,-43.7199,-2.3651&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa18_2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Hora ( 18: 00 as 24:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=5c7ad1fda3f44b4b8d5937ec4e8a6adf&extent=-44.5631,-2.8342,-43.7199,-2.3651&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
         
-        $mapa06 = '<small><a
-				href="//www.arcgis.com/apps/Embed/index.html?webmap=4d1957876585474f90c2f0973e05bccd&extent=-44.6386,-2.8342,-43.7954,-2.365&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"
-				style="color: #0000FF; text-align: left" target="_blank">Visualizar
-					mapa grande</a></small><br>
-			<iframe width="500" height="400" frameborder="0" scrolling="no"
-				marginheight="0" marginwidth="0"
-				title="Total de Ocorrência de CVLI por Hora ( 06: 00 as 12:00) - Feminino"
-				src="//www.arcgis.com/apps/Embed/index.html?webmap=4d1957876585474f90c2f0973e05bccd&extent=-44.6386,-2.8342,-43.7954,-2.365&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        
-        $mapa12 = '<small><a href="//www.arcgis.com/apps/Embed/index.html?webmap=5c7ad1fda3f44b4b8d5937ec4e8a6adf&extent=-44.5631,-2.8342,-43.7199,-2.3651&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light" style="color:#0000FF;text-align:left" target="_blank">Visualizar mapa grande</a></small><br><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Hora ( 12: 00 as 18:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=5c7ad1fda3f44b4b8d5937ec4e8a6adf&extent=-44.5631,-2.8342,-43.7199,-2.3651&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-      
-        $mapa18 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Hora ( 18: 00 as 24:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=5c7ad1fda3f44b4b8d5937ec4e8a6adf&extent=-44.5631,-2.8342,-43.7199,-2.3651&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light"></iframe></div>';
-        
-        $arrMapas = array(
-            $chave00 => $mapa00,
-            $chave06 => $mapa06,
-            $chave12 => $mapa12,
-            $chave18 => $mapa18
+        $arrMapas2017 = array(
+            $chave00 => $mapa00_2017,
+            $chave06 => $mapa06_2017,
+            $chave12 => $mapa12_2017,
+            $chave18 => $mapa18_2017
         );
         
-        $this->view->mapaSelecionado = $arrMapas[$horarioSelecionado];
+        //Mapas Enviados por Hora - 2016
+        $mapa00_2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2016 por Hora ( 00:00 as 06:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=6e20a76c73ff42ec9cb52bdf671ccee0&extent=-44.6018,-2.8133,-43.8452,-2.4189&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa06_2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2016 por Hora ( 06:00 as 12:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=0dd3a1859db641309981335bb8e54f13&extent=-44.6018,-2.8133,-43.8452,-2.4189&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa12_2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2016 por Hora ( 12:00 as 18:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=990375c4fe4f43f9aa3afe61a310bf6f&extent=-44.6018,-2.8133,-43.8452,-2.4189&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa18_2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2016 por Hora ( 18:00 as 24:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=bdcfca0b6f80452b98f29c3167df14b4&extent=-44.6018,-2.8133,-43.8452,-2.4189&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        
+        $arrMapas2016 = array(
+            $chave00 => $mapa00_2016,
+            $chave06 => $mapa06_2016,
+            $chave12 => $mapa12_2016,
+            $chave18 => $mapa18_2016
+        );
+        
+        
+        //Mapas Enviados por Hora - 2015
+        $mapa00_2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2015 por Hora ( 00:00 as 06:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=ec8ed2dd6e17447b914478f7968c8a23&extent=-44.6561,-2.8161,-43.8994,-2.4216&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa06_2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2015 por Hora ( 06:00 as 12:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=2c52df9a5e974a118292bf62256ae17c&extent=-44.6561,-2.8161,-43.8994,-2.4216&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa12_2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2015 por Hora ( 12:00 as 18:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=fcea174ec78349eb83de1418b8be3d2e&extent=-44.6561,-2.8161,-43.8994,-2.4216&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa18_2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2015 por Hora ( 18:00 as 24:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=a05652aa62444f41b367b5431ac6b5c4&extent=-44.6561,-2.8161,-43.8994,-2.4216&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        
+        $arrMapas2015 = array(
+            $chave00 => $mapa00_2015,
+            $chave06 => $mapa06_2015,
+            $chave12 => $mapa12_2015,
+            $chave18 => $mapa18_2015
+        );
+        
+        //Mapas Enviados por Hora - 2014
+        $mapa00_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2014 por Hora ( 00: 00 as 06:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=40fdba06d7d249bc8faf495d90b7da72&extent=-44.5977,-2.8188,-43.8411,-2.4244&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa06_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2014 por Hora ( 06:00 as 12:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=92a9ce0046d3411f9231946891334913&extent=-44.5977,-2.8188,-43.8411,-2.4244&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa12_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2014 por Hora ( 12:00 as 18:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=988cc55135af4520988fc6ec756f4afc&extent=-44.5977,-2.8188,-43.8411,-2.4244&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        $mapa18_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2014 por Hora ( 18:00 as 24:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=59ec9d53044f40b9b5e48f6a19745873&extent=-44.5977,-2.8188,-43.8411,-2.4244&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
+        
+        $arrMapas2014 = array(
+            $chave00 => $mapa00_2014,
+            $chave06 => $mapa06_2014,
+            $chave12 => $mapa12_2014,
+            $chave18 => $mapa18_2014
+        );
+        
+        // Verifica o ano selecionado
+        if ($anoSelecionado == 2017) {
+            $this->view->mapaSelecionado = $arrMapas2017[$tipoSelecionado];
+        }
+        
+        if ($anoSelecionado == 2016) {
+            $this->view->mapaSelecionado = $arrMapas2016[$tipoSelecionado];
+        }
+        
+        if ($anoSelecionado == 2015) {
+            $this->view->mapaSelecionado = $arrMapas2015[$tipoSelecionado];
+        }
+        
+        if ($anoSelecionado == 2014) {
+            $this->view->mapaSelecionado = $arrMapas2014[$tipoSelecionado];
+        }
+        
         $this->view->arrFiltros = $arrFiltros;
-        $this->view->selecionado = $horarioSelecionado;
+        $this->view->selecionado = $tipoSelecionado;
+        $this->view->anoSelecionado = $anoSelecionado;
+        $this->view->arrAnos = [
+            2014 => 2014,
+            2015 => 2015,
+            2016 => 2016,
+            2017 => 2017
+        ];
     }
     
     public function densidadeOcorrenciasAnoAction()
