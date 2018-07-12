@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 class ImportacaoController extends Core_Controller_Seguro
 {
@@ -10,42 +10,43 @@ class ImportacaoController extends Core_Controller_Seguro
      * @var array
      */
     private $arrRowTemplate = [
-        'A' => 'bairros',
-        'B' => 'populacao',
-        'C' => 'ESTUPRO',
-        'D' => 'ROUBO',
-        'E' => 'LESÃO',
-        'F' => 'CVNLI',
-        'G' => 'DOM',
-        'H' => 'SEG',
-        'I' => 'TER',
-        'J' => 'QUART',
-        'K' => 'QUINT',
-        'L' => 'SEXT',
-        'M' => 'SAB',
-        'N' => '0_AS_6',
-        'O' => '6_AS_12',
-        'P' => '12_AS_18',
-        'Q' => '18_AS_24',
-        'R' => 'M',
-        'S' => 'F',
-        'T' => 'IDAD_12_18',
-        'U' => 'IDAD_19_29',
-        'V' => 'IDAD_30_40',
-        'W' => 'IDAD_41_50',
-        'X' => 'IDAD_51_80',
-        'Y' => 'JANEIRO',
-        'Z' => 'FEVEREIRO',
-        'AA' => 'MARÇO',
-        'AB' => 'ABRIL',
-        'AC' => 'MAIO',
-        'AD' => 'JUNHO',
-        'AE' => 'JULHO',
-        'AF' => 'AGOSTO',
-        'AG' => 'SETEMBRO',
-        'AH' => 'OUTUBRO',
-        'AI' => 'NOVEMBRO',
-        'AJ' => 'DEZEMBRO'
+        'A' => 'bairros,C,50',
+        'B' => 'Populacao',
+        'C' => 'ARMA DE FOGO',
+        'D' => 'ARMA BRANCA',
+        'E' => 'OUTROS MEIOS',
+        'F' => 'Homicídio Doloso',
+        'G' => 'Latrocínio',
+        'H' => 'Lesão corporal seguida de morte',
+        'I' => 'CVLI',
+        'J' => 'DOM',
+        'K' => 'SEG',
+        'L' => 'TER',
+        'M' => 'QUART',
+        'N' => 'QUINT',
+        'O' => 'SEXT',
+        'P' => 'SAB',
+        'Q' => '0_AS_6',
+        'R' => '6_AS_12',
+        'S' => '12_AS_18',
+        'T' => '18_AS_24',
+        'U' => 'IDAD_12_18',
+        'V' => 'IDAD_19_29',
+        'W' => 'IDAD_30_40',
+        'X' => 'IDAD_41_50',
+        'Y' => 'IDAD_51_80',
+        'Z' => 'JANEIRO',
+        'AA' => 'FEVEREIRO',
+        'AB' => 'MARÇO',
+        'AC' => 'ABRIL',
+        'AD' => 'MAIO',
+        'AE' => 'JUNHO',
+        'AF' => 'JULHO',
+        'AG' => 'AGOSTO',
+        'AH' => 'SETEMBRO',
+        'AI' => 'OUTUBRO',
+        'AJ' => 'NOVEMBRO',
+        'AK' => 'DEZEMBRO'
     ];
 
     public function init()
@@ -80,7 +81,7 @@ class ImportacaoController extends Core_Controller_Seguro
                     $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($objArquivo->caminho);
                     $activeSheet = $spreadsheet->getActiveSheet();
                     
-                    if ($activeSheet->getTitle() != $titulo) {
+                    if ( strtolower($activeSheet->getTitle()) != strtolower($titulo)) {
                         throw new Core_Exception_ImportacaoException('Erro - O Título da planilha está incorreto. O Título da planilha deve ser: INCIDENCIA');
                     }
                     echo '<div class="container"><div class="row">
@@ -89,7 +90,7 @@ class ImportacaoController extends Core_Controller_Seguro
                     echo "<h3>Iniciando importação.</h3> <br />";
                     
                     // Le a planilha como array
-                    $dataArray = $spreadsheet->getActiveSheet()->rangeToArray('A1:AJ263', // The worksheet range that we want to retrieve
+                    $dataArray = $spreadsheet->getActiveSheet()->rangeToArray('A1:AK263', // The worksheet range that we want to retrieve
                             '', // Value that should be returned for empty cells
                             true, // Should formulas be calculated (the equivalent of getCalculatedValue() for each cell)
                             true, // Should values be formatted (the equivalent of getFormattedValue() for each cell)
@@ -124,6 +125,7 @@ class ImportacaoController extends Core_Controller_Seguro
                     $modelArquivo->getAdapter()->commit();
                     $this->addMensagem('Planilha importada com sucesso. Resultado = ' , 'success');
                 } catch (Exception $e) {
+                    echo $e->getMessage() . "<br />"; 
                     $msg = "Erro na linha $i. <br />";
                     $msg .= $e->getMessage();
                     
@@ -136,7 +138,7 @@ class ImportacaoController extends Core_Controller_Seguro
         }
         
         $anoAtual = date('Y');
-        $anoInicial = 2015;
+        $anoInicial = 2014;
         $arrAnos = array();
         for ($i = $anoInicial; $i <= $anoAtual; $i ++) {
             $arrAnos[$i] = $i;
@@ -220,175 +222,181 @@ class ImportacaoController extends Core_Controller_Seguro
                 $objDadosPlanilha->populacao = (int) $linha[$key];
             }
             
-            // ESTUPRO
+            // ARMA DE FOGO
             if ($key == 'C') {
-                $objDadosPlanilha->estupro = $this->ajustarFloat($linha[$key]);
+                $objDadosPlanilha->arma_de_fogo = $this->ajustarFloat($linha[$key]);
             }
             
-            // ROUBO
+            // ARMA BRANCA
             if ($key == 'D') {
-                $objDadosPlanilha->roubo = $this->ajustarFloat($linha[$key]);
+                $objDadosPlanilha->arma_branca = $this->ajustarFloat($linha[$key]);
             }
             
-            // LESÃO
+            // outros_meios
             if ($key == 'E') {
-                $objDadosPlanilha->lesao = $this->ajustarFloat($linha[$key]);
+                $objDadosPlanilha->outros_meios = $this->ajustarFloat($linha[$key]);
             }
             
-            // CVNLI
+            // homicidio_doloso
             if ($key == 'F') {
-                $objDadosPlanilha->cvnli = $this->ajustarFloat($linha[$key]);
+                $objDadosPlanilha->homicidio_doloso = $this->ajustarFloat($linha[$key]);
             }
             
-            // DOM
+            // latrocinio
             if ($key == 'G') {
+                $objDadosPlanilha->latrocinio = $this->ajustarFloat($linha[$key]);
+            }
+            
+            // lesao_corporal_seguido_morte
+            if ($key == 'H') {
+                $objDadosPlanilha->lesao_corporal_seguido_morte = $this->ajustarFloat($linha[$key]);
+            }
+            
+            // cvli
+            if ($key == 'I') {
+                $objDadosPlanilha->cvli = $this->ajustarFloat($linha[$key]);
+            }
+            
+            // dom
+            if ($key == 'J') {
                 $objDadosPlanilha->dom = $this->ajustarFloat($linha[$key]);
             }
             
-            // SEG
-            if ($key == 'H') {
+            // seg
+            if ($key == 'K') {
                 $objDadosPlanilha->seg = $this->ajustarFloat($linha[$key]);
             }
             
-            // TER
-            if ($key == 'I') {
+            // ter
+            if ($key == 'L') {
                 $objDadosPlanilha->ter = $this->ajustarFloat($linha[$key]);
             }
             
-            // QUART
-            if ($key == 'J') {
+            // quart
+            if ($key == 'M') {
                 $objDadosPlanilha->quart = $this->ajustarFloat($linha[$key]);
             }
             
-            // QUINT
-            if ($key == 'K') {
+            // quint
+            if ($key == 'N') {
                 $objDadosPlanilha->quint = $this->ajustarFloat($linha[$key]);
             }
             
-            // SEXT
-            if ($key == 'L') {
+            // sext
+            if ($key == 'O') {
                 $objDadosPlanilha->sext = $this->ajustarFloat($linha[$key]);
             }
             
-            // SAB
-            if ($key == 'M') {
+            // sab
+            if ($key == 'P') {
                 $objDadosPlanilha->sab = $this->ajustarFloat($linha[$key]);
             }
             
-            // 0_AS_6
-            if ($key == 'N') {
-                $objDadosPlanilha->hora_0_as_6 = $this->ajustarFloat($linha[$key]);
-            }
-            
-            // 6_AS_12
-            if ($key == 'O') {
-                $objDadosPlanilha->hora_6_as_12 = $this->ajustarFloat($linha[$key]);
-            }
-            
-            // 12_AS_18
-            if ($key == 'P') {
-                $objDadosPlanilha->hora_12_as_18 = $this->ajustarFloat($linha[$key]);
-            }
-            
-            // 18_AS_24
+            // horario_0_as_6
             if ($key == 'Q') {
-                $objDadosPlanilha->hora_18_as_24 = $this->ajustarFloat($linha[$key]);
+                $objDadosPlanilha->horario_0_as_6 = $this->ajustarFloat($linha[$key]);
             }
             
-            // Masculino
+            // horario_6_as_12
             if ($key == 'R') {
-                $objDadosPlanilha->m = $this->ajustarFloat($linha[$key]);
+                $objDadosPlanilha->horario_6_as_12 = $this->ajustarFloat($linha[$key]);
             }
             
-            // Feminino
+            // horario_12_as_18
             if ($key == 'S') {
-                $objDadosPlanilha->f = $this->ajustarFloat($linha[$key]);
+                $objDadosPlanilha->horario_12_as_18 = $this->ajustarFloat($linha[$key]);
             }
             
-            // Idade 12_18
+            // horario_18_as_24
             if ($key == 'T') {
+                $objDadosPlanilha->horario_18_as_24 = $this->ajustarFloat($linha[$key]);
+            }
+            
+            // idade_12_18
+            if ($key == 'U') {
                 $objDadosPlanilha->idade_12_18 = $this->ajustarFloat($linha[$key]);
             }
             
-            // Idade 19_29
-            if ($key == 'U') {
+            // idade_19_29
+            if ($key == 'V') {
                 $objDadosPlanilha->idade_19_29 = $this->ajustarFloat($linha[$key]);
             }
             
-            // Idade 30_40
-            if ($key == 'V') {
+            // idade_30_40
+            if ($key == 'W') {
                 $objDadosPlanilha->idade_30_40 = $this->ajustarFloat($linha[$key]);
             }
             
-            // Idade 41_50
-            if ($key == 'W') {
+            // idade_41_50
+            if ($key == 'X') {
                 $objDadosPlanilha->idade_41_50 = $this->ajustarFloat($linha[$key]);
             }
             
-            // Idade 51_80
-            if ($key == 'X') {
+            // idade_51_80
+            if ($key == 'Y') {
                 $objDadosPlanilha->idade_51_80 = $this->ajustarFloat($linha[$key]);
             }
             
-            // Janeiro
-            if ($key == 'Y') {
+            // janeiro
+            if ($key == 'Z') {
                 $objDadosPlanilha->janeiro = $this->ajustarFloat($linha[$key]);
             }
             
-            // Fevereiro
-            if ($key == 'Z') {
+            // fevereiro
+            if ($key == 'AA') {
                 $objDadosPlanilha->fevereiro = $this->ajustarFloat($linha[$key]);
             }
             
-            // Março
-            if ($key == 'AA') {
+            // marco
+            if ($key == 'AB') {
                 $objDadosPlanilha->marco = $this->ajustarFloat($linha[$key]);
             }
             
-            // Abril
-            if ($key == 'AB') {
+            // abril
+            if ($key == 'AC') {
                 $objDadosPlanilha->abril = $this->ajustarFloat($linha[$key]);
             }
             
-            // Maio
-            if ($key == 'AC') {
+            // maio
+            if ($key == 'AD') {
                 $objDadosPlanilha->maio = $this->ajustarFloat($linha[$key]);
             }
             
-            // Junho
-            if ($key == 'AD') {
+            // junho
+            if ($key == 'AE') {
                 $objDadosPlanilha->junho = $this->ajustarFloat($linha[$key]);
             }
             
-            // Julho
-            if ($key == 'AE') {
+            // julho
+            if ($key == 'AF') {
                 $objDadosPlanilha->julho = $this->ajustarFloat($linha[$key]);
             }
             
-            // Agosto
-            if ($key == 'AF') {
+            // agosto
+            if ($key == 'AG') {
                 $objDadosPlanilha->agosto = $this->ajustarFloat($linha[$key]);
             }
             
-            // Setembro
-            if ($key == 'AG') {
+            // setembro
+            if ($key == 'AH') {
                 $objDadosPlanilha->setembro = $this->ajustarFloat($linha[$key]);
             }
             
-            // Setembro
-            if ($key == 'AH') {
+            // outubro
+            if ($key == 'AI') {
                 $objDadosPlanilha->outubro = $this->ajustarFloat($linha[$key]);
             }
             
-            // Novembro
-            if ($key == 'AI') {
+            // novembro
+            if ($key == 'AJ') {
                 $objDadosPlanilha->novembro = $this->ajustarFloat($linha[$key]);
             }
             
-            // Dezembro
-            if ($key == 'AJ') {
+            // dezembro
+            if ($key == 'AK') {
                 $objDadosPlanilha->dezembro = $this->ajustarFloat($linha[$key]);
             }
+            
         }
         $objDadosPlanilha->id_arquivo = $idArquivo;
         $objDadosPlanilha->id_bairro = $idBairro;
@@ -399,7 +407,8 @@ class ImportacaoController extends Core_Controller_Seguro
     
     public function ajustarFloat($value) 
     {  
-       return round(trim($value), 2); 
+       $value = (float) $value;
+       return round(trim($value), 2);
     }
     
     public function postDispatch() 

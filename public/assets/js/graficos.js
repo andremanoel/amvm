@@ -37,7 +37,7 @@ $(document).ready(function(){
 				pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b><br/>'
 			},
 			series: [{
-				name: 'Total',
+				name: 'Incidência',
 				colorByPoint: true,
 				data: dataGrafico
 			}]
@@ -61,7 +61,7 @@ $(document).ready(function(){
 		    },
 		    yAxis: {
 		        title: {
-		            text: 'Quantidade'
+		            text: 'Incidência'
 		        }
 		    },
 		    plotOptions: {
@@ -103,7 +103,7 @@ $(document).ready(function(){
 		    yAxis: {
 		        min: 0,
 		        title: {
-		            text: 'Quantidade'
+		            text: 'Incidência'
 		        }
 		    },
 		    tooltip: {
@@ -145,7 +145,7 @@ $(document).ready(function(){
 		    yAxis: {
 		        min: 0,
 		        title: {
-		            text: 'Quantidade'
+		            text: 'Incidência'
 		        }
 		    },
 		    tooltip: {
@@ -194,7 +194,7 @@ $(document).ready(function(){
 		    yAxis: {
 		        min: 0,
 		        title: {
-		            text: 'Quantidade'
+		            text: 'Incidência'
 		        }
 		    },
 		    tooltip: {
@@ -237,7 +237,7 @@ $(document).ready(function(){
 		    yAxis: {
 		        min: 0,
 		        title: {
-		            text: 'Quantidade'
+		            text: 'Incidência'
 		        }
 		    },
 		    tooltip: {

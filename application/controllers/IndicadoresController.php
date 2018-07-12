@@ -1,7 +1,5 @@
 <?php
 
-use PhpOffice\PhpSpreadsheet\Calculation\Token\Stack;
-
 class IndicadoresController extends Zend_Controller_Action
 {
 
@@ -24,10 +22,9 @@ class IndicadoresController extends Zend_Controller_Action
         $filtros = array();
         
         // anos
-        $anoInicial = 2015;
         $anoAtual = date('Y') - 1;
         $this->anoInicialFiltros = $anoAtual; // Sempre buscando de um ano pra trás do atual
-        $anoInicial = 2015;
+        $anoInicial = 2014;
         $arrInicialAnos = range($anoInicial, $anoAtual);
         $arrAnos = [];
         foreach($arrInicialAnos as $ano) {
@@ -36,11 +33,24 @@ class IndicadoresController extends Zend_Controller_Action
         $filtros['anos'] = $arrAnos;
         
         // crimes
+        /**
+         * const ARMA_FOGO = 'arma_de_fogo';
+    const ARMA_BRANCA = 'arma_branca';
+    const OUTROS_MEIOS = 'outros_meios';
+    const HOMICIDIO_DOLOSO = 'homicidio_doloso';
+    const LATROCINIO = 'latrocinio';
+    const LESAO_CORPORAL_SEGUIDA_MORTE = 'lesao_corporal_seguido_morte';
+    const CVNLI = 'cvnli';
+         * @var array $arrCrimes
+         */
         $arrCrimes = array(
             '' => 'Selecione',
-            Application_Model_DadosPlanilha::ESTUPRO => 'Estupro',
-            Application_Model_DadosPlanilha::ROUBO => 'Roubo',
-            Application_Model_DadosPlanilha::LESAO =>'Lesão',
+            Application_Model_DadosPlanilha::ARMA_FOGO => 'Arma de Fogo',
+            Application_Model_DadosPlanilha::ARMA_BRANCA => 'Arma Branca',
+            Application_Model_DadosPlanilha::OUTROS_MEIOS =>'Outros Meios',
+            Application_Model_DadosPlanilha::HOMICIDIO_DOLOSO =>'Homicídio Doloso',
+            Application_Model_DadosPlanilha::LATROCINIO =>'Latrocínio',
+            Application_Model_DadosPlanilha::LESAO_CORPORAL_SEGUIDA_MORTE =>'Lesão Corporal Seguida da Morte',
             Application_Model_DadosPlanilha::CVNLI =>'CVNLI'
         );
         $filtros['crimes'] = $arrCrimes;
@@ -65,13 +75,6 @@ class IndicadoresController extends Zend_Controller_Action
             Application_Model_DadosPlanilha::HORA_18_24  => '18h às 24h'
         );
         $filtros['horarios'] = $arrHorarios;
-        
-        // Sexo
-        $arrSexo = array(
-            Application_Model_DadosPlanilha::MASCULINO => 'Masculino',
-            Application_Model_DadosPlanilha::FEMININO  => 'Feminino'
-        );
-        $filtros['sexo'] = $arrSexo;
         
         // Mês
         $arrMeses = array(
@@ -161,8 +164,8 @@ class IndicadoresController extends Zend_Controller_Action
         $this->view->bairrosSelecionados = $this->getParam('bairro');
         
         $this->view->tituloGrafico = 'Total por Bairro';
-        $this->view->tituloY = 'Total de crimes';
-        $this->view->tituloSeries = 'Total de Crimes';
+        $this->view->tituloY = 'Incidência';
+        $this->view->tituloSeries = 'Incidência';
     }
 
     public function diasSemanaAction()
@@ -220,8 +223,8 @@ class IndicadoresController extends Zend_Controller_Action
         $this->view->diasSelecionados = $this->getParam('diaSemana');
         
         $this->view->tituloGrafico = 'Total por dia da semana';
-        $this->view->tituloY = 'Quantidade';
-        $this->view->tituloSeries = 'Total por dia da semana';
+        $this->view->tituloY = 'Incidência';
+        $this->view->tituloSeries = 'Incidência por dia da semana';
         
     }
 
@@ -269,15 +272,6 @@ class IndicadoresController extends Zend_Controller_Action
                 array_push($arrJson, $obj);
             }
             
-            // Json Linha
-//             foreach($result as $key => $item) {
-//                 a($item);
-//                 $obj = new stdClass();
-//                 $obj->name = $item['nome'];
-//                 $obj->y = (float)$item[$key];
-//                 array_push($arrPizza, $obj);
-//             }
-            
             $this->view->jsonPizza = json_encode($arrPizza);
             $this->view->jsonData = json_encode($arrJson);
         } else {
@@ -291,8 +285,8 @@ class IndicadoresController extends Zend_Controller_Action
         $this->view->horarioSelecionado  = $this->getParam('horario');
         
         $this->view->tituloGrafico = 'Quantidade de ocorrências por horário do dia';
-        $this->view->tituloY = 'Total de crimes';
-        $this->view->tituloSeries = 'Quantidade';
+        $this->view->tituloY = 'Incidência';
+        $this->view->tituloSeries = 'Incidência';
     }
 
     public function ocorrenciasPorMesAction()
@@ -397,8 +391,4 @@ class IndicadoresController extends Zend_Controller_Action
         $this->view->idadeSelecionada    = $this->getParam('idade');
     }
     
-    public function testeAction() 
-    {
-        
-    }
 }

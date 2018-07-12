@@ -1,15 +1,21 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Calculation\Statistical;
+
 class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
 {
     protected $_name    = 'tb_dados_planilha';
     protected  $_primary = 'id_dados_planilha';
     
     // Tipos de roubo
-    const ESTUPRO = 'estupro';
-    const ROUBO = 'roubo';
-    const LESAO = 'lesao';
-    const CVNLI = 'cvnli';
+    const ARMA_FOGO = 'arma_de_fogo';
+    const ARMA_BRANCA = 'arma_branca';
+    const OUTROS_MEIOS = 'outros_meios';
+    const HOMICIDIO_DOLOSO = 'homicidio_doloso';
+    const LATROCINIO = 'latrocinio';
+    const LESAO_CORPORAL_SEGUIDA_MORTE = 'lesao_corporal_seguido_morte';
+    const CVNLI = 'cvli';
+    
     // Dias da Semana 
     const DOMINGO = 'dom';
     const SEGUNDA = 'seg';
@@ -19,10 +25,10 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
     const SEXTA = 'sext';
     const SABADO = 'sab';
     // Horario 
-    const HORA_0_6 = 'hora_0_as_6';
-    const HORA_6_12 = 'hora_6_as_12';
-    const HORA_12_18 = 'hora_12_as_18';
-    const HORA_18_24 = 'hora_18_as_24';
+    const HORA_0_6 = 'horario_0_as_6';
+    const HORA_6_12 = 'horario_6_as_12';
+    const HORA_12_18 = 'horario_12_as_18';
+    const HORA_18_24 = 'horario_18_as_24';
     // Sexo
     const MASCULINO = 'm';
     const FEMININO = 'f';
@@ -124,9 +130,10 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
         
         // Se não selecionou os bairros, pesquisa somente 10 bairros
         if (empty($filtros['bairro'])) {
-            $sql->limit(5);
+            $sql->limit(10);
             // Ordena pelo maior CVNLI
-            $sql->order('p.cvnli DESC');
+            $campoCvli = static::CVNLI;
+            $sql->order("p.{$campoCvli} DESC");
         } else {
             //Bairros específicos
             $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
@@ -165,9 +172,10 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
         
         // Se não selecionou os bairros, pesquisa somente 5 bairros
         if (empty($filtros['bairro'])) {
-            $sql->limit(5);
+            $sql->limit(10);
             // Ordena pelo maior CVNLI
-            $sql->order('p.cvnli DESC');
+            $campoCvli = static::CVNLI;
+            $sql->order("p.{$campoCvli} DESC");
         } else {
             //Bairros específicos
             $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
@@ -211,9 +219,10 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
     
         // Se não selecionou os bairros, pesquisa somente 5 bairros
         if (empty($filtros['bairro'])) {
-            $sql->limit(5);
+            $sql->limit(10);
             // Ordena pelo maior CVNLI
-            $sql->order('p.cvnli DESC');
+            $campoCvli = static::CVNLI;
+            $sql->order("p.{$campoCvli} DESC");
         } else {
             //Bairros específicos
             $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
@@ -253,9 +262,10 @@ class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
         
             // Se não selecionou os bairros, pesquisa somente 5 bairros
             if (empty($filtros['bairro'])) {
-                $sql->limit(5);
+                $sql->limit(10);
                 // Ordena pelo maior CVNLI
-                $sql->order('p.cvnli DESC');
+                $campoCvli = static::CVNLI;
+                $sql->order("p.{$campoCvli} DESC");
             } else {
                 //Bairros específicos
                 $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
