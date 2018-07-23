@@ -1,24 +1,24 @@
 <div class="panel panel-default panel-border-color panel-border-color-primary">
     <div class="panel-heading panel-heading-divider">
-        Ocorrências por Horários do dia
-        <span class="panel-subtitle">Total de ocorrências por hora do dia</span>
+        Dias da semana
+        <span class="panel-subtitle">Incidências por Dia da Semana</span>
     </div>
     
     <div class="panel-body">
-        <form class="form-inline text-center form-filtros" action="<?php echo $this->url()?>" method="post">
-        	<div class="row">
+    	<form class="form-inline text-center form-filtros" action="<?php echo $this->url()?>" method="post">
+    		<div class="row">
                 <div class="col-md-4">
             		<label for="anos">Ano</label>
-                    <?php echo $this->formSelect('ano', $this->anoSelecionado, array(), $this->filtros['anos']);?>
+                    <?php echo $this->formSelect('ano', $this->anoSelecionado,null, $this->filtros['anos']);?>
                 </div>
                 
                 <div class="col-md-4">
-            		<label for="crimes">Horário:</label> <br />
-                    <?php echo $this->formSelect('horario', $this->horarioSelecionado, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os horários'), $this->filtros['horarios']);?>
+            		<label for="crimes">Dias da Semana</label> 
+                    <?php echo $this->formSelect('diaSemana', $this->diasSelecionados, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os dias'), $this->filtros['diasSemana']);?>
                 </div>
                 
                 <div class="col-md-4">
-            		<label for="crimes">Bairro:</label> <br />
+            		<label for="crimes">Bairro:</label>
                     <?php echo $this->formSelect('bairro', $this->bairrosSelecionados, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os bairros'), $this->filtros['bairros']);?>
                 </div>
             </div>
@@ -27,17 +27,16 @@
                 <?php echo $this->formSubmit('filtrar', 'Filtrar dados', array('class'=>'btn btn-primary btn-lg'));?>
             </p>
         </form>
-        
+    
         <?php if (!empty($this->jsonData)):?>
-            <div id="grafico-horarios-dia" class="grafico-amvm shadow"></div>
-<!--             <div id="graficopizzasimples" class="grafico-amvm shadow"></div> -->
+        	<div id="grafico-quantidade-dias-semana" class="grafico-amvm shadow"></div>
         <?php else:?>
         	<?php if($this->isPost):?>
         		<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>
     		<?php endif;?>
         <?php endif;?>
         
-        <?php echo $this->partial('indicadores/observacao.phtml');?>
+        <?php echo $this->partial('indicadores-cvli/observacao.phtml');?>
     </div>
 </div>
    

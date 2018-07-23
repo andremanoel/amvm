@@ -1,6 +1,6 @@
 <?php
 
-class IndicadoresController extends Zend_Controller_Action
+class IndicadoresCvliController extends Zend_Controller_Action
 {
 
     public $anoInicialFiltros;
@@ -45,60 +45,60 @@ class IndicadoresController extends Zend_Controller_Action
          */
         $arrCrimes = array(
             '' => 'Selecione',
-            Application_Model_DadosPlanilha::ARMA_FOGO => 'Arma de Fogo',
-            Application_Model_DadosPlanilha::ARMA_BRANCA => 'Arma Branca',
-            Application_Model_DadosPlanilha::OUTROS_MEIOS =>'Outros Meios',
-            Application_Model_DadosPlanilha::HOMICIDIO_DOLOSO =>'Homicídio Doloso',
-            Application_Model_DadosPlanilha::LATROCINIO =>'Latrocínio',
-            Application_Model_DadosPlanilha::LESAO_CORPORAL_SEGUIDA_MORTE =>'Lesão Corporal Seguida da Morte',
-            Application_Model_DadosPlanilha::CVNLI =>'CVNLI'
+            Application_Model_DadosPlanilhaCvli::ARMA_FOGO => 'Arma de Fogo',
+            Application_Model_DadosPlanilhaCvli::ARMA_BRANCA => 'Arma Branca',
+            Application_Model_DadosPlanilhaCvli::OUTROS_MEIOS =>'Outros Meios',
+            Application_Model_DadosPlanilhaCvli::HOMICIDIO_DOLOSO =>'Homicídio Doloso',
+            Application_Model_DadosPlanilhaCvli::LATROCINIO =>'Latrocínio',
+            Application_Model_DadosPlanilhaCvli::LESAO_CORPORAL_SEGUIDA_MORTE =>'Lesão Corporal Seguida da Morte',
+            Application_Model_DadosPlanilhaCvli::CVNLI =>'CVNLI'
         );
         $filtros['crimes'] = $arrCrimes;
         
         // Dia de Semana
         $arrDiasSemana = array(
-            Application_Model_DadosPlanilha::DOMINGO => 'Domingo',
-            Application_Model_DadosPlanilha::SEGUNDA => 'Segunda',
-            Application_Model_DadosPlanilha::TERCA   => 'Terça',
-            Application_Model_DadosPlanilha::QUARTA  => 'Quarta',
-            Application_Model_DadosPlanilha::QUINTA  => 'Quinta',
-            Application_Model_DadosPlanilha::SEXTA   => 'Sexta',
-            Application_Model_DadosPlanilha::SABADO  => 'Sábado'
+            Application_Model_DadosPlanilhaCvli::DOMINGO => 'Domingo',
+            Application_Model_DadosPlanilhaCvli::SEGUNDA => 'Segunda',
+            Application_Model_DadosPlanilhaCvli::TERCA   => 'Terça',
+            Application_Model_DadosPlanilhaCvli::QUARTA  => 'Quarta',
+            Application_Model_DadosPlanilhaCvli::QUINTA  => 'Quinta',
+            Application_Model_DadosPlanilhaCvli::SEXTA   => 'Sexta',
+            Application_Model_DadosPlanilhaCvli::SABADO  => 'Sábado'
         );
         $filtros['diasSemana'] = $arrDiasSemana;
         
         // Horários
         $arrHorarios = array(
-            Application_Model_DadosPlanilha::HORA_0_6    => '0h às 6h',
-            Application_Model_DadosPlanilha::HORA_6_12   => '6h às 12h',
-            Application_Model_DadosPlanilha::HORA_12_18  => '12h às 18h',
-            Application_Model_DadosPlanilha::HORA_18_24  => '18h às 24h'
+            Application_Model_DadosPlanilhaCvli::HORA_0_6    => '0h às 6h',
+            Application_Model_DadosPlanilhaCvli::HORA_6_12   => '6h às 12h',
+            Application_Model_DadosPlanilhaCvli::HORA_12_18  => '12h às 18h',
+            Application_Model_DadosPlanilhaCvli::HORA_18_24  => '18h às 24h'
         );
         $filtros['horarios'] = $arrHorarios;
         
         // Mês
         $arrMeses = array(
-            Application_Model_DadosPlanilha::JAN => 'Janeiro',
-            Application_Model_DadosPlanilha::FEV => 'Fevereiro',
-            Application_Model_DadosPlanilha::MAR => 'Março',
-            Application_Model_DadosPlanilha::ABR => 'Abril',
-            Application_Model_DadosPlanilha::MAI => 'Maio',
-            Application_Model_DadosPlanilha::JUN => 'Junho',
-            Application_Model_DadosPlanilha::JUL => 'Julho',
-            Application_Model_DadosPlanilha::AGO => 'Agosto',
-            Application_Model_DadosPlanilha::SET => 'Setembro',
-            Application_Model_DadosPlanilha::OUT => 'Outubro',
-            Application_Model_DadosPlanilha::NOV => 'Novembro',
-            Application_Model_DadosPlanilha::DEZ => 'Dezembro'
+            Application_Model_DadosPlanilhaCvli::JAN => 'Janeiro',
+            Application_Model_DadosPlanilhaCvli::FEV => 'Fevereiro',
+            Application_Model_DadosPlanilhaCvli::MAR => 'Março',
+            Application_Model_DadosPlanilhaCvli::ABR => 'Abril',
+            Application_Model_DadosPlanilhaCvli::MAI => 'Maio',
+            Application_Model_DadosPlanilhaCvli::JUN => 'Junho',
+            Application_Model_DadosPlanilhaCvli::JUL => 'Julho',
+            Application_Model_DadosPlanilhaCvli::AGO => 'Agosto',
+            Application_Model_DadosPlanilhaCvli::SET => 'Setembro',
+            Application_Model_DadosPlanilhaCvli::OUT => 'Outubro',
+            Application_Model_DadosPlanilhaCvli::NOV => 'Novembro',
+            Application_Model_DadosPlanilhaCvli::DEZ => 'Dezembro'
         );
         $filtros['meses'] = $arrMeses;
         
         //Idade
         $arrIdade = array(
-            Application_Model_DadosPlanilha::ID_12_18 => '12 a 18 anos', 
-            Application_Model_DadosPlanilha::ID_19_29 => '19 a 29 anos', 
-            Application_Model_DadosPlanilha::ID_30_40 => '30 a 40 anos', 
-            Application_Model_DadosPlanilha::ID_51_80 => '51 a 80 anos'
+            Application_Model_DadosPlanilhaCvli::ID_12_18 => '12 a 18 anos', 
+            Application_Model_DadosPlanilhaCvli::ID_19_29 => '19 a 29 anos', 
+            Application_Model_DadosPlanilhaCvli::ID_30_40 => '30 a 40 anos', 
+            Application_Model_DadosPlanilhaCvli::ID_51_80 => '51 a 80 anos'
         );
         $filtros['idade'] = $arrIdade;
         
@@ -127,10 +127,10 @@ class IndicadoresController extends Zend_Controller_Action
         }
         
         if (!isset($filtros['crime'])) {
-            $filtros['crime'] = Application_Model_DadosPlanilha::CVNLI;
+            $filtros['crime'] = Application_Model_DadosPlanilhaCvli::CVNLI;
         }
         
-        $modelDadosPlanilha = new Application_Model_DadosPlanilha();
+        $modelDadosPlanilha = new Application_Model_DadosPlanilhaCvli();
         $result = $modelDadosPlanilha->getTotalCrimesPorBairro($filtros);
         $arrJson =  [];
         $arrPizza = [];
@@ -160,7 +160,7 @@ class IndicadoresController extends Zend_Controller_Action
         
         // Filtros Selecionados
         $this->view->anoSelecionado = $this->getParam('ano', $this->anoInicialFiltros);
-        $this->view->crimeSelecionado = $this->getParam('crime', Application_Model_DadosPlanilha::CVNLI);
+        $this->view->crimeSelecionado = $this->getParam('crime', Application_Model_DadosPlanilhaCvli::CVNLI);
         $this->view->bairrosSelecionados = $this->getParam('bairro');
         
         $this->view->tituloGrafico = 'Total por Bairro';
@@ -171,7 +171,7 @@ class IndicadoresController extends Zend_Controller_Action
     public function diasSemanaAction()
     {
         $filtros = $this->getAllParams();
-        $modelDadosPlanilha = new Application_Model_DadosPlanilha();
+        $modelDadosPlanilha = new Application_Model_DadosPlanilhaCvli();
         $result = $modelDadosPlanilha->getTotalDiaSemana($filtros);
         $arrJson = [];
         
@@ -182,32 +182,32 @@ class IndicadoresController extends Zend_Controller_Action
                 $obj->name = $item['nome'];
                 // Valores por dia da semana 
                 $domingo = 0;
-                if (isset($item[Application_Model_DadosPlanilha::DOMINGO]))
-                    $domingo   = (float) $item[Application_Model_DadosPlanilha::DOMINGO];
+                if (isset($item[Application_Model_DadosPlanilhaCvli::DOMINGO]))
+                    $domingo   = (float) $item[Application_Model_DadosPlanilhaCvli::DOMINGO];
                 
                 $segunda = 0;
-                if (isset($item[Application_Model_DadosPlanilha::SEGUNDA])) 
-                    $segunda   = (float) $item[Application_Model_DadosPlanilha::SEGUNDA];
+                if (isset($item[Application_Model_DadosPlanilhaCvli::SEGUNDA])) 
+                    $segunda   = (float) $item[Application_Model_DadosPlanilhaCvli::SEGUNDA];
                 
                 $terca = 0;
-                if (isset($item[Application_Model_DadosPlanilha::TERCA]))
-                    $terca     = (float) $item[Application_Model_DadosPlanilha::TERCA];
+                if (isset($item[Application_Model_DadosPlanilhaCvli::TERCA]))
+                    $terca     = (float) $item[Application_Model_DadosPlanilhaCvli::TERCA];
                 
                 $quarta = 0;
-                if (isset($item[Application_Model_DadosPlanilha::QUARTA]))
-                    $quarta    = (float) $item[Application_Model_DadosPlanilha::QUARTA];
+                if (isset($item[Application_Model_DadosPlanilhaCvli::QUARTA]))
+                    $quarta    = (float) $item[Application_Model_DadosPlanilhaCvli::QUARTA];
                 
                 $quinta = 0;
-                if (isset($item[Application_Model_DadosPlanilha::QUINTA]))
-                    $quinta    = (float) $item[Application_Model_DadosPlanilha::QUINTA];
+                if (isset($item[Application_Model_DadosPlanilhaCvli::QUINTA]))
+                    $quinta    = (float) $item[Application_Model_DadosPlanilhaCvli::QUINTA];
                 
                 $sexta = 0;
-                if (isset($item[Application_Model_DadosPlanilha::SEXTA]))
-                    $sexta     = (float) $item[Application_Model_DadosPlanilha::SEXTA];
+                if (isset($item[Application_Model_DadosPlanilhaCvli::SEXTA]))
+                    $sexta     = (float) $item[Application_Model_DadosPlanilhaCvli::SEXTA];
                 
                 $sabado = 0;
-                if (isset($item[Application_Model_DadosPlanilha::SABADO]))
-                    $sabado    = (float) $item[Application_Model_DadosPlanilha::SABADO];
+                if (isset($item[Application_Model_DadosPlanilhaCvli::SABADO]))
+                    $sabado    = (float) $item[Application_Model_DadosPlanilhaCvli::SABADO];
                 
                 $obj->data = [$domingo, $segunda, $terca, $quarta, $quinta, $sexta, $sabado];
                 array_push($arrJson, $obj);
@@ -238,7 +238,7 @@ class IndicadoresController extends Zend_Controller_Action
             
         }
         
-        $modelDadosPlanilha = new Application_Model_DadosPlanilha();
+        $modelDadosPlanilha = new Application_Model_DadosPlanilhaCvli();
         $result = $modelDadosPlanilha->getTotalPorHorario($filtros);
         $arrJson = [];
         
@@ -250,17 +250,17 @@ class IndicadoresController extends Zend_Controller_Action
                 $obj->name = $item['nome'];
                 // Valores por dia da semana 
                 $hora06 = $hora612 = $hora1218 = $hora1824 = 0;
-                if(isset($item[Application_Model_DadosPlanilha::HORA_0_6]))
-                    $hora06    = (float) $item[Application_Model_DadosPlanilha::HORA_0_6];
+                if(isset($item[Application_Model_DadosPlanilhaCvli::HORA_0_6]))
+                    $hora06    = (float) $item[Application_Model_DadosPlanilhaCvli::HORA_0_6];
                 
-                if(isset($item[Application_Model_DadosPlanilha::HORA_6_12]))
-                    $hora612   = (float) $item[Application_Model_DadosPlanilha::HORA_6_12];
+                if(isset($item[Application_Model_DadosPlanilhaCvli::HORA_6_12]))
+                    $hora612   = (float) $item[Application_Model_DadosPlanilhaCvli::HORA_6_12];
                 
-                if(isset($item[Application_Model_DadosPlanilha::HORA_12_18]))
-                    $hora1218  = (float) $item[Application_Model_DadosPlanilha::HORA_12_18];
+                if(isset($item[Application_Model_DadosPlanilhaCvli::HORA_12_18]))
+                    $hora1218  = (float) $item[Application_Model_DadosPlanilhaCvli::HORA_12_18];
                 
-                if(isset($item[Application_Model_DadosPlanilha::HORA_18_24]))
-                    $hora1824  = (float) $item[Application_Model_DadosPlanilha::HORA_18_24];
+                if(isset($item[Application_Model_DadosPlanilhaCvli::HORA_18_24]))
+                    $hora1824  = (float) $item[Application_Model_DadosPlanilhaCvli::HORA_18_24];
                 
                 
                 $obj->data = [
@@ -284,7 +284,7 @@ class IndicadoresController extends Zend_Controller_Action
         $this->view->bairrosSelecionados = $this->getParam('bairro');
         $this->view->horarioSelecionado  = $this->getParam('horario');
         
-        $this->view->tituloGrafico = 'Quantidade de ocorrências por horário do dia';
+        $this->view->tituloGrafico = 'Incidência por horário do dia';
         $this->view->tituloY = 'Incidência';
         $this->view->tituloSeries = 'Incidência';
     }
@@ -298,7 +298,7 @@ class IndicadoresController extends Zend_Controller_Action
             $filtros['ano'] = date('Y') - 1;
         }
         
-        $modelDadosPlanilha = new Application_Model_DadosPlanilha();
+        $modelDadosPlanilha = new Application_Model_DadosPlanilhaCvli();
         $result = $modelDadosPlanilha->getTotalPorMes($filtros);
         $arrJson = [];
         
@@ -308,18 +308,18 @@ class IndicadoresController extends Zend_Controller_Action
                 // Nome do bairro
                 $obj->name = $item['nome'];
                 // Valores por dia da semana 
-                $janeiro   = (float) $item[Application_Model_DadosPlanilha::JAN];
-                $fev       = (float) $item[Application_Model_DadosPlanilha::FEV];
-                $marco     = (float) $item[Application_Model_DadosPlanilha::MAR];
-                $abril     = (float) $item[Application_Model_DadosPlanilha::ABR];
-                $maio      = (float) $item[Application_Model_DadosPlanilha::MAI];
-                $junho     = (float) $item[Application_Model_DadosPlanilha::JUN];
-                $julho     = (float) $item[Application_Model_DadosPlanilha::JUL];
-                $agosto    = (float) $item[Application_Model_DadosPlanilha::AGO];
-                $setembro  = (float) $item[Application_Model_DadosPlanilha::SET];
-                $outubro   = (float) $item[Application_Model_DadosPlanilha::OUT];
-                $novembro  = (float) $item[Application_Model_DadosPlanilha::NOV];
-                $dezembro  = (float) $item[Application_Model_DadosPlanilha::DEZ];
+                $janeiro   = (float) $item[Application_Model_DadosPlanilhaCvli::JAN];
+                $fev       = (float) $item[Application_Model_DadosPlanilhaCvli::FEV];
+                $marco     = (float) $item[Application_Model_DadosPlanilhaCvli::MAR];
+                $abril     = (float) $item[Application_Model_DadosPlanilhaCvli::ABR];
+                $maio      = (float) $item[Application_Model_DadosPlanilhaCvli::MAI];
+                $junho     = (float) $item[Application_Model_DadosPlanilhaCvli::JUN];
+                $julho     = (float) $item[Application_Model_DadosPlanilhaCvli::JUL];
+                $agosto    = (float) $item[Application_Model_DadosPlanilhaCvli::AGO];
+                $setembro  = (float) $item[Application_Model_DadosPlanilhaCvli::SET];
+                $outubro   = (float) $item[Application_Model_DadosPlanilhaCvli::OUT];
+                $novembro  = (float) $item[Application_Model_DadosPlanilhaCvli::NOV];
+                $dezembro  = (float) $item[Application_Model_DadosPlanilhaCvli::DEZ];
                 $obj->data = [
                     $janeiro,
                     $fev,
@@ -356,7 +356,7 @@ class IndicadoresController extends Zend_Controller_Action
             $filtros['ano'] = date('Y') - 1;
         }
         
-        $modelDadosPlanilha = new Application_Model_DadosPlanilha();
+        $modelDadosPlanilha = new Application_Model_DadosPlanilhaCvli();
         $result = $modelDadosPlanilha->getTotalPorIdade($filtros);
         $arrJson = [];
         
@@ -366,11 +366,11 @@ class IndicadoresController extends Zend_Controller_Action
                 // Nome do bairro
                 $obj->name = $item['nome'];
                 // Valores por dia da semana
-                $idade12_18  = (float) $item[Application_Model_DadosPlanilha::ID_12_18];
-                $idade19_29  = (float) $item[Application_Model_DadosPlanilha::ID_19_29];
-                $idade30_40  = (float) $item[Application_Model_DadosPlanilha::ID_30_40];
-                $idade41_50  = (float) $item[Application_Model_DadosPlanilha::ID_41_50];
-                $idade51_80  = (float) $item[Application_Model_DadosPlanilha::ID_51_80];
+                $idade12_18  = (float) $item[Application_Model_DadosPlanilhaCvli::ID_12_18];
+                $idade19_29  = (float) $item[Application_Model_DadosPlanilhaCvli::ID_19_29];
+                $idade30_40  = (float) $item[Application_Model_DadosPlanilhaCvli::ID_30_40];
+                $idade41_50  = (float) $item[Application_Model_DadosPlanilhaCvli::ID_41_50];
+                $idade51_80  = (float) $item[Application_Model_DadosPlanilhaCvli::ID_51_80];
                 $obj->data = [
                     $idade12_18,
                     $idade19_29,

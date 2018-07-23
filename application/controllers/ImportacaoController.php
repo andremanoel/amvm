@@ -152,7 +152,7 @@ class ImportacaoController extends Core_Controller_Seguro
      */
     public function apagarRegistrosAnteriores($ano) 
     {
-        $modelPlanilha = new Application_Model_DadosPlanilha();
+        $modelPlanilha = new Application_Model_DadosPlanilhaCvli();
         $where = $modelPlanilha->getAdapter()->quoteInto("ano = ?", $ano);
         $modelPlanilha->delete($where);
     }
@@ -199,7 +199,7 @@ class ImportacaoController extends Core_Controller_Seguro
     {
         // Quantidade de colunas que devem ser lidas
         $qtdColunas = count($this->arrRowTemplate);
-        $modelDados = new Application_Model_DadosPlanilha();
+        $modelDados = new Application_Model_DadosPlanilhaCvli();
         
         $objDadosPlanilha = $modelDados->createRow();
         $ano              = $this->getParam('ano');

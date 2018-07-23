@@ -54,40 +54,33 @@ a:hover {
     background-color: #642a47;
     color: #fff;
 }
-.be-top-header .navbar-nav li:nth-child(1) > a {
-    color: #fff;
-}
 .be-top-header .navbar-nav li:nth-child(2) {
     background-color: #963f6b;
-    color: #fff;
-}
-.be-top-header .navbar-nav li:nth-child(2) > a {
     color: #fff;
 }
 .be-top-header .navbar-nav li:nth-child(3) {
     background-color: #c8548f;
 }
-.be-top-header .navbar-nav li:nth-child(3) > a {
-    color: #fff;
-}
 .be-top-header .navbar-nav li:nth-child(4) {
     background-color: #d376a5;
-}
-.be-top-header .navbar-nav li:nth-child(4) > a {
-    color: #fff;
 }
 .be-top-header .navbar-nav li:nth-child(5) {
     background-color: #de98bc;
 }
-.be-top-header .navbar-nav li:nth-child(5) > a {
-    color: #fff;
-}
 .be-top-header .navbar-nav li:nth-child(6) {
+    background-color: #e9a5c0;
+}
+.be-top-header .navbar-nav li:nth-child(7) {
     background-color: #e9bbd2;
 }
 
-.be-top-header .navbar-nav li:nth-child(6) > a {
+.be-top-header .navbar-nav li > a {
     color: #fff;
+}
+
+.be-top-header .navbar-nav li > a:hover {
+    text-decoration: underline;
+	color: #f5f5f5;
 }
 
 .panel-border-color-primary {

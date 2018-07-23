@@ -1,20 +1,21 @@
-<div class="panel panel-default panel-border-color panel-border-color-primary">
+<div class="panel panel-default panel-border-color panel-border-color-primary painel-indicador">
     <div class="panel-heading panel-heading-divider">
-        Dias da semana
-        <span class="panel-subtitle">Total de ocorrências por Dia da Semana</span>
+        Bairros
+        <span class="panel-subtitle">Incidência por bairro</span>
     </div>
     
     <div class="panel-body">
+    
     	<form class="form-inline text-center form-filtros" action="<?php echo $this->url()?>" method="post">
     		<div class="row">
                 <div class="col-md-4">
-            		<label for="anos">Ano</label>
-                    <?php echo $this->formSelect('ano', $this->anoSelecionado,null, $this->filtros['anos']);?>
+            		<label for="anos"> Ano:</label>
+                    <?php echo $this->formSelect('ano', $this->anoSelecionado, array(), $this->filtros['anos']);?>
                 </div>
                 
                 <div class="col-md-4">
-            		<label for="crimes">Dias da Semana</label> 
-                    <?php echo $this->formSelect('diaSemana', $this->diasSelecionados, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os dias'), $this->filtros['diasSemana']);?>
+            		<label for="crimes"> Tipo de Ocorrência:</label>
+                    <?php echo $this->formSelect('crime', $this->crimeSelecionado, array(), $this->filtros['crimes']);?>
                 </div>
                 
                 <div class="col-md-4">
@@ -22,21 +23,25 @@
                     <?php echo $this->formSelect('bairro', $this->bairrosSelecionados, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os bairros'), $this->filtros['bairros']);?>
                 </div>
             </div>
+            
             <p class="text-center botoes-form-filtros">
                 <?php echo $this->formReset('limpar', 'Limpar filtros', array('class'=>'btn btn-default btn-lg'))?>
                 <?php echo $this->formSubmit('filtrar', 'Filtrar dados', array('class'=>'btn btn-primary btn-lg'));?>
             </p>
         </form>
-    
+        
+        
         <?php if (!empty($this->jsonData)):?>
-        	<div id="grafico-quantidade-dias-semana" class="grafico-amvm shadow"></div>
+        	<div id="grafico-mais-ocorrencias" class="grafico-amvm shadow"></div>
+<!--             <div id="grafico1linha" class="grafico-amvm shadow"></div> -->
+<!--             <div id="graficoareasimples" class="grafico-amvm shadow"></div> -->
+            <div id="graficopizzasimples" class="grafico-amvm shadow"></div>
         <?php else:?>
         	<?php if($this->isPost):?>
         		<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>
-    		<?php endif;?>
+        	<?php endif;?>
         <?php endif;?>
         
-        <?php echo $this->partial('indicadores/observacao.phtml');?>
+        <?php echo $this->partial('indicadores-cvli/observacao.phtml');?>
     </div>
-</div>
-   
+</div>   

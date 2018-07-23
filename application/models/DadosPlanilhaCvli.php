@@ -1,11 +1,10 @@
 <?php
 
-use PhpOffice\PhpSpreadsheet\Calculation\Statistical;
 
-class Application_Model_DadosPlanilha extends Zend_Db_Table_Abstract
+class Application_Model_DadosPlanilhaCvli extends Zend_Db_Table_Abstract
 {
-    protected $_name    = 'tb_dados_planilha';
-    protected  $_primary = 'id_dados_planilha';
+    protected $_name    = 'tb_dados_planilha_cvli';
+    protected  $_primary = 'id_dados_planilha_cvli';
     
     // Tipos de roubo
     const ARMA_FOGO = 'arma_de_fogo';

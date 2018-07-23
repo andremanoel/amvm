@@ -16,7 +16,7 @@ $(document).ready(function(){
 		    },
 			yAxis: {
 				title: {
-					text: 'Total de crimes'
+					text: 'Incidência de Ocorrências'
 				}
 			
 			},

@@ -1,7 +1,7 @@
 <div class="panel panel-default panel-border-color panel-border-color-primary">
     <div class="panel-heading panel-heading-divider">
-        Ocorrências por Idade
-        <span class="panel-subtitle">Total de ocorrências por Idade</span>
+        Ocorrências específicas por mês
+        <span class="panel-subtitle">Incidências por mês</span>
     </div>
     
     <div class="panel-body">
@@ -13,8 +13,8 @@
                 </div>
                 
                 <div class="col-md-4">
-            		<label for="crimes"> Faixa Etária:</label> 
-                    <?php echo $this->formSelect('idade', $this->idadeSelecionada, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os idades'), $this->filtros['idade']);?>
+            		<label for="crimes"> Meses:</label>
+                    <?php echo $this->formSelect('mes', $this->mesSelecionado, array('class'=>'chosen-select', 'multiple'=>'multiple', 'data-placeholder' => 'Selecione os meses'), $this->filtros['meses']);?>
                 </div>
                 
                 <div class="col-md-4">
@@ -30,14 +30,15 @@
         </form>
         
         <?php if (!empty($this->jsonData)):?>
-        	<div id="grafico-mulher-idade" class="grafico-amvm shadow"></div>
+        	<div id="grafico-ocorrencia-mes" class="grafico-amvm shadow"></div>
         <?php else:?>
         	<?php if($this->isPost):?>
         		<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>
-        	<?php endif;?>
+    		<?php endif;?>
         <?php endif;?>
         
-        <?php echo $this->partial('indicadores/observacao.phtml');?>
+        <?php echo $this->partial('indicadores-cvli/observacao.phtml');?>
     </div>
+    
 </div>
    
