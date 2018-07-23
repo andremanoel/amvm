@@ -1,0 +1,48 @@
+<form class="form-inline text-center" action="<?php echo $this->url()?>" method="post">
+    
+    <div class="form-group">
+		<label for="anos">Ano</label>
+        <?php echo $this->formSelect('ano', null, array('class'=>'form-control'), $this->filtros['anos']);?>
+    </div>
+    
+    <div class="form-group">
+		<label for="crimes">Crimes</label>
+        <?php echo $this->formSelect('crime', null, array('class'=>'form-control'), $this->filtros['crimes']);?>
+    </div>
+    
+    <div class="form-group">
+		<label for="crimes">Dias da Semana</label>
+        <?php echo $this->formSelect('diaSemana', null, array('class'=>'form-control'), $this->filtros['diasSemana']);?>
+    </div>
+    
+    <div class="form-group">
+		<label for="horarios">Horários</label>
+        <?php echo $this->formSelect('horario', null, array('class'=>'form-control'), $this->filtros['horarios']);?>
+    </div>
+    
+    <div class="form-group">
+		<label for="sexo">Sexo</label>
+        <?php echo $this->formSelect('sexo', null, array('class'=>'form-control'), $this->filtros['sexo']);?>
+    </div>
+    
+    <div class="form-group">
+		<label for="meses">Meses</label>
+        <?php echo $this->formSelect('mes', null, array('class'=>'form-control'), $this->filtros['meses']);?>
+    </div>
+    
+    <div class="form-group">
+		<label for="idade">Idade</label>
+        <?php echo $this->formSelect('idade', null, array('class'=>'form-control'), $this->filtros['idade']);?>
+    </div>
+    
+    <br /><br />
+    
+    <p class="text-center">
+    	<button type="button" id="limparFiltros" class="btn btn-default btn-lg">
+          Limpar filtros
+        </button>
+        <button type="button" id="myButton" data-loading-text="Filtrando..." class="btn btn-primary btn-lg">
+          Filtrar dados
+        </button>
+    </p>
+</form>
