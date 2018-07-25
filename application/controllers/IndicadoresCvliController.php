@@ -51,7 +51,7 @@ class IndicadoresCvliController extends Zend_Controller_Action
             Application_Model_DadosPlanilhaCvli::HOMICIDIO_DOLOSO =>'Homicídio Doloso',
             Application_Model_DadosPlanilhaCvli::LATROCINIO =>'Latrocínio',
             Application_Model_DadosPlanilhaCvli::LESAO_CORPORAL_SEGUIDA_MORTE =>'Lesão Corporal Seguida da Morte',
-            Application_Model_DadosPlanilhaCvli::CVNLI =>'CVNLI'
+            Application_Model_DadosPlanilhaCvli::CVNLI =>'CVLI'
         );
         $filtros['crimes'] = $arrCrimes;
         
