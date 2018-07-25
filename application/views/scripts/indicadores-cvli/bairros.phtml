@@ -33,9 +33,13 @@
         
         <?php if (!empty($this->jsonData)):?>
         	<div id="grafico-mais-ocorrencias" class="grafico-amvm shadow"></div>
-<!--             <div id="grafico1linha" class="grafico-amvm shadow"></div> -->
-<!--             <div id="graficoareasimples" class="grafico-amvm shadow"></div> -->
             <div id="graficopizzasimples" class="grafico-amvm shadow"></div>
+            
+            <div class="titulo-grafico-geral">
+            	<h2>Gráficos Gerais</h2>
+            </div>
+            <div id="grafico-linha-bairros-cvli" class="grafico-amvm shadow"></div>
+            <div id="grafico-area-bairros-cvli" class="grafico-amvm shadow"></div>
         <?php else:?>
         	<?php if($this->isPost):?>
         		<div class="text-center"><h3>Nenhum resultado encontrado para esta pesquisa.</h3></div>

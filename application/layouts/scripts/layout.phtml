@@ -39,13 +39,55 @@
     <?php else:?>
     	var tituloSeries = "Total";
     <?php endif;?>
-
     
     <?php if(!empty($this->jsonLinha)):?>
     	var dataGraficoLinha = <?php echo $this->jsonLinha;?>;
     <?php else:?>
     	var dataGraficoLinha = "";
     <?php endif;?>
+
+    <?php if(!empty($this->arrJsonCategorias)):?>
+    	var dataCategorias = <?php echo $this->arrJsonCategorias;?>;
+    <?php else:?>
+    	var dataCategorias = "";
+    <?php endif;?>
+
+
+    var arrJsonArmaFogo = "";
+    <?php if(!empty($this->arrJsonArmaFogo)):?>
+    	arrJsonArmaFogo = <?php echo $this->arrJsonArmaFogo;?>;
+    <?php endif;?>
+
+    var arrJsonArmaBranca = "";
+    <?php if(!empty($this->arrJsonArmaBranca)):?>
+    	arrJsonArmaBranca = <?php echo $this->arrJsonArmaBranca;?>;
+    <?php endif;?>
+
+    var arrJsonOutrosMeios = "";
+    <?php if(!empty($this->arrJsonOutrosMeios)):?>
+    	arrJsonOutrosMeios = <?php echo $this->arrJsonOutrosMeios;?>;
+    <?php endif;?>
+
+    var arrJsonHomicidioDoloso = "";
+    <?php if(!empty($this->arrJsonHomicidioDoloso)):?>
+    	arrJsonHomicidioDoloso = <?php echo $this->arrJsonHomicidioDoloso;?>;
+    <?php endif;?>
+
+    var arrJsonLatrocinio = "";
+    <?php if(!empty($this->arrJsonLatrocinio)):?>
+    	arrJsonLatrocinio = <?php echo $this->arrJsonLatrocinio;?>;
+    <?php endif;?>
+
+    var arrJsonLesaoCorporal = "";
+    <?php if(!empty($this->arrJsonLesaoCorporal)):?>
+    	arrJsonLesaoCorporal = <?php echo $this->arrJsonLesaoCorporal;?>;
+    <?php endif;?>
+
+    var arrJsonCvli = "";
+    <?php if(!empty($this->arrJsonCvli)):?>
+    	arrJsonCvli = <?php echo $this->arrJsonCvli;?>;
+    <?php endif;?>
+    
     </script>
 
     <!-- Le styles -->

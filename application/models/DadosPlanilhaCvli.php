@@ -68,7 +68,7 @@ class Application_Model_DadosPlanilhaCvli extends Zend_Db_Table_Abstract
         //Por padrão busca CVNLI
         if (!empty($filtros['crime'])) {
             $sql->order("p.{$filtros['crime']} DESC");
-            $campos = array("p.{$filtros['crime']}");
+            $campos = array("p.{$filtros['crime']}", "p.id_bairro");
         }
         
         //Por padrão busca Ano atual
@@ -91,6 +91,48 @@ class Application_Model_DadosPlanilhaCvli extends Zend_Db_Table_Abstract
         // retirando parque Timbira
         $sql->where('b.id_bairro NOT IN (?)',[136]);
         
+        return $this->getAdapter()->fetchAll($sql);
+    }
+    
+    /**
+     * Consulta Total de Crimes por Bairro com todos os crimes
+     * @param string $filtros
+     */
+    public function getTotalCrimesPorBairroGraficosMaiores($filtrosTela = null, $filtros = null)
+    {
+        $sql = $this->getAdapter()->select();
+        $colunas = array();
+        
+        foreach ($filtrosTela['crimes'] as $key => $crime) {    
+            if (!empty($key)) {
+                $colunas[$key] = $key;
+            }
+        }
+        
+        //Por padrão busca Tudo
+        $sql->order("p.{$filtros['crime']} DESC");
+        $campos = $colunas;
+    
+        //Por padrão busca Ano atual
+        if (empty($filtros['ano'])) {
+            $filtros['ano'] = date('Y');
+        }
+        $sql->where('p.ano = ?', $filtros['ano']);
+    
+        if (!empty($filtros['bairro'])) {
+            $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
+        }
+    
+        $sql->from(
+            array('p' => $this->_name),
+            $campos
+            )
+            ->join(array('b'=>'tb_bairro'), 'p.id_bairro = b.id_bairro')
+            ->limit(10);
+    
+        // retirando parque Timbira
+        $sql->where('b.id_bairro NOT IN (?)',[136]);
+
         return $this->getAdapter()->fetchAll($sql);
     }
     
@@ -142,6 +184,53 @@ class Application_Model_DadosPlanilhaCvli extends Zend_Db_Table_Abstract
         $sql->where('b.id_bairro NOT IN (?)',[136]);
         
         return $this->getAdapter()->fetchAll($sql);
+    }
+    
+    /**
+     *
+     * @param unknown $filtros TODO: FINALIZAR
+     */
+    public function getTotalDiaSemanaTodosOsDias($filtros = null)
+    {
+        $sql = $this->getAdapter()->select();
+    
+        //Por padrão busca Ano atual
+        if (empty($filtros['ano'])) {
+            $filtros['ano'] = date('Y') - 1;
+        }
+    
+        $arrColunas = array(
+            'p.' . static::DOMINGO,
+            'p.' . static::SEGUNDA,
+            'p.' . static::TERCA,
+            'p.' . static::QUARTA,
+            'p.' . static::QUINTA,
+            'p.' . static::SEXTA,
+            'p.' . static::SABADO,
+        );
+    
+        $sql->from(
+            array('p' => $this->_name),
+            $arrColunas
+            )
+            ->where('p.ano = ?', $filtros['ano'])
+            ->join(array('b'=>'tb_bairro'), 'p.id_bairro = b.id_bairro', array('b.nome'));
+    
+            // Se não selecionou os bairros, pesquisa somente 10 bairros
+            if (empty($filtros['bairro'])) {
+                $sql->limit(10);
+                // Ordena pelo maior CVNLI
+                $campoCvli = static::CVNLI;
+                $sql->order("p.{$campoCvli} DESC");
+            } else {
+                //Bairros específicos
+                $sql->where('p.id_bairro IN (?)', $filtros['bairro']);
+            }
+    
+            // retirando parque Timbira
+            $sql->where('b.id_bairro NOT IN (?)',[136]);
+    
+            return $this->getAdapter()->fetchAll($sql);
     }
     
     /**

@@ -130,8 +130,10 @@ class IndicadoresCvliController extends Zend_Controller_Action
             $filtros['crime'] = Application_Model_DadosPlanilhaCvli::CVNLI;
         }
         
+        
         $modelDadosPlanilha = new Application_Model_DadosPlanilhaCvli();
         $result = $modelDadosPlanilha->getTotalCrimesPorBairro($filtros);
+        
         $arrJson =  [];
         $arrPizza = [];
         if (!empty($result)) {
@@ -166,6 +168,46 @@ class IndicadoresCvliController extends Zend_Controller_Action
         $this->view->tituloGrafico = 'Total por Bairro';
         $this->view->tituloY = 'Incidência';
         $this->view->tituloSeries = 'Incidência';
+        
+        // **********************************************
+        // Gráfico de LINHA / AREA - Agrupa por Bairro
+        // **********************************************
+        $arrCategorias = [];
+        foreach ($result as $item) {
+            array_push($arrCategorias, $item['nome']);
+        }
+        $this->view->arrJsonCategorias = json_encode($arrCategorias);
+        
+        // **********************************************
+        // Consulta os dados para Grafico de LINHA / AREA
+        // **********************************************
+        $arrCrimesLinha = $modelDadosPlanilha->getTotalCrimesPorBairroGraficosMaiores($this->view->filtros, $filtros);
+        $arrArmaFogo = [];
+        $arrArmaBranca = [];
+        $arrOutrosMeios = [];
+        $arrHomicidioDoloso = [];
+        $arrLatrocinio = [];
+        $arrLesaoCorporal = [];
+        $arrCvli = [];
+        // Agrupa dados por Crime e Bairro
+        foreach ($arrCrimesLinha as $crimes) {
+            array_push($arrArmaFogo, (int)$crimes['arma_de_fogo']);
+            array_push($arrArmaBranca, (int)$crimes['arma_branca']);
+            array_push($arrOutrosMeios, (int)$crimes['outros_meios']);
+            array_push($arrHomicidioDoloso, (int)$crimes['homicidio_doloso']);
+            array_push($arrLatrocinio, (int)$crimes['latrocinio']);
+            array_push($arrLesaoCorporal, (int)$crimes['lesao_corporal_seguido_morte']);
+            array_push($arrCvli, (int)$crimes['cvli']);
+        }
+        
+        $this->view->arrJsonArmaFogo = json_encode($arrArmaFogo);
+        $this->view->arrJsonArmaBranca = json_encode($arrArmaBranca);
+        $this->view->arrJsonOutrosMeios = json_encode($arrOutrosMeios);
+        $this->view->arrJsonHomicidioDoloso = json_encode($arrHomicidioDoloso);
+        $this->view->arrJsonLatrocinio = json_encode($arrLatrocinio);
+        $this->view->arrJsonLesaoCorporal = json_encode($arrLesaoCorporal);
+        $this->view->arrJsonCvli = json_encode($arrCvli);
+        
     }
 
     public function diasSemanaAction()
@@ -174,6 +216,7 @@ class IndicadoresCvliController extends Zend_Controller_Action
         $modelDadosPlanilha = new Application_Model_DadosPlanilhaCvli();
         $result = $modelDadosPlanilha->getTotalDiaSemana($filtros);
         $arrJson = [];
+        $arrCategorias = [];
         
         if (!empty($result)) {
             foreach($result as $item) {
@@ -211,6 +254,8 @@ class IndicadoresCvliController extends Zend_Controller_Action
                 
                 $obj->data = [$domingo, $segunda, $terca, $quarta, $quinta, $sexta, $sabado];
                 array_push($arrJson, $obj);
+                
+                array_push($arrCategorias, $item['nome']);
             }
             $this->view->jsonData = json_encode($arrJson);
         } else {
@@ -225,6 +270,43 @@ class IndicadoresCvliController extends Zend_Controller_Action
         $this->view->tituloGrafico = 'Total por dia da semana';
         $this->view->tituloY = 'Incidência';
         $this->view->tituloSeries = 'Incidência por dia da semana';
+        
+        
+        // **********************************************
+        // Gráfico de LINHA / AREA - Agrupa por Bairro
+        // **********************************************
+        // $this->view->arrJsonCategorias = json_encode($arrCategorias);
+        
+        // **********************************************
+        // Consulta os dados para Grafico de LINHA / AREA TODO: FINALIZAR
+        // **********************************************
+//         $arrCrimesLinha = $modelDadosPlanilha->getTotalDiaSemanaTodosOsDias($this->view->filtros, $filtros);
+//         $arrArmaFogo = [];
+//         $arrArmaBranca = [];
+//         $arrOutrosMeios = [];
+//         $arrHomicidioDoloso = [];
+//         $arrLatrocinio = [];
+//         $arrLesaoCorporal = [];
+//         $arrCvli = [];
+//         // Agrupa dados por Crime e Bairro
+//         foreach ($arrCrimesLinha as $crimes) {
+//             array_push($arrArmaFogo, (int)$crimes['arma_de_fogo']);
+//             array_push($arrArmaBranca, (int)$crimes['arma_branca']);
+//             array_push($arrOutrosMeios, (int)$crimes['outros_meios']);
+//             array_push($arrHomicidioDoloso, (int)$crimes['homicidio_doloso']);
+//             array_push($arrLatrocinio, (int)$crimes['latrocinio']);
+//             array_push($arrLesaoCorporal, (int)$crimes['lesao_corporal_seguido_morte']);
+//             array_push($arrCvli, (int)$crimes['cvli']);
+//         }
+        
+//         $this->view->arrJsonArmaFogo = json_encode($arrArmaFogo);
+//         $this->view->arrJsonArmaBranca = json_encode($arrArmaBranca);
+//         $this->view->arrJsonOutrosMeios = json_encode($arrOutrosMeios);
+//         $this->view->arrJsonHomicidioDoloso = json_encode($arrHomicidioDoloso);
+//         $this->view->arrJsonLatrocinio = json_encode($arrLatrocinio);
+//         $this->view->arrJsonLesaoCorporal = json_encode($arrLesaoCorporal);
+//         $this->view->arrJsonCvli = json_encode($arrCvli);
+        
         
     }
 
