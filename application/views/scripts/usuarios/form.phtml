@@ -18,6 +18,11 @@
 						</div>
 						
 						<div class="form-group">
+							<label for="nome">Nome</label>
+							<?php echo $this->formText('nome', $this->objUsuario->nome, array('class' => 'form-control', 'placeholder' => 'Informe o Nome'));?>
+						</div>
+						
+						<div class="form-group">
 							<label for="senha">Senha</label>
 							<?php echo $this->formPassword('senha', null, array('class' => 'form-control', 'placeholder' => 'Informe a Senha'));?>
 						</div>

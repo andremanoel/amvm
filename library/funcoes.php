@@ -28,3 +28,8 @@ function normaliza($string){
 	$string = strtolower($string); // passa tudo para minusculo
 	return utf8_encode($string); //finaliza, gerando uma saída para a funcao
 }
+
+function getDataAtual()
+{
+    return date('Y-m-d H:i:s');
+}

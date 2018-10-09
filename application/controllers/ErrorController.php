@@ -23,10 +23,7 @@ class ErrorController extends Zend_Controller_Action
                 break;
         }
         
-        // Log exception, if logger available
-        if ($log = $this->getLog()) {
-            $log->crit($this->view->message, $errors->exception);
-        }
+        a($errors);
         
         // conditionally display exceptions
         if ($this->getInvokeArg('displayExceptions') == true) {

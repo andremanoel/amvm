@@ -1,0 +1,65 @@
+<div
+	class="panel panel-default panel-border-color panel-border-color-primary painel-indicador">
+	<div class="panel-heading panel-heading-divider">
+		Mapas por incidência
+		<?php if(isset($this->mapaSelecionado['titulo'])):?>
+		<h2 class="text-center">
+			<br />
+    		<?php echo $this->mapaSelecionado['titulo'];?>
+		</h2>
+		<?php endif;?>
+		
+		<div class="form-filtros-mapa">
+			<form action="<?php $this->url();?>" method="get">
+				<label for="ano">Ano:</label>
+				<?php echo $this->formSelect('ano', $this->anoSelecionado, array(), $this->anos);?>
+				<label>Tipo:</label>
+				<?php echo $this->formSelect('tipo', $this->tipoSelecionado, array('class'=>'mapa-tipo-select'), $this->tipos);?>
+				<label>Selecione:</label>
+				<span id="classificacao-tipo">
+				<?php echo $this->formSelect('classificacao', $this->classificacaoSelecionado, array(), $this->classificacao);?>
+				</span>
+				<?php echo $this->formSubmit('filtrar', 'Visualizar')?>
+			</form>
+		</div>
+	</div>
+
+	<div class="panel-body">
+		<style>
+        .embed-container {
+        	position: relative;
+        	height: 0;
+        	padding-bottom: 80%;
+        	max-width: 100%;
+        }
+        
+        .embed-container iframe, .embed-container object, .embed-container iframe
+        	{
+        	position: absolute;
+        	top: 0;
+        	left: 0;
+        	width: 100%;
+        	height: 100%;
+        }
+        
+        small {
+        	position: absolute;
+        	z-index: 40;
+        	bottom: 0;
+        	margin-bottom: -15px;
+        }
+        </style>
+		<div class="embed-container text-center">
+			<?php if($this->mapaSelecionado === false):?>
+				<h2>Nenhum mapa encontrado para esta busca.</h2>
+			<?php else:?>
+				<iframe width="500" height="400" frameborder="0" scrolling="no" 
+					marginheight="0" marginwidth="0" 
+					title="<?php echo $this->mapaSelecionado['titulo'];?>" 
+					src="<?php echo $this->mapaSelecionado['url_mapa'];?>"></iframe>
+			<?php endif;?>	
+		</div>
+		<br />
+		<?php echo $this->partial('indicadores-cvli/observacao.phtml');?>
+	</div>
+</div>

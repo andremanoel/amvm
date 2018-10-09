@@ -8,101 +8,44 @@ class MapasController extends Zend_Controller_Action
         parent::init();
     }
     
-    public function cvliHorarioAction()
+    public function indexAction() 
     {
-        $chave00 = '00';
-        $chave06 = '06';
-        $chave12 = '12';
-        $chave18 = '18';
         
-        $arrFiltros = array(
-            $chave00 => '00:00 às 06:00',
-            $chave06 => '06:00 as 12:00',
-            $chave12 => '12:00 as 18:00',
-            $chave18 => '18:00 as 24:00'
-        );
-        $tipoSelecionado = $this->getParam('horario', $chave00);
-        $anoSelecionado  = $this->getParam('ano', 2017);
-        
-        //Mapas Enviados por Hora - 2017
-        $mapa00_2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Hora ( 00: 00 as 06:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=3f478b2122c843879ef6e5eb3e6e2101&extent=-44.6997,-2.853,-43.8565,-2.3839&zoom=true&previewImage=false&scale=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa06_2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Hora ( 06: 00 as 12:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=4d1957876585474f90c2f0973e05bccd&extent=-44.6386,-2.8342,-43.7954,-2.365&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa12_2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Hora ( 12: 00 as 18:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=5c7ad1fda3f44b4b8d5937ec4e8a6adf&extent=-44.5631,-2.8342,-43.7199,-2.3651&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa18_2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI por Hora ( 18: 00 as 24:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=5c7ad1fda3f44b4b8d5937ec4e8a6adf&extent=-44.5631,-2.8342,-43.7199,-2.3651&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        
-        $arrMapas2017 = array(
-            $chave00 => $mapa00_2017,
-            $chave06 => $mapa06_2017,
-            $chave12 => $mapa12_2017,
-            $chave18 => $mapa18_2017
-        );
-        
-        //Mapas Enviados por Hora - 2016
-        $mapa00_2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2016 por Hora ( 00:00 as 06:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=6e20a76c73ff42ec9cb52bdf671ccee0&extent=-44.6018,-2.8133,-43.8452,-2.4189&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa06_2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2016 por Hora ( 06:00 as 12:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=0dd3a1859db641309981335bb8e54f13&extent=-44.6018,-2.8133,-43.8452,-2.4189&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa12_2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2016 por Hora ( 12:00 as 18:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=990375c4fe4f43f9aa3afe61a310bf6f&extent=-44.6018,-2.8133,-43.8452,-2.4189&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa18_2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2016 por Hora ( 18:00 as 24:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=bdcfca0b6f80452b98f29c3167df14b4&extent=-44.6018,-2.8133,-43.8452,-2.4189&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        
-        $arrMapas2016 = array(
-            $chave00 => $mapa00_2016,
-            $chave06 => $mapa06_2016,
-            $chave12 => $mapa12_2016,
-            $chave18 => $mapa18_2016
-        );
-        
-        
-        //Mapas Enviados por Hora - 2015
-        $mapa00_2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2015 por Hora ( 00:00 as 06:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=ec8ed2dd6e17447b914478f7968c8a23&extent=-44.6561,-2.8161,-43.8994,-2.4216&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa06_2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2015 por Hora ( 06:00 as 12:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=2c52df9a5e974a118292bf62256ae17c&extent=-44.6561,-2.8161,-43.8994,-2.4216&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa12_2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2015 por Hora ( 12:00 as 18:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=fcea174ec78349eb83de1418b8be3d2e&extent=-44.6561,-2.8161,-43.8994,-2.4216&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa18_2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2015 por Hora ( 18:00 as 24:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=a05652aa62444f41b367b5431ac6b5c4&extent=-44.6561,-2.8161,-43.8994,-2.4216&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        
-        $arrMapas2015 = array(
-            $chave00 => $mapa00_2015,
-            $chave06 => $mapa06_2015,
-            $chave12 => $mapa12_2015,
-            $chave18 => $mapa18_2015
-        );
-        
-        //Mapas Enviados por Hora - 2014
-        $mapa00_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2014 por Hora ( 00: 00 as 06:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=40fdba06d7d249bc8faf495d90b7da72&extent=-44.5977,-2.8188,-43.8411,-2.4244&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa06_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2014 por Hora ( 06:00 as 12:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=92a9ce0046d3411f9231946891334913&extent=-44.5977,-2.8188,-43.8411,-2.4244&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa12_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2014 por Hora ( 12:00 as 18:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=988cc55135af4520988fc6ec756f4afc&extent=-44.5977,-2.8188,-43.8411,-2.4244&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapa18_2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Ocorrência de CVLI em 2014 por Hora ( 18:00 as 24:00) - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=59ec9d53044f40b9b5e48f6a19745873&extent=-44.5977,-2.8188,-43.8411,-2.4244&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        
-        $arrMapas2014 = array(
-            $chave00 => $mapa00_2014,
-            $chave06 => $mapa06_2014,
-            $chave12 => $mapa12_2014,
-            $chave18 => $mapa18_2014
-        );
-        
-        // Verifica o ano selecionado
-        if ($anoSelecionado == 2017) {
-            $this->view->mapaSelecionado = $arrMapas2017[$tipoSelecionado];
+        try {
+            $modelTipo = new Application_Model_Mapas_MapaTipo();
+            $modelAno  = new Application_Model_Mapas_MapaAno();
+            $modelClassificacao  = new Application_Model_Mapas_MapaTipoClassificacao();
+            $modelMapa  = new Application_Model_Mapas_Mapa();
+            
+            // parametros de busca
+            $idAno = $this->getParam('ano', 2014);
+            $idTipo = $this->getParam('tipo', 1);
+            $idClassificacao = $this->getParam('classificacao', 1);
+            
+            $tipos = $modelTipo->getTipos();
+            $this->view->tipos = $tipos;
+            $this->view->anos = $modelAno->getAnos();
+            $this->view->classificacao = $modelClassificacao->getTiposClassificacao($idTipo);
+            $this->view->mapaSelecionado = $modelMapa->getMapa($idClassificacao, $idAno);
+            //a($this->view->mapaSelecionado);
+            
+            // dados selecionados
+            $this->view->anoSelecionado = $idAno;
+            $this->view->tipoSelecionado = $idTipo;
+            $this->view->classificacaoSelecionado = $idClassificacao;
+            
+        } catch (Exception $e) {
+            a($e->getMessage());
         }
-        
-        if ($anoSelecionado == 2016) {
-            $this->view->mapaSelecionado = $arrMapas2016[$tipoSelecionado];
-        }
-        
-        if ($anoSelecionado == 2015) {
-            $this->view->mapaSelecionado = $arrMapas2015[$tipoSelecionado];
-        }
-        
-        if ($anoSelecionado == 2014) {
-            $this->view->mapaSelecionado = $arrMapas2014[$tipoSelecionado];
-        }
-        
-        $this->view->arrFiltros = $arrFiltros;
-        $this->view->selecionado = $tipoSelecionado;
-        $this->view->anoSelecionado = $anoSelecionado;
-        $this->view->arrAnos = [
-            2014 => 2014,
-            2015 => 2015,
-            2016 => 2016,
-            2017 => 2017
-        ];
+    }
+    
+    public function carregarClassificacaoAction() 
+    {
+        $this->_helper->layout()->disableLayout();
+        $idTipo = $this->getParam('tipo');
+        $modelClassificacao  = new Application_Model_Mapas_MapaTipoClassificacao();
+        $this->view->classificacao = $modelClassificacao->getTiposClassificacao($idTipo);   
+        $this->view->classificacaoSelecionado = '';
     }
     
     public function densidadeOcorrenciasAnoAction()
@@ -139,104 +82,6 @@ class MapasController extends Zend_Controller_Action
         $this->view->mapaSelecionado = $arrMapas[$anoSelecionado];
         $this->view->arrFiltros = $arrFiltros;
         $this->view->selecionado = $anoSelecionado;
-    }
-    
-    /**
-     *  Total de Incidência de Ocorrência de CVLI Tipo
-     */
-    public function cvliTipoAction()
-    {
-        $chaveArmaFogo = 'arma-fogo';
-        $chaveArmaBranca = 'arma-branca';
-        $chaveOutros = 'outros';
-        $chaveCvli = 'cvli';
-    
-        $arrFiltros = array(
-            $chaveArmaFogo => 'Arma de Fogo',
-            $chaveArmaBranca => 'Arma Branca',
-            $chaveOutros => 'Outros Meios',
-            $chaveCvli => 'CVLI'
-        );
-        $tipoSelecionado = $this->getParam('tipo', $chaveArmaFogo);
-        $anoSelecionado  = $this->getParam('ano', 2017);
-    
-        //Mapas Enviados por Tipo
-        $mapaArmaFogo2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Arma de Fogo - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=10114eb47a174ea38712a84a488877b4&extent=-44.5723,-2.804,-43.8541,-2.4309&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaArmaBranca2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Arma Branca - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=cde4639c71884280a6b43d1124f432b0&extent=-44.5723,-2.804,-43.8541,-2.4309&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaOutros2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Outros Meios - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=84eed9d0246b498abf3b30e8c825c4de&extent=-44.5723,-2.804,-43.8541,-2.4309&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaCvli2017 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI 2017 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=0b20c7638b854e46ab4a98e1bb0a890c&extent=-44.5723,-2.804,-43.8541,-2.4309&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        
-        $arrMapas2017 = array(
-            $chaveArmaFogo => $mapaArmaFogo2017,
-            $chaveArmaBranca => $mapaArmaBranca2017,
-            $chaveOutros => $mapaOutros2017,
-            $chaveCvli => $mapaCvli2017
-        );
-        
-        $mapaArmaFogo2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Arma de Fogo 216- Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=e7ab8ee4ba5f420185884feebe99505b&extent=-44.5826,-2.8027,-43.8644,-2.4295&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaArmaBranca2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Arma Branca 2016 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=ade7c2ea26424a70894797cf50061bee&extent=-44.5826,-2.8027,-43.8644,-2.4295&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaOutros2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Outros Meios 2016 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=76ed018ef8394948a7df554804f080a7&extent=-44.5826,-2.8027,-43.8644,-2.4295&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legend=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaCvli2016 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI 2016 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=9d8205215b30420190bb373eb5e2968c&extent=-44.5826,-2.8027,-43.8644,-2.4295&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        
-        $arrMapas2016 = array(
-            $chaveArmaFogo => $mapaArmaFogo2016,
-            $chaveArmaBranca => $mapaArmaBranca2016,
-            $chaveOutros => $mapaOutros2016,
-            $chaveCvli => $mapaCvli2016
-        );
-        
-        $mapaArmaFogo2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Arma de Fogo 2015- Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=7de3399e6717400e8b6ad4eb4e23eb39&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaArmaBranca2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Arma Branca 2015 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=09f565001be443d79569a1d2596d3463&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaOutros2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Outros Meios 2015 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=b07ac61ef0bf4aa0911ad88e484f5dd6&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaCvli2015 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI 2015 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=22c4e3ae2ea54ca1b72a4466fa1929da&extent=-44.6369,-2.8054,-43.9186,-2.4323&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        
-        $arrMapas2015 = array(
-            $chaveArmaFogo => $mapaArmaFogo2015,
-            $chaveArmaBranca => $mapaArmaBranca2015,
-            $chaveOutros => $mapaOutros2015,
-            $chaveCvli => $mapaCvli2015
-        );
-        
-        //Mapas 2014
-        $mapaArmaFogo2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Arma de Fogo 2014- Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=f30be07bffb449c69b49156b0a23abe0&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaArmaBranca2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Arma Branca 2014 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=a81236fccfc941d2b5f90e278e9ff474&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaOutros2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI por Outros Meios 2014 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=c06caa26403246eba014c1ddb4931c27&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        $mapaCvli2014 = '<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Total de Incidência de Ocorrência de CVLI 2014 - Feminino" src="//www.arcgis.com/apps/Embed/index.html?webmap=0ca11942e5f4449b938dce57c0826f25&extent=-44.6376,-2.8037,-43.9193,-2.4326&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>';
-        
-        $arrMapas2014 = array(
-            $chaveArmaFogo => $mapaArmaFogo2014,
-            $chaveArmaBranca => $mapaArmaBranca2014,
-            $chaveOutros => $mapaOutros2014,
-            $chaveCvli => $mapaCvli2014
-        );
-        
-        
-        // Verifica o ano selecionado
-        if ($anoSelecionado == 2017) {
-            $this->view->mapaSelecionado = $arrMapas2017[$tipoSelecionado];
-        }
-        
-        if ($anoSelecionado == 2016) {
-            $this->view->mapaSelecionado = $arrMapas2016[$tipoSelecionado];
-        }
-        
-        if ($anoSelecionado == 2015) {
-            $this->view->mapaSelecionado = $arrMapas2015[$tipoSelecionado];
-        }
-        
-        if ($anoSelecionado == 2014) {
-            $this->view->mapaSelecionado = $arrMapas2014[$tipoSelecionado];
-        }
-    
-        $this->view->arrFiltros = $arrFiltros;
-        $this->view->selecionado = $tipoSelecionado;
-        $this->view->anoSelecionado = $anoSelecionado;
-        $this->view->arrAnos = [
-            2014 => 2014,
-            2015 => 2015,
-            2016 => 2016,
-            2017 => 2017
-        ];
     }
     
     /**

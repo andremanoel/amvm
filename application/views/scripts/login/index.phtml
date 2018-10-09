@@ -3,19 +3,19 @@
     <div class="main-content container-fluid">
       <div class="splash-container">
         <div class="panel panel-default panel-border-color panel-border-color-primary">
-          <div class="panel-heading"><span class="splash-description">Realize o login - Área Gestora</span></div>
+          <div class="panel-heading"><span class="splash-description">Realize o login - Área Administrativa</span></div>
           <div class="panel-body">
             <form action="<?php echo $this->baseUrl('/login');?>" method="post" >
               <div class="form-group">
-              	<label>Usuário:</label>
-                <input id="usuario" name="usuario" type="text" placeholder="Usuário" autocomplete="off" class="form-control">
+              	<label for="usuario_amvm">Usuário:</label>
+                <?php echo $this->formText('usuario_amvm', $this->nome_usuario, array('class'=>'form-control'));?>
               </div>
               <div class="form-group">
-              	<label>Senha:</label>
-                <input id="senha" name="senha" type="password" placeholder="Senha" class="form-control">
+              	<label for="senha_amvm">Senha:</label>
+                <?php echo $this->formPassword('senha_amvm', null, array('class'=>'form-control'))?>
               </div>
               <div class="form-group login-submit">
-                <button data-dismiss="modal" type="submit" class="btn btn-primary btn-xl">Entrar</button>
+                <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
               </div>
             </form>
           </div>

@@ -1,3 +1,37 @@
+$(document).ready(function() {
+	
+	$(".mapa-tipo-select").change(function(){
+		var tipoC = $(this).val();
+		$.post("/mapas-admin/carregar-classificacao",
+		    {
+				tipo: tipoC
+		    },
+		    function(data, status){
+		        $("#classificacao-tipo").html(data);
+		    });
+	}).change();
+	
+	//
+	$(".mapa-tipo-select-form").change(function(){
+		var tipoC = $(this).val();
+		$.post("/mapas/carregar-classificacao",
+		    {
+				tipo: tipoC
+		    },
+		    function(data, status){
+		        $("#classificacao-tipo").html(data);
+		    });
+	});
+	
+	// datatables alunos
+	$('.datatable').DataTable({
+        "language": {
+            "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+        }
+    } );
+});
+
+
 function FastClick(a, b) {
     "use strict";
 

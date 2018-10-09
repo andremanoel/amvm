@@ -1,0 +1,49 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="widget widget-fullwidth be-loading">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="title">Cadastro de Mapas</div>
+				</div>
+				<div class="panel-body">
+					<form action="<?php echo $this->url();?>" method="post">
+						<?php echo $this->formHidden('id_mapa', $this->obj->id_mapa)?>
+    					<div class="form-group">
+							<label for="titulo">Título</label>
+							<?php echo $this->formText('titulo', $this->obj->titulo, array('class' => 'form-control', 'placeholder' => 'Informe o Título'));?>
+						</div>
+						
+						<div class="form-group">
+							<label for="url_mapa">URL do Mapa</label>
+							<?php echo $this->formText('url_mapa', $this->obj->url_mapa, array('class' => 'form-control', 'placeholder' => 'Informe o URL do MAPA do Arcgis'));?>
+						</div>
+						
+						<div class="form-group">
+							<label for="id_mapa_ano">Ano</label>
+							<?php echo $this->formSelect('id_mapa_ano', $this->obj->id_mapa_ano, array('class' => 'form-control'), $this->arrAnos);?>
+						</div>
+						
+						<div class="form-group">
+							<label for="tipo">Tipo</label>
+							<?php echo $this->formSelect('tipo', $this->tipoSelecionado, array('class'=>'form-control mapa-tipo-select'), $this->arrTipos);?>
+						</div>
+						
+						<div class="form-group">
+							<label for="id_mapa_tipo_classificacao">Classificação</label>
+							<span id="classificacao-tipo">
+								<?php echo $this->formSelect('id_mapa_tipo_classificacao', $this->obj->id_mapa_tipo_classificacao, array('class'=>'form-control'), [''=>'Selecione o Tipo']);?>
+							</span>
+						</div>
+						
+						<div class="text-right">
+							<?php echo $this->formReset('reset', 'Cancelar', array('class' => 'btn btn-default'));?>
+							<?php echo $this->formSubmit('salvar', 'Salvar', array('class' => 'btn btn-primary'));?>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
